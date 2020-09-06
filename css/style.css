@@ -1,0 +1,342 @@
+@font-face {
+	font-family: 'Italiana-Regular';
+	src: url(../fonts/Italiana-Regular.ttf);
+}
+
+/* *******************CONFIGURAÇÃO MENU************************ */
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+#btn-menu{
+    display: none;
+}
+
+header label{
+    color: #3a3a68;
+    font-size: 30px;
+    display: block;
+    padding: 8px 20px;
+    width: 20px;
+    display: none;
+    border-right: 1px solid #3a3a6854;
+}
+header label:hover{
+    background-color: #3a3a68c4;
+    color: white;
+    transition: 1s;
+}
+.menu{
+    height: 55px;
+	background-color: #ffffff;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
+    padding: 3px;
+}
+.menu ul{ 
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    transition: all .5s;
+}
+
+.menu li a{
+    color: #3a3a68;
+    text-decoration: none;
+    display: block;
+    padding: 15px 20px;
+    font-family: 'Italiana-Regular';
+    font-size: 15pt;
+    font-weight: 600;
+    margin-top: 2px;
+    
+}
+
+.menu li:hover{
+    background-color: rgba(58,58,104,.5);
+    transition: 1s;
+}
+
+.menu li a:hover{
+    color: #f8f9f2;
+}
+
+
+#logo{
+    display: flex;
+    position: absolute;
+    width: 180px;
+    margin-left: 70px;
+    cursor: pointer;
+}
+
+div#botaoLogin {
+    display: block;
+    position: absolute;
+    background-color: #839c6b;
+    left: 85%;
+    top: 8px;
+    width: 130px;
+    height: 45px;
+    border-radius: 50px;
+}
+
+div#botaoLogin a{
+    display: flex;
+    justify-content: center;
+    padding: 10px 0px;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Italiana-Regular';
+    font-size: 15pt;
+    font-weight: 600;
+}
+
+div#botaoLogin:hover{
+    background-color: #5b6230;
+    transition: 1s;
+}
+
+/* *******************CONFIGURAÇÃO MENU RESPONSIVO************************ */
+@media (max-width: 1250px){
+    .menu li a{
+        padding: 15px 10px;
+        font-size: 14pt; 
+ 
+    }
+    .menu ul{
+        margin-left: 100px;
+    }
+}
+@media (max-width: 1035px){
+    .menu li a{
+        padding: 15px 5px;
+        font-size: 13pt; 
+ 
+    }
+    .menu ul{
+        margin-left: 100px;
+    }
+}
+
+@media (max-width: 930px){
+    header label{
+        display: flex;
+    }
+
+    img#logo{
+       position: absolute;
+       top: 5px;
+    }
+    
+    .menu ul{
+        position: absolute;
+        margin-left: -70%;
+        width: 60%;
+        flex-direction: column;
+        background-color:#3a3a68c4;
+        z-index: 50;
+        
+    }
+    .menu li a{
+        color: white;
+        margin-left: 10px;
+    }
+
+    #btn-menu:checked ~ ul{
+        margin-left: 0%;
+    }
+    div#botaoLogin {
+        left: calc(80% - 60px);
+    }
+    
+
+}
+
+@media (max-width: 405px){
+    img#logo{
+        position: absolute;
+        top: 12px;
+        width:135px;
+     }
+
+     div#botaoLogin {
+        width: 80px;
+        left: calc(80% - 20px);
+    }
+}
+
+/* *****************CORPO PAGINA PRINCIPAL****************** */
+
+div.container1 {
+    display: inline-block;
+    position: relative;
+    width: 57%;
+    height: calc(100vh - 80px);
+}
+div.container1-1 {
+    position: absolute;
+    width: 99%;
+    height: 70%;
+}
+
+div.container1-2 {
+    position: absolute;
+    margin-top: 16.5vh;
+    top: 21vw;
+    left: 15%;
+    width: 80%;
+    height:29%;
+
+}
+
+div.container2{
+    display: inline-block;
+    position: relative;
+    width: 42%;
+    height: calc(100vh - 80px);
+}
+
+
+img#logotipo-banner{
+    width: 90%;
+    margin-left: 8%;
+    margin-top: 18vh;
+}
+
+img#fig1{
+    position: absolute;
+    left: 05%;
+    top: 10%;
+    width: 80%;
+    
+}
+
+#msg1 {
+    position: absolute;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #2c2c51;
+    font-size: 1.45vw;
+    letter-spacing: 0.1vw;
+    text-align: center;
+}
+
+@media (max-width: 405px){
+    div.container2{
+        display: none;
+    }
+    div.container1 {
+        display: inline-block;
+        position: relative;
+        width: 90%;
+        height: calc(100vh - 80px);
+    }
+    div.container1-2 {
+        top: 65vw;
+        margin-top: 0;
+    }
+    #msg1 {
+        position: absolute;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #2c2c51;
+        font-size: 10pt;
+        letter-spacing: 0.1vw;
+        text-align: center;
+    }
+
+}
+
+/* *******************CONFIGURAÇÃO FORMULÁRIOS PAGINAS SECUNDÁRIAS************************ */
+
+body.fundoPag2 {
+    background-color: #3a3a68d0;
+}
+
+section.formulario {
+    background-color: rgb(228, 225, 225);
+    width: 50%;
+    margin-top: 5vh;
+    margin-left: 25%;
+    height: 200vh;
+    box-shadow: 4px 5px 5px rgba(0, 0, 0, .4);
+    padding-left:20px;
+    padding-top: 5px;
+    padding-right:20px;
+}
+
+section.formulario h1{
+    text-align: center;
+    font-family: 'Italiana-Regular';
+    color: #ffffff;
+    background-color: #3a3a68;
+    letter-spacing: 1.5pt;
+    font-weight: 600;
+}
+section.formulario dt{
+    font-size: 12pt;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+div.linha {
+    height: 2px;
+    border-top: 1px dashed    #3a3a68;
+    margin: 15px 0px;
+}
+
+div.amostraOuPopulacao{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 70%;
+    margin-left: 15%;
+}
+div.amostraOuPopulacao img{
+    width: 200px; 
+    cursor: pointer;
+}
+
+div.amostraOuPopulacao input{
+    display: none;
+}
+
+div.manualOuImportar{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 70%;
+    margin-left: 15%;
+}
+div.manualOuImportar img{
+    width: 200px; 
+    cursor: pointer;
+}
+
+div.manualOuImportar input{
+    display: none;
+}
+/* ****************TABELAS**************************** */
+
+div.tabelas table{
+
+    border: none;
+    border-top: 1px solid #f1f2f3;
+    vertical-align: middle;
+    text-align: center;
+}
+
+div.tabelas td:hover{
+    background-color: rgba(0,0,0,.075);
+}
+
+div.tabelas td, th{
+    min-width: 120px;
+    padding: 0px 10px;
+    background-color: #c7c7c7;
+}
+
+div.tabelas th{
+    background-color: rgb(67, 64, 104);
+    color: white;
+}
