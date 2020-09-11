@@ -1,103 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <title>goStats</title>
-    <link rel="shortcut icon" href="../imagens/logo-aba-navegador.png" />
-    <link rel="stylesheet" type="text/css" href="../css/style.css" />
-  </head>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>goStats</title>
+  <link rel="shortcut icon" href="../imagens/logo-aba-navegador.png" />
 
 
-  <body class="fundoPag2">
+  <!-- importando bootstrap abaixo -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!--MENU RESPONSIVO-->
-    <header>
-      <nav class="menu" id="menu">
-        <input type="checkbox" id="btn-menu">
-        <label for="btn-menu">&#9776;</label>
-        <a href="../index.html">
-          <img id="logo" src="../imagens/logo-menu.png" />
-        </a>
 
-        <ul>
-          <li><a href="../descritiva/descritiva.html">Estatística Descritiva</a></li>
-          <li><a href="../probabilidade/probabilidade.html">Probabilidade</a></li>
-          <li><a href="../correlacao/correlacao.html">Correlação e Regressão</a></li>
-          <li><a href="../sobreNos/sobreNos.html">Sobre nós</a></li>
-        </ul>
+  <link rel="stylesheet" type="text/css" href="../css/descritiva.css" />
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
 
-        <div id=botaoLogin>
-          <a href="../login/login.html">Login</a>
+
+</head>
+
+
+<body class="fundoPag2">
+
+  <!--MENU RESPONSIVO-->
+  <header>
+    <nav class="menu" id="menu">
+      <input type="checkbox" id="btn-menu">
+      <label for="btn-menu">&#9776;</label>
+      <a href="../index.html">
+        <img id="logo" src="../imagens/logo-menu.png" />
+      </a>
+
+      <ul>
+        <li><a href="../descritiva/descritiva.html">Estatística Descritiva</a></li>
+        <li><a href="../probabilidade/probabilidade.html">Probabilidade</a></li>
+        <li><a href="../correlacao/correlacao.html">Correlação e Regressão</a></li>
+        <li><a href="../sobreNos/sobreNos.html">Sobre nós</a></li>
+      </ul>
+
+      <div id=botaoLogin>
+        <a href="../login/login.html">Login</a>
+      </div>
+
+    </nav>
+  </header>
+  <div class="form-dados">
+    <div class="container descritiva-main form-custom formulario">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 text-center">
+          <blockquote class="blockquote">
+            <p class="mb-0">Importe seus arquivos ou os insira manualmente</p>
+            <footer class="blockquote-footer">A análise será feita automaticamente</footer>
+          </blockquote><a class="btn btn-outline-secondary btn-custom mb-3" href="./importar/importar.html"
+            style="width: 77%;">Importar</a><a class="btn btn-outline-secondary btn-custom" href="./manual/manual.html"
+            style="width: 77%;">Inserir manualmente</a>
         </div>
-
-      </nav>
-    </header>
-
-    <section id="formularioDescritiva" class="formulario">
-      <h1>Estatística Descritiva</h1>
-
-      <div class="manualOuImportar">
-        <input type="radio" name="manual_ou_importar" id="btn-manual">
-        <label for="btn-manual"><img src="../imagens/manual.png"
-            id="img-manual">
-        </label>
-
-        <input type="radio" name="manual_ou_importar" id="btn-importar">
-        <label for="btn-importar">
-          <img src="../imagens/importar.png" /> </label>
-
-
       </div>
-
-      <dt>Coleta de dados:</dt>
-
-      <input type="text" id="coleta_de_dados" size="55"
-        placeholder="valores
-        separados por espaços ou ';' ou ',' (leia o coment. no código)"> <!-- (aqui na verdade pdc separado por qlq coisa - depois vemos uma msg bancana para colocar)-->
-      <div class="linha"></div>
-
-      <div class="amostraOuPopulacao">
-        <input type="radio" name="amostra_ou_populacao" name='nomeVariavel'
-          value="Amostra" class="amostra" id="btn-amostra"><label
-          for="btn-amostra"><img src="../imagens/amostra.png"></label>
-
-        <input type="radio" name="amostra_ou_populacao" value="Populacao"
-          class="populacao" id="btn-populacao"><label for="btn-populacao"><img
-            src="../imagens/populacao.png"></label>
+    </div>
+  </div>
 
 
-      </div>
+</body>
 
-      <div class="linha"></div>
-
-      <dt>Nome da variavel:</dt><input type="text" class="nomeVariavel"
-        size="30" maxlength="12"
-        placeholder="Insira o nome da var. (1ª coluna)"><br><br>
-
-      <div class="linha"></div>
-
-      <dt>Tipo da variavel:</dt>
-      <input type="radio" checked name="nome_da_variavel" value=0>variavel
-      qualitativa
-      nominal <br>
-      <input type="radio" name="nome_da_variavel" value=1>variavel qualitativa
-      ordinal <br>
-      <input type="radio" name="nome_da_variavel" value=2>variavel quantitativa
-      discreta
-      <br>
-      <input type="radio" name="nome_da_variavel" value=3>variavel quantitativa
-      continua
-      <br><br>
-      <input type="button" id='btnCalc' name="botao_calcular" value="Calcular">
-      <div class="linha"></div>
-
-      <div class="tabelas"></div>
-
-
-
-    </section>
-
-
-
-  </body>
-  <script language="javascript" src="js/descritiva.js"></script>
+<script language="javascript" src="js/descritiva.js"></script>
