@@ -53,12 +53,10 @@
     <div class="linha"></div>
 
     <div class="amostraOuPopulacao">
-      <input type="radio" name="amostra_ou_populacao" name='nomeVariavel' value="Amostra" class="amostra"
-        id="btn-amostra"><label for="btn-amostra"><img src="../../imagens/amostra.png"></label>
-
-      <input type="radio" name="amostra_ou_populacao" value="Populacao" class="populacao" id="btn-populacao"><label
-        for="btn-populacao"><img src="../../imagens/populacao.png"></label>
-
+      <input type="radio" class="todoInput" class="amostra" name="amostra_ou_populacao" id="btn-amostra" value="Amostra" onclick="mudaFoto()">
+      <label for="btn-amostra"><img id='fotoAmostra'  src="../../imagens/amostra.png"></label>
+      <input type="radio" class="todoInput" class="populacao" name="amostra_ou_populacao" id="btn-populacao" value="populacao" onclick="mudaFoto()">
+      <label for="btn-populacao"><img id='fotoPopulacao'  src="../../imagens/populacao.png"></label>
     </div>
 
     <code>*detec. auto. o tipo de var. onde a partir de 10 elementos tabela contínua sendo gerada</code>
