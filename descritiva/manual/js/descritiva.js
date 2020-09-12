@@ -187,7 +187,17 @@ let tabelaSimples = (coluna1, coluna2) => {
 
 // *******************FUNÇÃO TROCAR IMAGEM ICONES************************/
 
-function mudaFoto() {
-  document.getElementById("troca").src = "../imagens/manualclick.png";
-}
+var foto = 3;
+var fotoPopulacao = document.getElementById('fotoPopulacao')
+var fotoAmostra = document.getElementById('fotoAmostra')
 
+  function mudaFoto(foto){
+    if(document.getElementsByName('amostra_ou_populacao')[0].checked){
+      fotoAmostra.src = "../../imagens/amostraclick.png"
+      fotoPopulacao.src = "../../imagens/populacao.png"
+    }
+    if(document.getElementsByName('amostra_ou_populacao')[1].checked){
+      fotoPopulacao.src = "../../imagens/populacaoclick.png"
+      fotoAmostra.src = "../../imagens/amostra.png"
+    }
+  }
