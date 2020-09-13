@@ -201,3 +201,23 @@ var fotoAmostra = document.getElementById('fotoAmostra')
       fotoAmostra.src = "../../imagens/amostra.png"
     }
   }
+
+// *******************GRÁFICOS CHART.JS***********************/
+
+
+var ctx = document.getElementById('myChart')
+
+var chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
+
+var chart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['61 |--- 77', 'F77 |--- 93', '93 |--- 109', '109 |--- 125', 'Ma125 |--- 141',],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: ['#3A3A68','#B0C4DE','#838d45', '#2E8B57','orange', '#FFD700', 'purple', 'gray', '#EE3B3B', '#FFD39B' ],
+            borderColor: [''],
+            data: [2, 11, 6, 17, 6],
+        }]
+    },
+})
