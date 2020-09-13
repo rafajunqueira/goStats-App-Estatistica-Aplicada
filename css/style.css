@@ -1,3 +1,5 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css");
+
 @font-face {
 	font-family: 'Italiana-Regular';
 	src: url(../fonts/Italiana-Regular.ttf);
