@@ -14,36 +14,36 @@ btnCalc.onclick = () => {
 
   let objFrequencia = geraFrequencia(arrayOrdenado) //Gerando objeto com array usado
 
-  // valorVariavel é coluna1
-  let valorVariavel = Object.keys(objFrequencia) // Object.keys pega o nome do atributo
+  // dadosInseridos é coluna1
+  let dadosInseridos = Object.keys(objFrequencia) // Object.keys pega o nome do atributo
 
-  // freqSimples é coluna2
+  // freqSimples é coluna2 da tabela 
   let freqSimples = Object.values(objFrequencia) // Object.values pega o VALOR do atributo
 
-
-  // processo de geração de cabeçalho da tabela :
-  let cabecalho = `<table border='1'>
-              <tr>
-                <th>${nomeVariavel}</th>
-                <th>Frequência</th>
-              </tr>`
-
+  let totalCol2 = geraTotalCol2(freqSimples)
 
   /*se +10 ELEMENTOS NUMERAIS forem inseridos geramos a tabelaContinua
   SENÃO
-  somente geramos a tabelaSimples
+  somente geramos a tabelaSimples. VEJA:
   */
+
   let tabelaEscolhida = qualtabela(inputDados)
-  if ((valorVariavel.length >= 10) && (tabelaEscolhida == 'tabelaContinua')) {
-    tabela = cabecalho + tabelaContinua(arrayOrdenado)
-  } else {
-    tabela = cabecalho + tabelaSimples(valorVariavel, freqSimples)
+  if ((dadosInseridos.length >= 10) && (tabelaEscolhida == 'tabelaContinua')) {
+    [corpoTbEscolhida, qtdLinhas] = tabelaContinua(arrayOrdenado, totalCol2)
+
+  } else { /* [corpoTbEscolhida, qtdLinhas] é uma desestruturação */
+    [corpoTbEscolhida, qtdLinhas] = tabelaSimples(dadosInseridos, freqSimples, totalCol2)
   }
+  tabela = geraCabecalho(nomeVariavel) + corpoTbEscolhida
 
 
-  // aqui adicionamos o que rolou no for dentro de uma div de resultado
+  // aqui adicionamos SOMENTE 1ª E 2ª COLUNA:
   const domTabela = document.querySelector('.tabelas')
-  domTabela.innerHTML = tabela
+  domTabela.innerHTML = tabela += '</table>' //fechando tabela
+
+
+  // O RESTO DA TABELA SERÁ RESOLVIDO A PARTIR DO EXEC. FUNÇÃO:
+  geraRestCol(qtdLinhas)
 }
 
 
@@ -66,7 +66,6 @@ let qualtabela = (inputDados) => {
 
 
 let wordCounter = {}; // contador de elementos (int ou string)
-
 
 let ordenaArray = (word1, word2) => {
   if (wordCounter[word1] < wordCounter[word2]) {
@@ -94,72 +93,6 @@ let geraFrequencia = (wordArray) => {
 }
 
 
-let tabelaContinua = (arrayOrdenado) => {
-
-  //achando o priElemento do arrayOrdenado
-  let priElemento = parseInt(arrayOrdenado.slice(0, 1))
-
-  //achando o ultElemento do arrayOrdenado
-  let ultElemento = parseInt(arrayOrdenado.slice(-1))
-
-  //calc de Amplitude Total
-  let AmpliTotal = ultElemento - priElemento
-
-  //achando o index do 1º numero a ser pesquisado (1º maior que AmpliTotal)
-  let indexInicial = arrayOrdenado.findIndex(elemento => elemento > AmpliTotal)
-
-  //calc de qtd de Classes (qtd de lihas da tabela)
-  let qtdClasses = Math.sqrt(arrayOrdenado.length)
-
-  //arredondando qtd de Classes e voltando para o numero anterior
-  qtdClasses = Math.round(qtdClasses) - 1
-
-  //calc de intervalo de Classe
-  let intClasse = ''
-
-  for (let i = indexInicial; i <= arrayOrdenado.length; i++) {
-    //Encontrando o intervalo de Classe: 
-    intClasse = arrayOrdenado[i] / qtdClasses
-
-    //Se o intervalo de Classe for redondo, achamos o ideal
-    if (intClasse === Math.round(intClasse)) {
-      break
-    }
-
-    /*Se chegar ao final do array e não encontrar intervalo de Classe redondo,
-    então acrescentamos +1 no qtdClasses e reiniciamos a busca*/
-    if (i === arrayOrdenado.length) {
-      qtdClasses += 1
-      i = indexInicial
-    }
-  }
-
-  let corpo = ''
-
-  // lembre-se priElemento e ultElemento vem do arrayOrdenado
-  for (let i = priElemento; i <= ultElemento; i += intClasse) {
-
-    if (i + intClasse >= ultElemento) {
-
-      corpo += `<tr>
-                <td>${i} |--- ${i + intClasse}</td>
-                <td>${qtdIndexEntre(arrayOrdenado, i, ultElemento) + 1}</td>
-                </tr>` // esse +1 serve para corrigir a falta
-
-    } else {
-
-      corpo += `<tr>
-                <td>${i} |--- ${i + intClasse}</td>
-                <td>${qtdIndexEntre(arrayOrdenado, i, i + intClasse)}</td>
-                </tr>`
-    }
-  }
-
-
-  return corpo + '</table>'
-}
-
-
 let qtdIndexEntre = (array, inicial, final) => {
 
   let indexNumInicial = array.findIndex(element => element >= inicial)
@@ -170,20 +103,11 @@ let qtdIndexEntre = (array, inicial, final) => {
   return qtdEntre
 }
 
-
-//gerador de tabelaSimples (quali. nominal, ordinal, quanti. discreta)
-let tabelaSimples = (coluna1, coluna2) => {
-  let corpo = ''
-
-  for (let i = 0; i < coluna1.length; i++) {
-    corpo += `<tr>
-              <td>${coluna1[i]}</td>
-              <td>${coluna2[i]}</td>
-            </tr>`
-  }
-
-  return corpo + '</table>'
+function geraTotalCol2(freqSimples) {
+  let calcTotal = (cache, currentValue) => cache + currentValue
+  return freqSimples.reduce(calcTotal)
 }
+
 
 // *******************FUNÇÃO TROCAR IMAGEM ICONES************************/
 
@@ -201,3 +125,23 @@ var fotoAmostra = document.getElementById('fotoAmostra')
       fotoAmostra.src = "../../imagens/amostra.png"
     }
   }
+
+// *******************GRÁFICOS CHART.JS***********************/
+
+
+var ctx = document.getElementById('myChart')
+
+var chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
+
+var chart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['61 |--- 77', 'F77 |--- 93', '93 |--- 109', '109 |--- 125', 'Ma125 |--- 141',],
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: ['#3A3A68','#B0C4DE','#838d45', '#2E8B57','orange', '#FFD700', 'purple', 'gray', '#EE3B3B', '#FFD39B' ],
+            borderColor: [''],
+            data: [2, 11, 6, 17, 6],
+        }]
+    },
+})
