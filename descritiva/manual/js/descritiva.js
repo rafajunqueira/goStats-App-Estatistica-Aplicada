@@ -10,7 +10,7 @@ btnCalc.onclick = () => {
 
   let arrayOriginal = inputDados.split(';'); // Separando ';' dos dados
 
-  let arrayOrdenado = arrayOriginal.sort(ordenaArray) // Ordenando array
+  let arrayOrdenado = arrayOriginal.sort((a, b) => a - b) // Ordenando array
 
   let objFrequencia = geraFrequencia(arrayOrdenado) //Gerando objeto com array usado
 
@@ -44,6 +44,9 @@ btnCalc.onclick = () => {
 
   // O RESTO DA TABELA SERÁ RESOLVIDO A PARTIR DO EXEC. FUNÇÃO:
   geraRestCol(qtdLinhas)
+  
+  //DEPOIS DO PROCESSAMENTO DE TUDO, GERAMOS OS GRÁFICOS
+  geraGraf(qtdLinhas)
 }
 
 
@@ -51,13 +54,11 @@ btnCalc.onclick = () => {
 
 /******************** ÁREA DE FUNÇÕES: ********************/
 
-let qualtabela = (inputDados) => {
+let qualtabela = (arrayOrdenado) => {
+  
+    let verificador = arrayOrdenado[0]
 
-  // tirando caracteres especiais e depois espaço:
-  inputDados.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '')
-  inputDados.replace(/\s/g, '')
-
-  if (isNaN(parseFloat(inputDados))) { // se for string tabelaSimples em uso
+  if (isNaN(parseFloat(verificador))) { // se for string tabelaSimples em uso
     return 'tabelaSimples'
   } else {
     return 'tabelaContinua' // se for number tabelaContinua em uso
@@ -66,17 +67,6 @@ let qualtabela = (inputDados) => {
 
 
 let wordCounter = {}; // contador de elementos (int ou string)
-
-let ordenaArray = (word1, word2) => {
-  if (wordCounter[word1] < wordCounter[word2]) {
-    return -1;
-  } else if (wordCounter[word1] == wordCounter[word2]) {
-    return 0;
-  } else if (wordCounter[word1] > wordCounter[word2]) {
-    return 1;
-  }
-}
-
 
 let geraFrequencia = (wordArray) => {
   // for que gera frequencia (gera objeto)
@@ -111,6 +101,7 @@ function geraTotalCol2(freqSimples) {
 
 // *******************FUNÇÃO TROCAR IMAGEM ICONES************************/
 
+
 var foto = 3;
 var fotoPopulacao = document.getElementById('fotoPopulacao')
 var fotoAmostra = document.getElementById('fotoAmostra')
@@ -128,20 +119,38 @@ var fotoAmostra = document.getElementById('fotoAmostra')
 
 // *******************GRÁFICOS CHART.JS***********************/
 
+function geraGraf(qtdLinhas) {
 
-var ctx = document.getElementById('myChart')
+  let valoresCol1 = []
+  let valoresCol2 = []
 
-var chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
+  let cache = 'teste' // o cache é um acumulador
 
-var chart = new Chart(ctx, {
+  for (let i = 1; i <= qtdLinhas; i++) {
+    // aqui selecionamos na coluna 1 linha i os valores:
+    cache = document.querySelector(`.col1_linha${i}`).innerHTML
+    valoresCol1.push(cache)
+
+    // aqui selecionamos na coluna 2 linha i os valores:
+    cache = document.querySelector(`.calcFreq${i}`).innerHTML
+    cache = parseFloat(cache)
+    valoresCol2.push(cache)
+  }
+
+  var ctx = document.getElementById('myChart')
+
+  var chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
+
+  var chart = new Chart(ctx, {
     type: 'pie',
     data: {
-        labels: ['61 |--- 77', 'F77 |--- 93', '93 |--- 109', '109 |--- 125', 'Ma125 |--- 141',],
-        datasets: [{
-            label: 'My First dataset',
-            backgroundColor: ['#3A3A68','#B0C4DE','#838d45', '#2E8B57','orange', '#FFD700', 'purple', 'gray', '#EE3B3B', '#FFD39B' ],
-            borderColor: [''],
-            data: [2, 11, 6, 17, 6],
-        }]
+      labels: valoresCol1,
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: ['#3A3A68', '#B0C4DE', '#838d45', '#2E8B57', 'orange', '#FFD700', 'purple', 'gray', '#EE3B3B', '#FFD39B'],
+        borderColor: ['white'],
+        data: valoresCol2,
+      }]
     },
-})
+  })
+}
