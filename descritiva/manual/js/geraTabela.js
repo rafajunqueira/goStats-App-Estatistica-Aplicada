@@ -36,20 +36,26 @@ function tabelaContinua(arrayOrdenado, totalCol2) {
     //calc de intervalo de Classe
     let intClasse = ''
 
-    for (let i = indexInicial; i <= arrayOrdenado.length; i++) {
+for (var i = indexInicial; i < arrayOrdenado.length; i++) {
         //Encontrando o intervalo de Classe: 
-        intClasse = arrayOrdenado[i] / qtdClasses
+        let Ak = arrayOrdenado[i]
+        parseFloat(Ak)
+        intClasse = Ak / qtdClasses
+        intClasse = parseFloat(intClasse)
+
+        typeof (intClasse)
 
         //Se o intervalo de Classe for redondo, achamos o ideal
-        if (intClasse === Math.round(intClasse)) {
+        if (intClasse == Math.round(intClasse)) {
             break
         }
 
         /*Se chegar ao final do array e não encontrar intervalo de Classe redondo,
         então acrescentamos +1 no qtdClasses e reiniciamos a busca*/
-        if (i === arrayOrdenado.length) {
+        if (i == arrayOrdenado.length - 1) {
             qtdClasses += 1
-            i = indexInicial
+            const newLocal = indexInicial - 1
+            i = newLocal
         }
     }
 
