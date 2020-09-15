@@ -70,14 +70,14 @@ for (var i = indexInicial; i < arrayOrdenado.length; i++) {
         if (i + intClasse >= ultElemento) {
 
             corpo += `<tr class='linha${numLinha}'>
-                      <td class='col1_linha${i}'>${i} |--- ${i + intClasse}</td>
+                      <td class='col1_linha${numLinha}'>${i} |--- ${i + intClasse}</td>
                       <td class='calcFreq${numLinha}'>${qtdIndexEntre(arrayOrdenado, i, ultElemento) + 1}</td>
                       </tr>` // esse +1 serve para corrigir a falta
 
         } else {
 
             corpo += `<tr class='linha${numLinha}'>
-                      <td class='col1_linha${i}'>${i} |--- ${i + intClasse}</td>
+                      <td class='col1_linha${numLinha}'>${i} |--- ${i + intClasse}</td>
                       <td class='calcFreq${numLinha}'>${qtdIndexEntre(arrayOrdenado, i, i + intClasse)}</td>
                       </tr>`
         }
@@ -105,7 +105,7 @@ function tabelaSimples(coluna1, coluna2, totalCol2) {
     for (let i = 0; i < qtdLinhas; i++) {
         numLinha++
         corpo += `<tr class='linha${numLinha}'>
-                    <td class='col1_linha${i}'>${coluna1[i]}</td>
+                    <td class='col1_linha${numLinha}'>${coluna1[i]}</td>
                     <td class='calcFreq${numLinha}'>${coluna2[i]}</td>
                  </tr>`
     }
