@@ -4,11 +4,12 @@ const btnCalc = document.querySelector('#btnCalc')
 // Quando botao_calcular sofrer onclick a seguinte função vai disparar:
 btnCalc.onclick = () => {
   //Selecionando na DOM elementos:
-  const inputDados = document.querySelector('#coleta_de_dados').value
-  const nomeVariavel = document.querySelector('.nomeVariavel').value
+  const inputDados = preInput
+  const nomeVariavel = preNomeVar
   // criando uma nova variável com o que foi analisado de freq. na função
 
-  let arrayOriginal = inputDados.split(';'); // Separando ';' dos dados
+  //console.log('inputDados :>> ', inputDados);
+  let arrayOriginal = inputDados//.split(';'); // Separando ';' dos dados
 
   let arrayOrdenado = arrayOriginal.sort((a, b) => a - b) // Ordenando array
 
