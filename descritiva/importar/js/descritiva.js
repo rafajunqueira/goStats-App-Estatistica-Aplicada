@@ -5,7 +5,12 @@ const btnCalc = document.querySelector('#btnCalc')
 btnCalc.onclick = () => {
   //Selecionando na DOM elementos:
   const inputDados = preInput
+
+  console.log('inputDados :>> ', inputDados);
+  
   const nomeVariavel = preNomeVar
+
+  console.log('nomeVariavel :>> ', nomeVariavel);
   // criando uma nova variável com o que foi analisado de freq. na função
 
   //console.log('inputDados :>> ', inputDados);
