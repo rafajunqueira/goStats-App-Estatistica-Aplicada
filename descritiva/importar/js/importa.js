@@ -1,4 +1,3 @@
-let escolhaFinal = ''
 
 //Codigo responsa para ESCOLHER ARQ.
 let selectedFile
@@ -17,7 +16,7 @@ let data = [{
 
 //Codigo responsa para SUBIR ARQ.
 
-let todasPlanilhas = {}
+let todasPlanilhas
 
 const botaoSubir = document.querySelector('#button')
 
@@ -45,34 +44,31 @@ botaoSubir.onclick = () => {
 
 //Codigo responsa para CRIAR modal de Escolha
 
+//var escolhaFinal
+
+//let arrayTeste = []
+
+function modalEscolha([...nomesPlanilhas]) {
 
 
-let modalEscolha = ([...nomesPlanilhas]) => {
-
-
-    console.log('nomesPlanilhas :>> ', nomesPlanilhas);
-    let verificaPlanilha = document.querySelector('.verificaPlanilha')
-    let div = ''
-    for (let i = 0; i < nomesPlanilhas.length; i++) {
-        div += `<input type="radio" name="radioOpc" value="${nomesPlanilhas[i]}" checked>  <label>${nomesPlanilhas[i]}</label><br>`
+    //console.log('nomesPlanilhas :>> ', nomesPlanilhas);
+    
+    let opcoes = `<input type="radio" name="radioOpc" value="${nomesPlanilhas[0]}" checked>  <label>${nomesPlanilhas[0]}</label><br>`
+    for (let i = 1; i < nomesPlanilhas.length; i++) {
+        opcoes += `<input type="radio" name="radioOpc" value="${nomesPlanilhas[i]}">  <label>${nomesPlanilhas[i]}</label><br>`
     }
 
-    verificaPlanilha.innerHTML = `<div class="form-dados" style="position: fixed">
-    <div class="container descritiva-main form-custom formulario">
-        <div class="row">
-            <div class="col-md-12 col-sm-12 text-center">
-                <blockquote class="blockquote">
-                    <p class="mb-0">Certo, detectamos que o inserido possui ${nomesPlanilhas.length} planilhas, marque abaixo qual delas vamos fazer análise:</p>
-                    <footer class="blockquote-footer">A análise será feita automaticamente</footer></blockquote>${div}
-                    <input type="button" class="btn btn-outline-secondary btn-custom" id="escolhaFinal" style="width: 77%;" value="Já escolhi a Planilha!">
-            </div>
-        </div>
-    </div>
-</div>`
+    let DOM_divReferencia = document.querySelector('#divReferencia')
+    DOM_divReferencia.innerHTML +=
+        `<p class="mb-0">Certo, detectamos que o inserido possui ${nomesPlanilhas.length} planilhas, marque abaixo qual delas vamos fazer análise:</p>
+    <footer class="blockquote-footer">A análise será feita automaticamente</footer></blockquote>${opcoes}`
 
-    escolhaFinal = document.querySelector('#escolhaFinal')
 
-    console.log('escolhaFinal :>> ', escolhaFinal);
+
+    
+
+    //arrayTeste.push(escolhaFinal)
+    //console.log('escolhaFinal :>> ', escolhaFinal);
 }
 
 
@@ -80,12 +76,19 @@ let modalEscolha = ([...nomesPlanilhas]) => {
 
 let preNomeVar = []
 let preInput = []
-console.log('escolhaFinal :>> ', escolhaFinal);
-escolhaFinal.onclick = (todasPlanilhas) => {
 
+//console.log('escolhaFinal :>> ', escolhaFinal);
+
+//console.log('arrayTeste :>> ', arrayTeste[0]);
+
+const escolhaFinal = document.querySelector('.optFinal')
+
+escolhaFinal.onclick = () => {
+
+console.log('passou :>> ');
     //aqui pegamos o radio selecionado:
     let planEscolhida = document.querySelector('input[name="radioOpc"]:checked').value
-
+    console.log('todasPlanilhas :>> ', todasPlanilhas);
     let valoresEscolhidos = todasPlanilhas[planEscolhida]
     let tamanho = Object.values(valoresEscolhidos).length
     tamanho -= 2 // nesse 2 aqui descontamos tab de planilha (formatação excel)
@@ -102,7 +105,7 @@ escolhaFinal.onclick = (todasPlanilhas) => {
 
     }
 
-    console.log('arrayImportado :>> ', arrayImportado);
+    //console.log('arrayImportado :>> ', arrayImportado);
 
 
     preNomeVar = arrayImportado.shift()
