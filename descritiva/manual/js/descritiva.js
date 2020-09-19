@@ -9,10 +9,22 @@ btnCalc.onclick = () => {
   // criando uma nova variável com o que foi analisado de freq. na função
 
   let arrayOriginal = inputDados.split(';'); // Separando ';' dos dados
+  
+  let arrayOrdenado
 
-  let arrayOrdenado = arrayOriginal.sort((a, b) => a - b) // Ordenando array
+  // Retorna tipo eordena de acordo
+  if (qualTipo(arrayOriginal) == 'string') {
+    arrayOrdenado = arrayOriginal.sort() // Ordenando array string
+  } else {
+    arrayOrdenado = arrayOriginal.sort((a, b) => a - b) // Ordenando array com numero
+  }
+
+
+  console.log('arrayOrdenado :>> ', arrayOrdenado);
 
   let objFrequencia = geraFrequencia(arrayOrdenado) //Gerando objeto com array usado
+
+  console.log('objFrequencia :>> ', objFrequencia);
 
   // dadosInseridos é coluna1
   let dadosInseridos = Object.keys(objFrequencia) // Object.keys pega o nome do atributo
@@ -53,6 +65,19 @@ btnCalc.onclick = () => {
 
 
 /******************** ÁREA DE FUNÇÕES: ********************/
+
+
+let qualTipo = (arrayOrdenado) => {
+
+  let verificador = arrayOrdenado[0]
+
+  if (isNaN(parseFloat(verificador))) { // se for string
+    return 'string'
+  } else {
+    return 'number' // se for number
+  }
+}
+
 
 let qualtabela = (arrayOrdenado) => {
 
