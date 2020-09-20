@@ -46,29 +46,25 @@
 
 
     <!-- DIV DE CONFIRMAÇÃO DE QUAL PLANILHA -->
-    <div class="verificaPlanilha" style="height: 20%;
+    <div class="verificaPlanilha" style="height: 500px;
                                         background-color:#3a3a68d0;
                                         position: fixed;
-                                        width: 45%;
-                                        margin-left: 35%;
-                                        z-index: 99;
+                                        display: none;
+                                        width: 500px;
+                                        margin-left: 30%;
+                                        margin-top: 5%;
+                                        z-index: 10;
                                         border-radius: 25px;">
-        <input type="button" class="optFinal" value="Já escolhi a Planilha!" 
-                                    style='margin: 40%;
-                                        box-sizing: content-box;
-                                    >
+                                        
+        <div class="radios" style='text-align: center;
+                                    color: white;'></div>
+
+        <input type="button" class="btnFinal" value="Já escolhi a Planilha!"
+                                    style='margin-left: 30%;
+                                            z-index: 20;'>
     </div>
 
-    <div class="form-dados" style='position: fixed; display: none;'>
-        <div class="container descritiva-main form-custom formulario">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 text-center" id="divReferencia">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section id="formularioDescritiva" class="formulario">
+     <section id="formularioDescritiva" class="formulario">
 
         <h1>Estatística Descritiva</h1>
 
@@ -139,6 +135,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
 
-<script language="javascript" src="js/importa.js"></script>
-<script language="javascript" src="js/descritiva.js"></script>
-<script language="javascript" src="js/geraTabela.js"></script>
+<script language="javascript" src="../js/importa.js"></script>
+<script language="javascript" src="../js/descritiva.js"></script>
+<script language="javascript" src="../js/geraTabela.js"></script>

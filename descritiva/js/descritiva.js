@@ -3,34 +3,46 @@ const btnCalc = document.querySelector('#btnCalc')
 
 // Quando botao_calcular sofrer onclick a seguinte função vai disparar:
 btnCalc.onclick = () => {
-  //Selecionando na DOM elementos:
-  const inputDados = document.querySelector('#coleta_de_dados').value
-  const nomeVariavel = document.querySelector('.nomeVariavel').value
-  // criando uma nova variável com o que foi analisado de freq. na função
+  let inputDados
+  let nomeVariavel
 
-  let arrayOriginal = inputDados.split(';'); // Separando ';' dos dados
-  
+  // se tivermos o arquivo de descritiva > manual, então:
+  if (window.location.pathname.includes('manual') == true) {
+    // abaixo eu pego na DOM os valores no input:
+    inputDados = document.querySelector('#coleta_de_dados').value
+    inputDados = inputDados.split(';'); // Separando ';' dos dados
+
+    nomeVariavel = document.querySelector('.nomeVariavel').value
+
+  } else {
+    //abaixo eu pego os dados processados pelo 'importa.js'
+    inputDados = preInput
+    nomeVariavel = preNomeVar
+  }
+
+console.log('inputDados :>> ', inputDados);
+  let arrayOriginal = inputDados
+
   let arrayOrdenado
 
-  // Retorna tipo eordena de acordo
+  // Retorna tipo e ordena de acordo
   if (qualTipo(arrayOriginal) == 'string') {
     arrayOrdenado = arrayOriginal.sort() // Ordenando array string
   } else {
     arrayOrdenado = arrayOriginal.sort((a, b) => a - b) // Ordenando array com numero
   }
 
+  // Desestruturando o retorno da função:
+  [a, b, arrayFreq] = geraFreq(arrayOrdenado) //Gerando objeto com array usado
 
-  console.log('arrayOrdenado :>> ', arrayOrdenado);
-
-  let objFrequencia = geraFrequencia(arrayOrdenado) //Gerando objeto com array usado
-
-  console.log('objFrequencia :>> ', objFrequencia);
+  /*acima o arrayFreq é array que tem array dentro e todos os 
+  elementos com suas respectivas frequências, dê um console.log para ver*/
 
   // dadosInseridos é coluna1
-  let dadosInseridos = Object.keys(objFrequencia) // Object.keys pega o nome do atributo
+  let dadosInseridos = a // aqui pegamos os numeros (sem repetição)
 
   // freqSimples é coluna2 da tabela 
-  let freqSimples = Object.values(objFrequencia) // Object.values pega o VALOR do atributo
+  let freqSimples = b // aqui pegamos os numeros as repetições
 
   let totalCol2 = geraTotalCol2(freqSimples)
 
@@ -39,8 +51,7 @@ btnCalc.onclick = () => {
   somente geramos a tabelaSimples. VEJA:
   */
 
-  let tabelaEscolhida = qualtabela(inputDados)
-  if ((dadosInseridos.length >= 10) && (tabelaEscolhida == 'tabelaContinua')) {
+  if ((dadosInseridos.length >= 10) && (qualTipo(arrayOrdenado) == 'string')) {
     [corpoTbEscolhida, qtdLinhas] = tabelaContinua(arrayOrdenado, totalCol2)
 
   } else { /* [corpoTbEscolhida, qtdLinhas] é uma desestruturação */
@@ -79,32 +90,26 @@ let qualTipo = (arrayOrdenado) => {
 }
 
 
-let qualtabela = (arrayOrdenado) => {
+function geraFreq(arr) { // from jsfiddle.net/simevidas/bnACW/
+  var a = [], b = [], prev;
 
-  let verificador = arrayOrdenado[0]
-
-  if (isNaN(parseFloat(verificador))) { // se for string tabelaSimples em uso
-    return 'tabelaSimples'
-  } else {
-    return 'tabelaContinua' // se for number tabelaContinua em uso
-  }
-}
-
-
-let wordCounter = {}; // contador de elementos (int ou string)
-
-let geraFrequencia = (wordArray) => {
-  // for que gera frequencia (gera objeto)
-  for (let i = 0; i < wordArray.length; i++) {
-    if (wordCounter[wordArray[i]]) {
-      wordCounter[wordArray[i]] += 1;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] !== prev) {
+      a.push(arr[i]);
+      b.push(1);
     } else {
-      wordCounter[wordArray[i]] = 1;
+      b[b.length - 1]++;
     }
+    prev = arr[i];
   }
-  let frequenciaFinal = wordCounter
-  wordCounter = {}
-  return frequenciaFinal
+
+  let arrayFreq = []
+
+  for (let i = 0; i < a.length; i++) {
+    arrayFreq.push([a[i], b[i]])
+  }
+
+  return [a, b, arrayFreq]
 }
 
 
@@ -117,6 +122,7 @@ let qtdIndexEntre = (array, inicial, final) => {
 
   return qtdEntre
 }
+
 
 function geraTotalCol2(freqSimples) {
   let calcTotal = (cache, currentValue) => cache + currentValue
@@ -143,11 +149,16 @@ function mudaFoto(foto) {
 }
 
 // *******************GRÁFICOS CHART.JS***********************/
+let geraCoresAleat = () => {
+  let n = (Math.random() * 0xfffff * 1000000).toString(16);
+  return '#' + n.slice(0, 6);
+};
 
 function geraGraf(qtdLinhas) {
 
   let valoresCol1 = []
   let valoresCol2 = []
+  let paletaCores = []
 
   let cache = 'teste' // o cache é um acumulador
 
@@ -160,6 +171,10 @@ function geraGraf(qtdLinhas) {
     cache = document.querySelector(`.calcFreq${i}`).innerHTML
     cache = parseFloat(cache)
     valoresCol2.push(cache)
+
+    // aqui geramos a quantidade de cores exata para o gráfico
+    paletaCores.push(geraCoresAleat())
+    
   }
 
   var ctx = document.getElementById('myChart')
@@ -172,7 +187,7 @@ function geraGraf(qtdLinhas) {
       labels: valoresCol1,
       datasets: [{
         label: 'My First dataset',
-        backgroundColor: ['#3A3A68', '#B0C4DE', '#838d45', '#2E8B57', 'orange', '#FFD700', 'purple', 'gray', '#EE3B3B', '#FFD39B'],
+        backgroundColor: paletaCores,
         borderColor: ['white'],
         data: valoresCol2,
       }]
