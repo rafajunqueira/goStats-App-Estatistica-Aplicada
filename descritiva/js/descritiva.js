@@ -47,11 +47,6 @@ btnCalc.onclick = () => {
 
   let totalCol2 = geraTotalCol2(freqSimples)
 
-  // código antes:
-  
-  let objFrequencia = geraFrequencia(arrayOrdenado) //Gerando objeto com array usado
-
-
   /*se +10 ELEMENTOS NUMERAIS forem inseridos geramos a tabelaContinua
   SENÃO
   somente geramos a tabelaSimples. VEJA:
