@@ -424,3 +424,13 @@ td {
     border-radius: 05px;;
     color: rgb(12, 12, 12);
 }
+
+/******************MODA MEDIA MEDIANA**********************/
+div.media-moda-med {
+    width: 60%;
+    margin: auto;
+    border-radius: 10px;
+    padding: .5px 5px .5px 10px;
+    color: rgb(33, 0, 59);
+}
+
