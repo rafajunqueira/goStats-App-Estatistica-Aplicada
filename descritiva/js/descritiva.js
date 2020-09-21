@@ -38,12 +38,19 @@ btnCalc.onclick = () => {
   elementos com suas respectivas frequências, dê um console.log para ver*/
 
   // dadosInseridos é coluna1
+  let objFrequencia = geraFrequencia(arrayOrdenado) //Gerando objeto com array usado
+
   let dadosInseridos = a // aqui pegamos os numeros (sem repetição)
 
   // freqSimples é coluna2 da tabela 
   let freqSimples = b // aqui pegamos os numeros as repetições
 
   let totalCol2 = geraTotalCol2(freqSimples)
+
+  // código antes:
+  
+  let objFrequencia = geraFrequencia(arrayOrdenado) //Gerando objeto com array usado
+
 
   /*se +10 ELEMENTOS NUMERAIS forem inseridos geramos a tabelaContinua
   SENÃO
@@ -89,6 +96,23 @@ let qualTipo = (arrayOrdenado) => {
   } else {
     return 'number' // se for number
   }
+}
+
+
+let wordCounter = {}; // contador de elementos (int ou string)
+
+let geraFrequencia = (wordArray) => {
+  // for que gera frequencia (gera objeto)
+  for (let i = 0; i < wordArray.length; i++) {
+    if (wordCounter[wordArray[i]]) {
+      wordCounter[wordArray[i]] += 1;
+    } else {
+      wordCounter[wordArray[i]] = 1;
+    }
+  }
+  let frequenciaFinal = wordCounter
+  wordCounter = {}
+  return frequenciaFinal
 }
 
 
