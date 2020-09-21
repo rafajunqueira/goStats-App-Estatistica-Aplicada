@@ -248,3 +248,22 @@ function geraGraf(qtdLinhas) {
   delGrafAnt = 'sim'
 
 }
+
+// *******************Moda, Media e Mediana***********************/
+var media = window.document.querySelector('#media')
+var moda = window.document.querySelector('#moda')
+var mediana = window.document.querySelector('#mediana')
+var desviop = window.document.querySelector('#desviop')
+var coeficiente = window.document.querySelector('#coeficiente')
+var mediamodamed = window.document.querySelector('.media-moda-med')
+
+
+function modmedmed() {
+  moda.innerHTML = `A moda é: ${moda}`
+  media.innerHTML = `A media é: ${media}`
+  mediana.innerHTML = `A mediana é: ${mediana}`
+  desviop.innerHTML = `O desvio padrão é: ${desviop}`
+  coeficiente.innerHTML = `O coeficiente é: ${coeficiente}`
+  mediamodamed.style.backgroundColor = 'rgb(204, 203, 236)'
+}
+
