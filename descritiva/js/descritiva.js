@@ -20,7 +20,6 @@ btnCalc.onclick = () => {
     nomeVariavel = preNomeVar
   }
 
-console.log('inputDados :>> ', inputDados);
   let arrayOriginal = inputDados
 
   let arrayOrdenado
@@ -51,11 +50,14 @@ console.log('inputDados :>> ', inputDados);
   somente geramos a tabelaSimples. VEJA:
   */
 
-  if ((dadosInseridos.length >= 10) && (qualTipo(arrayOrdenado) == 'string')) {
-    [corpoTbEscolhida, qtdLinhas] = tabelaContinua(arrayOrdenado, totalCol2)
+  console.log('qualTipo(arrayOrdenado) :>> ', qualTipo(arrayOrdenado));
 
+  if ((dadosInseridos.length >= 10) && (qualTipo(arrayOrdenado) == 'number')) {
+    [corpoTbEscolhida, qtdLinhas] = tabelaContinua(arrayOrdenado, totalCol2)
+    console.log('tabelaContinua :>> ');
   } else { /* [corpoTbEscolhida, qtdLinhas] é uma desestruturação */
     [corpoTbEscolhida, qtdLinhas] = tabelaSimples(dadosInseridos, freqSimples, totalCol2)
+    console.log('tabelaSimples :>> ');
   }
   tabela = geraCabecalho(nomeVariavel) + corpoTbEscolhida
 
@@ -150,34 +152,34 @@ function mudaFoto(foto) {
     fotoAmostra.src = "../../imagens/amostra.png"
   }
   if (document.getElementsByName('tipodecalculo')[0].checked) {
-    fotoNominal.src="../../imagens/qualitativaNominalClick.png"
-    fotoOrdinal.src="../../imagens/qualitativaOrdinal.png"
-    fotoDiscreta.src="../../imagens/quantitativaDiscreta.png"
-    fotoContinua.src="../../imagens/quantitativaContinua.png"
+    fotoNominal.src = "../../imagens/qualitativaNominalClick.png"
+    fotoOrdinal.src = "../../imagens/qualitativaOrdinal.png"
+    fotoDiscreta.src = "../../imagens/quantitativaDiscreta.png"
+    fotoContinua.src = "../../imagens/quantitativaContinua.png"
     tipodegrafico = 'pie'
     titulodegrafico = 'Qualitativa Nominal'
   }
   if (document.getElementsByName('tipodecalculo')[1].checked) {
-    fotoNominal.src="../../imagens/qualitativaNominal.png"
-    fotoOrdinal.src="../../imagens/qualitativaOrdinalClick.png"
-    fotoDiscreta.src="../../imagens/quantitativaDiscreta.png"
-    fotoContinua.src="../../imagens/quantitativaContinua.png"
+    fotoNominal.src = "../../imagens/qualitativaNominal.png"
+    fotoOrdinal.src = "../../imagens/qualitativaOrdinalClick.png"
+    fotoDiscreta.src = "../../imagens/quantitativaDiscreta.png"
+    fotoContinua.src = "../../imagens/quantitativaContinua.png"
     tipodegrafico = 'doughnut'
     titulodegrafico = 'Qualitativa Ordinal'
   }
   if (document.getElementsByName('tipodecalculo')[2].checked) {
-    fotoNominal.src="../../imagens/qualitativaNominal.png"
-    fotoOrdinal.src="../../imagens/qualitativaOrdinal.png"
-    fotoDiscreta.src="../../imagens/quantitativaDiscretaClick.png"
-    fotoContinua.src="../../imagens/quantitativaContinua.png"
+    fotoNominal.src = "../../imagens/qualitativaNominal.png"
+    fotoOrdinal.src = "../../imagens/qualitativaOrdinal.png"
+    fotoDiscreta.src = "../../imagens/quantitativaDiscretaClick.png"
+    fotoContinua.src = "../../imagens/quantitativaContinua.png"
     tipodegrafico = 'bar'
     titulodegrafico = 'Quantitativa Discreta'
   }
   if (document.getElementsByName('tipodecalculo')[3].checked) {
-    fotoNominal.src="../../imagens/qualitativaNominal.png"
-    fotoOrdinal.src="../../imagens/qualitativaOrdinal.png"
-    fotoDiscreta.src="../../imagens/quantitativaDiscreta.png"
-    fotoContinua.src="../../imagens/quantitativaContinuaClick.png"
+    fotoNominal.src = "../../imagens/qualitativaNominal.png"
+    fotoOrdinal.src = "../../imagens/qualitativaOrdinal.png"
+    fotoDiscreta.src = "../../imagens/quantitativaDiscreta.png"
+    fotoContinua.src = "../../imagens/quantitativaContinuaClick.png"
     tipodegrafico = 'line'
     titulodegrafico = 'Quantitativa Contínua'
   }
@@ -191,7 +193,9 @@ let geraCoresAleat = () => {
   return '#' + n.slice(0, 6);
 };
 
-
+// variaveis auxiliares nos gráficos:
+let delGrafAnt
+let chart
 
 function geraGraf(qtdLinhas) {
 
@@ -199,8 +203,8 @@ function geraGraf(qtdLinhas) {
   let valoresCol2 = []
   let paletaCores = []
 
-  let cache = 'teste' // o cache é um acumulador
-
+  let cache // o cache é um acumulador
+  
   for (let i = 1; i <= qtdLinhas; i++) {
     // aqui selecionamos na coluna 1 linha i os valores:
     cache = document.querySelector(`.col1_linha${i}`).innerHTML
@@ -213,14 +217,18 @@ function geraGraf(qtdLinhas) {
 
     // aqui geramos a quantidade de cores exata para o gráfico
     paletaCores.push(geraCoresAleat())
-    
+
   }
 
   var ctx = document.getElementById('myChart')
 
-  var chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
+  if (delGrafAnt === 'sim') {
+    chart.destroy()
+  }
 
-  var chart = new Chart(ctx, {
+  chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
+
+  chart = new Chart(ctx, {
     type: tipodegrafico,
     data: {
       labels: valoresCol1,
@@ -233,7 +241,10 @@ function geraGraf(qtdLinhas) {
       }]
     },
     options: {
-      
+
     }
-  });
+  })
+
+  delGrafAnt = 'sim'
+
 }
