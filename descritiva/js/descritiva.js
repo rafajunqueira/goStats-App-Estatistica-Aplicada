@@ -150,6 +150,51 @@ function geraTotalCol2(freqSimples) {
   return freqSimples.reduce(calcTotal)
 }
 
+function acharModa(obj){ //Tem que entrar com um objeto 
+  let vetProp = []
+  let vetValor = []
+  let propiedade
+  let maior 
+  let indice
+  let asModa = []
+  let cont = 0
+
+  for (var property in obj){ //Passando as propriedades e conteudos dos objetos para vetores
+      vetProp.push(property)
+      vetValor.push(obj[property])
+  }
+
+  for (var i = 0; i<= vetValor.length; i++){ //Vendo se todas os elementos do vetor são iguais assim não havera MODA
+      if(vetValor[0] == vetValor[i]){
+          cont++
+      }
+  }
+
+  if(cont == vetValor.length){ //Retorno se todos forem iguais
+      return 'Não tem moda'
+  }
+  else{
+      propiedade = vetProp[0] 
+      maior = vetValor[0]
+
+      for(var i = 1; i <= vetValor.length; i++){ //Descobrindo a maior frequencia e sua posição
+          if(vetValor[i] >= maior){
+              maior = vetValor[i]
+              propriedade = vetProp[i] 
+              indice = i
+          }
+      }
+
+      for(var j = 0; j <= indice; j++){ //Vendo se a MODA encontrada se repete
+          if(vetValor[j] == maior){
+              asModa.push(vetProp[j]) // # Aqui esta saido a MODA #
+          }
+      }
+
+      return asModa
+  } 
+}
+
 
 // *******************FUNÇÃO TROCAR IMAGEM ICONES************************/
 
@@ -278,7 +323,7 @@ var mediamodamed = window.document.querySelector('.media-moda-med')
 
 
 function modmedmed() {
-  moda.innerHTML = `A moda é: ${moda}`
+  moda.innerHTML = `A moda é: ${acharModa(objFrequencia)}`
   media.innerHTML = `A media é: ${media}`
   mediana.innerHTML = `A mediana é: ${mediana}`
   desviop.innerHTML = `O desvio padrão é: ${desviop}`
