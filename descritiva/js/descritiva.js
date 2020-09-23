@@ -3,8 +3,8 @@ const btnCalc = document.querySelector('#btnCalc')
 
 // Quando botao_calcular sofrer onclick a seguinte função vai disparar:
 btnCalc.onclick = () => {
-  let inputDados
   let nomeVariavel
+  let inputDados
 
   // se tivermos o arquivo de descritiva > manual, então:
   if (window.location.pathname.includes('manual') == true) {
@@ -34,11 +34,17 @@ btnCalc.onclick = () => {
   // Desestruturando o retorno da função:
   [a, b, arrayFreq] = geraFreq(arrayOrdenado) //Gerando objeto com array usado
 
+/*   console.log('a :>> ', a);  //TRAZ OS VALORES!
+  console.log('b :>> ', b); //TRAZ AS REPETIÇÕES DESTES VALORES!
+  */
+
   /*acima o arrayFreq é array que tem array dentro e todos os 
   elementos com suas respectivas frequências, dê um console.log para ver*/
 
   // dadosInseridos é coluna1
-  let objFrequencia = geraFrequencia(arrayOrdenado) //Gerando objeto com array usado
+  //  let objFrequencia = geraFrequencia(arrayOrdenado) //Gerando objeto com array usado
+  //console.log('objFrequencia :>> ', objFrequencia);
+
 
   let dadosInseridos = a // aqui pegamos os numeros (sem repetição)
 
@@ -52,14 +58,14 @@ btnCalc.onclick = () => {
   somente geramos a tabelaSimples. VEJA:
   */
 
-  console.log('qualTipo(arrayOrdenado) :>> ', qualTipo(arrayOrdenado));
+  //console.log('qualTipo(arrayOrdenado) :>> ', qualTipo(arrayOrdenado));
 
   if ((dadosInseridos.length >= 10) && (qualTipo(arrayOrdenado) == 'number')) {
     [corpoTbEscolhida, qtdLinhas] = tabelaContinua(arrayOrdenado, totalCol2)
-    console.log('tabelaContinua :>> ');
+
   } else { /* [corpoTbEscolhida, qtdLinhas] é uma desestruturação */
     [corpoTbEscolhida, qtdLinhas] = tabelaSimples(dadosInseridos, freqSimples, totalCol2)
-    console.log('tabelaSimples :>> ');
+ 
   }
   tabela = geraCabecalho(nomeVariavel) + corpoTbEscolhida
 
@@ -72,8 +78,9 @@ btnCalc.onclick = () => {
   // O RESTO DA TABELA SERÁ RESOLVIDO A PARTIR DO EXEC. FUNÇÃO:
   geraRestCol(qtdLinhas)
 
-  //DEPOIS DO PROCESSAMENTO DE TUDO, GERAMOS OS GRÁFICOS
+  // DEPOIS DO PROCESSAMENTO DE TUDO, GERAMOS OS GRÁFICOS
   geraGraf(qtdLinhas)
+
 }
 
 
@@ -112,16 +119,16 @@ let geraFrequencia = (wordArray) => {
 
 
 function geraFreq(arr) { // from jsfiddle.net/simevidas/bnACW/
-  var a = [], b = [], prev;
+  var a = [], b = [], prev
 
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] !== prev) {
-      a.push(arr[i]);
-      b.push(1);
+      a.push(arr[i])
+      b.push(1)
     } else {
-      b[b.length - 1]++;
+      b[b.length - 1]++
     }
-    prev = arr[i];
+    prev = arr[i]
   }
 
   let arrayFreq = []
@@ -150,49 +157,49 @@ function geraTotalCol2(freqSimples) {
   return freqSimples.reduce(calcTotal)
 }
 
-function acharModa(obj){ //Tem que entrar com um objeto 
+function acharModa(obj) { //Tem que entrar com um objeto 
   let vetProp = []
   let vetValor = []
   let propiedade
-  let maior 
+  let maior
   let indice
   let asModa = []
   let cont = 0
 
-  for (var property in obj){ //Passando as propriedades e conteudos dos objetos para vetores
-      vetProp.push(property)
-      vetValor.push(obj[property])
+  for (var property in obj) { //Passando as propriedades e conteudos dos objetos para vetores
+    vetProp.push(property)
+    vetValor.push(obj[property])
   }
 
-  for (var i = 0; i<= vetValor.length; i++){ //Vendo se todas os elementos do vetor são iguais assim não havera MODA
-      if(vetValor[0] == vetValor[i]){
-          cont++
-      }
+  for (var i = 0; i <= vetValor.length; i++) { //Vendo se todas os elementos do vetor são iguais assim não havera MODA
+    if (vetValor[0] == vetValor[i]) {
+      cont++
+    }
   }
 
-  if(cont == vetValor.length){ //Retorno se todos forem iguais
-      return 'Não tem moda'
+  if (cont == vetValor.length) { //Retorno se todos forem iguais
+    return 'Não tem moda'
   }
-  else{
-      propiedade = vetProp[0] 
-      maior = vetValor[0]
+  else {
+    propiedade = vetProp[0]
+    maior = vetValor[0]
 
-      for(var i = 1; i <= vetValor.length; i++){ //Descobrindo a maior frequencia e sua posição
-          if(vetValor[i] >= maior){
-              maior = vetValor[i]
-              propriedade = vetProp[i] 
-              indice = i
-          }
+    for (var i = 1; i <= vetValor.length; i++) { //Descobrindo a maior frequencia e sua posição
+      if (vetValor[i] >= maior) {
+        maior = vetValor[i]
+        propriedade = vetProp[i]
+        indice = i
       }
+    }
 
-      for(var j = 0; j <= indice; j++){ //Vendo se a MODA encontrada se repete
-          if(vetValor[j] == maior){
-              asModa.push(vetProp[j]) // # Aqui esta saido a MODA #
-          }
+    for (var j = 0; j <= indice; j++) { //Vendo se a MODA encontrada se repete
+      if (vetValor[j] == maior) {
+        asModa.push(vetProp[j]) // # Aqui esta saido a MODA #
       }
+    }
 
-      return asModa
-  } 
+    return asModa
+  }
 }
 
 
@@ -268,7 +275,7 @@ function geraGraf(qtdLinhas) {
   let paletaCores = []
 
   let cache // o cache é um acumulador
-  
+
   for (let i = 1; i <= qtdLinhas; i++) {
     // aqui selecionamos na coluna 1 linha i os valores:
     cache = document.querySelector(`.col1_linha${i}`).innerHTML
@@ -323,7 +330,7 @@ var mediamodamed = window.document.querySelector('.media-moda-med')
 
 
 function modmedmed() {
-  moda.innerHTML = `A moda é: ${acharModa(objFrequencia)}`
+  moda.innerHTML = `A moda é: ${acharModa(objFrequencia())}`
   media.innerHTML = `A media é: ${media}`
   mediana.innerHTML = `A mediana é: ${mediana}`
   desviop.innerHTML = `O desvio padrão é: ${desviop}`
