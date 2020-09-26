@@ -3,6 +3,7 @@ const btnCalc = document.querySelector('#btnCalc')
 
 // Quando botao_calcular sofrer onclick a seguinte função vai disparar:
 btnCalc.onclick = () => {
+  let qualVariavel //usada para aux. na geração de gráficos
   let nomeVariavel
   let inputDados
 
@@ -34,9 +35,9 @@ btnCalc.onclick = () => {
   // Desestruturando o retorno da função:
   [a, b, arrayFreq] = geraFreq(arrayOrdenado) //Gerando objeto com array usado
 
-/*   console.log('a :>> ', a);  //TRAZ OS VALORES!
-  console.log('b :>> ', b); //TRAZ AS REPETIÇÕES DESTES VALORES!
-  */
+  /*   console.log('a :>> ', a);  //TRAZ OS VALORES!
+    console.log('b :>> ', b); //TRAZ AS REPETIÇÕES DESTES VALORES!
+    */
 
   /*acima o arrayFreq é array que tem array dentro e todos os 
   elementos com suas respectivas frequências, dê um console.log para ver*/
@@ -53,20 +54,25 @@ btnCalc.onclick = () => {
 
   let totalCol2 = geraTotalCol2(freqSimples)
 
-  /*se +10 ELEMENTOS NUMERAIS forem inseridos geramos a tabelaContinua
-  SENÃO
-  somente geramos a tabelaSimples. VEJA:
-  */
 
-  //console.log('qualTipo(arrayOrdenado) :>> ', qualTipo(arrayOrdenado));
-
-  if ((dadosInseridos.length >= 10) && (qualTipo(arrayOrdenado) == 'number')) {
+  //se +10 ELEMENTOS NUMERAIS forem inseridos geramos a tabelaContinua
+  if ((dadosInseridos.length > 10) && (qualTipo(arrayOrdenado) == 'number')) {
     [corpoTbEscolhida, qtdLinhas] = tabelaContinua(arrayOrdenado, totalCol2)
+    qualVariavel = 'qualiContinua' //gráfico qualiContinua a ser gerados..
 
-  } else { /* [corpoTbEscolhida, qtdLinhas] é uma desestruturação */
+
+    //senao se -10 ELEMENTOS NUMERAIS forem inseridos geramos a tabelaSimples
+  } else if ((dadosInseridos.length < 10) && (qualTipo(arrayOrdenado) == 'number')) { /* [corpoTbEscolhida, qtdLinhas] é uma desestruturação */
     [corpoTbEscolhida, qtdLinhas] = tabelaSimples(dadosInseridos, freqSimples, totalCol2)
- 
+    qualVariavel = 'qualiDiscreta' //gráfico qualiDiscreta a ser gerados..
+
+
+    //senao se ELEMENTOS TEXTO forem inseridos geramos a tabelaSimples
+  } else if (qualTipo(arrayOrdenado) == 'string') {
+    [corpoTbEscolhida, qtdLinhas] = tabelaSimples(dadosInseridos, freqSimples, totalCol2)
+    qualVariavel = 'qualiOrdinal/Nominal' //gráfico qualiOrdinal/Nominal a ser gerados..
   }
+
   tabela = geraCabecalho(nomeVariavel) + corpoTbEscolhida
 
 
