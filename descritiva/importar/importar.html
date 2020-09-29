@@ -2,137 +2,144 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8" />
-    <title>goStats</title>
-    <link rel="shortcut icon" href="../../imagens/logo-aba-navegador.png" />
-
-
-    <!-- importando bootstrap abaixo -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-
-    <link rel="stylesheet" type="text/css" href="../../css/descritiva.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
-
+  <meta charset="UTF-8" />
+  <title>goStats</title>
+  <link rel="shortcut icon" href="../../imagens/logo-aba-navegador.png" />
+  <link rel="stylesheet" type="text/css" href="../../css/descritiva.css" />
+  <link rel="stylesheet" type="text/css" href="../../css/style.css" />
 </head>
+
 
 <body class="fundoPag2">
 
-    <!--MENU RESPONSIVO-->
-    <header>
-        <nav class="menu" id="menu">
-            <input type="checkbox" id="btn-menu">
-            <label for="btn-menu">&#9776;</label>
-            <a href="../../index.html">
-                <img id="logo" src="../../imagens/logo-menu.png" />
-            </a>
+  <!--MENU RESPONSIVO-->
+  <header>
+    <nav class="menu" id="menu">
+      <input type="checkbox" id="btn-menu">
+      <label for="btn-menu">&#9776;</label>
+      <a href="../../index.html">
+        <img id="logo" src="../../imagens/logo-menu.png" />
+      </a>
 
-            <ul>
-                <li><a href="../../descritiva/descritiva.html">Estatística Descritiva</a></li>
-                <li><a href="../../probabilidade/probabilidade.html">Probabilidade</a></li>
-                <li><a href="../../correlacao/correlacao.html">Correlação e Regressão</a></li>
-                <li><a href="../../sobreNos/sobreNos.html">Sobre nós</a></li>
-            </ul>
+      <ul>
+        <li><a href="../../descritiva/descritiva.html">Estatística Descritiva</a></li>
+        <li><a href="../../probabilidade/probabilidade.html">Probabilidade</a></li>
+        <li><a href="../../correlacao/correlacao.html">Correlação e Regressão</a></li>
+        <li><a href="../../sobreNos/sobreNos.html">Sobre nós</a></li>
+      </ul>
 
-            <div id=botaoLogin>
-                <a href="../../login/login.html">Login</a>
+      <div id=botaoLogin>
+        <a href="../../login/login.html">Login</a>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- DIV DE CONFIRMAÇÃO DE QUAL PLANILHA -->
+  <div class="verificaPlanilha" style="height: 500px;
+                                        background-color:#3a3a68d0;
+                                        position: fixed;
+                                        display: none;
+                                        width: 500px;
+                                        margin-left: 30%;
+                                        margin-top: 5%;
+                                        z-index: 10;
+                                        border-radius: 25px;">
+  
+    <div class="radios" style='text-align: center;
+                              color: white;'></div>
+
+    <input type="button" class="btnFinal" value="Já escolhi a Planilha!"
+                                style='margin-left: 30%;
+                                      z-index: 20;'>
+  </div>
+
+  <section id="formularioDescritiva" class="formulario">
+
+    <h1>Estatística Descritiva</h1>
+
+    </div>
+
+    <!--<dt>Nome da variavel:</dt><input required autocomplete="on" type="text" class="nomeVariavel" size="30"
+      maxlength="12" placeholder="Insira o nome da var. (1ª coluna)" value='teste'>
+    <br>
+    <div class="linha"></div>-->
+
+    <dt>Coleta de dados:</dt>
+
+     <!--<input required autocomplete="on" type="text" id="coleta_de_dados" size="30"
+      placeholder="valores separados por ';' e decimais por ponto"
+      value="61;70;78;80;87;88;90;92;93;95;96;97;101;102;103;104;105;107;108;110;111;112;112;112;113;113;114;114;115;115;118;118;119;121;122;123;125;127;128;128;128;138">
+    <div class="linha"></div>-->
+
+      <div class="conatiner mt-5">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <input class="form-control" type="file" id="input" accept=".xls,.xlsx">
             </div>
-
-        </nav>
-    </header>
-
-
-
-    <!-- DIV DE CONFIRMAÇÃO DE QUAL PLANILHA -->
-
-    <div class="form-dados" style="position: fixed">
-        <div class="container descritiva-main form-custom formulario">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 text-center">
-                    <blockquote class="blockquote">
-                        <p class="mb-0">Importe seus arquivos ou os insira manualmente</p>
-                        <footer class="blockquote-footer">A análise será feita automaticamente</footer>
-                    </blockquote><a class="btn btn-outline-secondary btn-custom mb-3" href="./importar/importar.html"
-                        style="width: 77%;">Importar</a><a class="btn btn-outline-secondary btn-custom"
-                        href="./manual/manual.html" style="width: 77%;">Inserir manualmente</a>
-                </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" id="button">Subir</button>
+            </div>
+            <div class="col-md-12">
+                <pre id="propriedades"></pre>
+                <pre id="jsondata"></pre>
             </div>
         </div>
     </div>
 
-    <section id="formularioDescritiva" class="formulario">
+    <div class="amostraOuPopulacao">
+      <input type="radio" class="todoInput" class="amostra" name="amostra_ou_populacao" id="btn-amostra" value="Amostra"
+        onclick="mudaFoto()">
+      <label for="btn-amostra"><img id='fotoAmostra' src="../../imagens/amostra.png"></label>
 
-        <h1>Estatística Descritiva</h1>
+      <input type="radio" class="todoInput" class="populacao" name="amostra_ou_populacao" id="btn-populacao"
+        value="populacao" onclick="mudaFoto()">
+      <label for="btn-populacao"><img id='fotoPopulacao' src="../../imagens/populacao.png"></label>
+    </div>
 
-        </div>
+    <code>*detec. auto. o tipo de var. onde a partir de 10 elementos tabela contínua sendo gerada</code>
 
-        <!-- <dt>Nome da variavel:</dt><input required autocomplete="on" type="text" class="nomeVariavel" size="30"
-            maxlength="12" placeholder="Insira o nome da var. (1ª coluna)" value='teste'>
-        <br>
-        <div class="linha"></div> -->
+    <div class="linha"></div>
 
-        <dt>Coleta de dados:</dt>
+    <div class="amostraOuPopulacao">
+      <input type="radio" class="todoInput" name="tipodecalculo" id="btn-qNominal" value="qNominal"
+        onclick="mudaFoto()">
+      <label for="btn-qNominal"><img id='fotoNominal' src="../../imagens/qualitativaNominal.png"></label>
 
-        <!-- <input required autocomplete="on" type="text" id="coleta_de_dados" size="30"
-            placeholder="Clique em Escolher Arquivo > Subir e seus dados aparecerão aqui"> -->
+      <input type="radio" class="todoInput" name="tipodecalculo" id="btn-qOrdinal" value="qOrdinal"
+        onclick="mudaFoto()">
+      <label for="btn-qOrdinal"><img id='fotoOrdinal' src="../../imagens/qualitativaOrdinal.png"></label>
 
-        <div class="conatiner mt-5">
-            <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-3">
-                    <input class="form-control" type="file" id="input" accept=".xls,.xlsx">
-                </div>
-                <div class="col-md-2">
-                    <button class="btn btn-primary" id="button">Subir</button>
-                </div>
-                <div class="col-md-12">
-                    <pre id="propriedades"></pre>
-                    <pre id="jsondata"></pre>
-                </div>
-            </div>
-        </div>
+      <input type="radio" class="todoInput" name="tipodecalculo" id="btn-qDiscreta" value="qDiscreta"
+        onclick="mudaFoto()">
+      <label for="btn-qDiscreta"><img id='fotoDiscreta' src="../../imagens/quantitativaDiscreta.png"></label>
 
-        <div class="linha"></div>
+      <input type="radio" class="todoInput" name="tipodecalculo" id="btn-qContinua" value="qContinua"
+        onclick="mudaFoto()">
+      <label for="btn-qContinua"><img id='fotoContinua' src="../../imagens/quantitativaContinua.png"></label>
+    </div>
 
-        <div class="amostraOuPopulacao">
-            <input type="radio" class="todoInput" class="amostra" name="amostra_ou_populacao" id="btn-amostra"
-                value="Amostra" onclick="mudaFoto()">
-            <label for="btn-amostra"><img id='fotoAmostra' src="../../imagens/amostra.png"></label>
-            <input type="radio" class="todoInput" class="populacao" name="amostra_ou_populacao" id="btn-populacao"
-                value="populacao" onclick="mudaFoto()">
-            <label for="btn-populacao"><img id='fotoPopulacao' src="../../imagens/populacao.png"></label>
-        </div>
+    <div class="linha"></div>
 
-        <code>*detec. auto. o tipo de var. onde a partir de 10 elementos tabela contínua sendo gerada</code>
+    <input type="button" id="btnCalc" name="botao_calcular" value="Calcular">
 
-        <div class="linha"></div>
+    <div class="tabelas"></div>
 
-        <input type="button" id="btnCalc" name="botao_calcular" value="Calcular">
+    <canvas id="myChart"></canvas>
 
-        <div class="tabelas"></div>
+    <div class="linha"></div>
 
+    <div class="media-moda-med">media-moda-med</div>
 
-        <canvas id="myChart"></canvas>
-
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-
-
-
-
-    </section>
-
-
-
-
-
+  </section>
 
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+<!-- importando scripts de Chart.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-<script language="javascript" src="js/importa.js"></script>
-<script language="javascript" src="js/descritiva.js"></script>
-<script language="javascript" src="js/geraTabela.js"></script>
+<!-- importando scripts de import XLSX -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+<script language="javascript" src="../js/importa.js"></script>
+<script language="javascript" src="../js/descritiva.js"></script>
+<script language="javascript" src="../js/geraTabela.js"></script>
