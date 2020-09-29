@@ -22,6 +22,7 @@ function tabelaContinua(arrayOrdenado, totalCol2) {
     valoresCol1 = []
     valoresCol2 = []
 
+
     //achando o priElemento do arrayOrdenado
     let priElemento = parseInt(arrayOrdenado.slice(0, 1))
 
@@ -106,7 +107,8 @@ function tabelaContinua(arrayOrdenado, totalCol2) {
 
     // depois do for, o qtd de Classes (qtd de lihas da tabela)
     const qtdLinhas = qtdClasses
-    return [corpo, qtdLinhas]
+
+    return [corpo, qtdLinhas, valoresCol1, valoresCol2]
 }
 
 //abaixo gera colunas 1 e 2 (quali. nominal, ordinal, quanti. discreta)

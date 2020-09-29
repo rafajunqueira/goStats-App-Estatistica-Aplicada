@@ -3,6 +3,7 @@ const btnCalc = document.querySelector('#btnCalc')
 
 // Quando botao_calcular sofrer onclick a seguinte função vai disparar:
 btnCalc.onclick = () => {
+
   let qualVariavel //usada para aux. na geração de gráficos
   let nomeVariavel
   let inputDados
@@ -54,12 +55,16 @@ btnCalc.onclick = () => {
 
   let totalCol2 = geraTotalCol2(freqSimples)
 
+  let rogerCol1, rogerCol2
+
 
   //se +10 ELEMENTOS NUMERAIS forem inseridos geramos a tabelaContinua
   if ((dadosInseridos.length > 10) && (qualTipo(arrayOrdenado) == 'number')) {
-    [corpoTbEscolhida, qtdLinhas] = tabelaContinua(arrayOrdenado, totalCol2)
+    [corpoTbEscolhida, qtdLinhas, valoresCol1, valoresCol2] = tabelaContinua(arrayOrdenado, totalCol2)
     qualVariavel = 'qualiContinua' //gráfico qualiContinua a ser gerados..
 
+    rogerCol1 = valoresCol1
+    rogerCol2 = valoresCol2
 
     //senao se -10 ELEMENTOS NUMERAIS forem inseridos geramos a tabelaSimples
   } else if ((dadosInseridos.length < 10) && (qualTipo(arrayOrdenado) == 'number')) { /* [corpoTbEscolhida, qtdLinhas] é uma desestruturação */
@@ -91,13 +96,6 @@ btnCalc.onclick = () => {
   let vetElemento = a
   let vetFrequencia = b
 
-  console.log(`A média é: ${acharMedia(vetElemento, vetFrequencia)}`)
-  console.log(`A mediana é: ${acharMediana(vetElemento)}`)
-  console.log(`A moda é: ${acharModa(vetFrequencia)}`)
-  console.log(`O desvio padrão é: ${acharDP(vetElemento, vetFrequencia)}`)
-  console.log(`O coeficiente de variação é: ${acharCV(vetElemento, vetFrequencia)}`)
-
-
   let mediaModaMed = document.querySelector('.media-moda-med')
 
   mediaModaMed.innerHTML = `
@@ -113,9 +111,16 @@ btnCalc.onclick = () => {
   O coeficiente de variação é: ${acharCV(vetElemento, vetFrequencia)}
   <br><br>
   `
+
+
+  roger(rogerCol1, rogerCol2)
 }
 
 
+function roger(var1, var2) {
+  console.log('var1 :>> ', var1);
+  console.log('var2 :>> ', var2);
+}
 
 
 /******************** ÁREA DE FUNÇÕES: ********************/
