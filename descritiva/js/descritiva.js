@@ -3,6 +3,7 @@ const btnCalc = document.querySelector('#btnCalc')
 
 // Quando botao_calcular sofrer onclick a seguinte função vai disparar:
 btnCalc.onclick = () => {
+  let qualVariavel //usada para aux. na geração de gráficos
   let nomeVariavel
   let inputDados
 
@@ -34,13 +35,9 @@ btnCalc.onclick = () => {
   // Desestruturando o retorno da função:
   [a, b, arrayFreq] = geraFreq(arrayOrdenado) //Gerando objeto com array usado
 
-/*   console.log('a :>> ', a);  //TRAZ OS VALORES!
-  console.log('b :>> ', b); //TRAZ AS REPETIÇÕES DESTES VALORES!
+  /*   console.log('a :>> ', a);  //TRAZ OS VALORES!
+    console.log('b :>> ', b); //TRAZ AS REPETIÇÕES DESTES VALORES!
   */
-  console.log(a)
-  console.log(b)
-  console.log(acharModa(a, b))
-  console.log(acharMedia(a, b))
 
   /*acima o arrayFreq é array que tem array dentro e todos os 
   elementos com suas respectivas frequências, dê um console.log para ver*/
@@ -57,20 +54,25 @@ btnCalc.onclick = () => {
 
   let totalCol2 = geraTotalCol2(freqSimples)
 
-  /*se +10 ELEMENTOS NUMERAIS forem inseridos geramos a tabelaContinua
-  SENÃO
-  somente geramos a tabelaSimples. VEJA:
-  */
 
-  //console.log('qualTipo(arrayOrdenado) :>> ', qualTipo(arrayOrdenado));
-
-  if ((dadosInseridos.length >= 10) && (qualTipo(arrayOrdenado) == 'number')) {
+  //se +10 ELEMENTOS NUMERAIS forem inseridos geramos a tabelaContinua
+  if ((dadosInseridos.length > 10) && (qualTipo(arrayOrdenado) == 'number')) {
     [corpoTbEscolhida, qtdLinhas] = tabelaContinua(arrayOrdenado, totalCol2)
+    qualVariavel = 'qualiContinua' //gráfico qualiContinua a ser gerados..
 
-  } else { /* [corpoTbEscolhida, qtdLinhas] é uma desestruturação */
+
+    //senao se -10 ELEMENTOS NUMERAIS forem inseridos geramos a tabelaSimples
+  } else if ((dadosInseridos.length < 10) && (qualTipo(arrayOrdenado) == 'number')) { /* [corpoTbEscolhida, qtdLinhas] é uma desestruturação */
     [corpoTbEscolhida, qtdLinhas] = tabelaSimples(dadosInseridos, freqSimples, totalCol2)
- 
+    qualVariavel = 'qualiDiscreta' //gráfico qualiDiscreta a ser gerados..
+
+
+    //senao se ELEMENTOS TEXTO forem inseridos geramos a tabelaSimples
+  } else if (qualTipo(arrayOrdenado) == 'string') {
+    [corpoTbEscolhida, qtdLinhas] = tabelaSimples(dadosInseridos, freqSimples, totalCol2)
+    qualVariavel = 'qualiOrdinal/Nominal' //gráfico qualiOrdinal/Nominal a ser gerados..
   }
+
   tabela = geraCabecalho(nomeVariavel) + corpoTbEscolhida
 
 
@@ -306,9 +308,6 @@ var foto = 6;
 var fotoPopulacao = document.getElementById('fotoPopulacao')
 var fotoAmostra = document.getElementById('fotoAmostra')
 
-var tipodegrafico = 'pie'
-var titulodegrafico = 'Qualitativa Nominal'
-
 function mudaFoto(foto) {
   if (document.getElementsByName('amostra_ou_populacao')[0].checked) {
     fotoAmostra.src = "../../imagens/amostraclick.png"
@@ -318,43 +317,14 @@ function mudaFoto(foto) {
     fotoPopulacao.src = "../../imagens/populacaoclick.png"
     fotoAmostra.src = "../../imagens/amostra.png"
   }
-  if (document.getElementsByName('tipodecalculo')[0].checked) {
-    fotoNominal.src = "../../imagens/qualitativaNominalClick.png"
-    fotoOrdinal.src = "../../imagens/qualitativaOrdinal.png"
-    fotoDiscreta.src = "../../imagens/quantitativaDiscreta.png"
-    fotoContinua.src = "../../imagens/quantitativaContinua.png"
-    tipodegrafico = 'pie'
-    titulodegrafico = 'Qualitativa Nominal'
-  }
-  if (document.getElementsByName('tipodecalculo')[1].checked) {
-    fotoNominal.src = "../../imagens/qualitativaNominal.png"
-    fotoOrdinal.src = "../../imagens/qualitativaOrdinalClick.png"
-    fotoDiscreta.src = "../../imagens/quantitativaDiscreta.png"
-    fotoContinua.src = "../../imagens/quantitativaContinua.png"
-    tipodegrafico = 'doughnut'
-    titulodegrafico = 'Qualitativa Ordinal'
-  }
-  if (document.getElementsByName('tipodecalculo')[2].checked) {
-    fotoNominal.src = "../../imagens/qualitativaNominal.png"
-    fotoOrdinal.src = "../../imagens/qualitativaOrdinal.png"
-    fotoDiscreta.src = "../../imagens/quantitativaDiscretaClick.png"
-    fotoContinua.src = "../../imagens/quantitativaContinua.png"
-    tipodegrafico = 'bar'
-    titulodegrafico = 'Quantitativa Discreta'
-  }
-  if (document.getElementsByName('tipodecalculo')[3].checked) {
-    fotoNominal.src = "../../imagens/qualitativaNominal.png"
-    fotoOrdinal.src = "../../imagens/qualitativaOrdinal.png"
-    fotoDiscreta.src = "../../imagens/quantitativaDiscreta.png"
-    fotoContinua.src = "../../imagens/quantitativaContinuaClick.png"
-    tipodegrafico = 'line'
-    titulodegrafico = 'Quantitativa Contínua'
-  }
 }
 
 
 
 // *******************GRÁFICOS CHART.JS***********************/
+
+
+
 let geraCoresAleat = () => {
   let n = (Math.random() * 0xfffff * 1000000).toString(16);
   return '#' + n.slice(0, 6);
@@ -387,6 +357,26 @@ function geraGraf(qtdLinhas) {
 
   }
 
+  //*********************TIPO DE GRÁFICO ************************/
+  let tipodegrafico
+  let titulodegrafico
+  let dadosGrafico = window.document.querySelector('#coleta_de_dados').value
+  dadosGrafico = dadosGrafico.split(';')
+  let quantDados = dadosGrafico.length
+  let tipodados = qualTipo(valoresCol1)
+  
+  if((quantDados >= 10) && (tipodados == "number")){
+    tipodegrafico = 'line' //grafico Quantitativa Continua
+    titulodegrafico = 'Quantitativa Contínua'
+  } else if((quantDados < 10) && (tipodados == "number")){
+    tipodegrafico = 'bar' //grafico Quantitativa Discreta
+    titulodegrafico = 'Quantitativa Discreta'
+  }else if(tipodados == "string"){
+    tipodegrafico = 'pie' //grafico Qualitativa Ordinal ou Nominal
+    titulodegrafico = 'Qualitativa Ordinal ou Nominal'
+  }
+  
+
   var ctx = document.getElementById('myChart')
 
   if (delGrafAnt === 'sim') {
@@ -394,6 +384,8 @@ function geraGraf(qtdLinhas) {
   }
 
   chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
+
+  Chart.defaults.scale.ticks.beginAtZero = true; //Configuração para grafico de barras iniciar no zero
 
   chart = new Chart(ctx, {
     type: tipodegrafico,
@@ -433,4 +425,5 @@ function modmedmed() {
   coeficiente.innerHTML = `O coeficiente é: ${coeficiente}`
   mediamodamed.style.backgroundColor = 'rgb(204, 203, 236)'
 }
+
 
