@@ -37,6 +37,10 @@ btnCalc.onclick = () => {
 /*   console.log('a :>> ', a);  //TRAZ OS VALORES!
   console.log('b :>> ', b); //TRAZ AS REPETIÇÕES DESTES VALORES!
   */
+  console.log(a)
+  console.log(b)
+  console.log(acharModa(a, b))
+  console.log(acharMedia(a, b))
 
   /*acima o arrayFreq é array que tem array dentro e todos os 
   elementos com suas respectivas frequências, dê um console.log para ver*/
@@ -157,49 +161,141 @@ function geraTotalCol2(freqSimples) {
   return freqSimples.reduce(calcTotal)
 }
 
-function acharModa(obj) { //Tem que entrar com um objeto 
-  let vetProp = []
-  let vetValor = []
+function acharMediana(vet){
+
+  let impPar
+  let mediana
+  let indice
+
+  if(vet.length & 1){ //ve se a quantidade de elemento do vetor e impar ou par para saber quantas medianas teram
+    impPar = 'Impar'
+  } 
+  else {
+    impPar = 'Par'
+  }
+
+  if(impPar == 'Impar'){ //descobre apenas uma mediana porque e impar
+    indice = vet.length / 2
+    mediana = vet[Math.floor(indice)]
+  }
+  else{ //descobre duas medianas porque e par
+    indice = vet.length / 2
+    mediana = vet[indice - 1]
+    mediana += ' e ' + vet[indice] //separa com a conjunção e
+  }
+ 
+  return mediana
+
+}
+
+function acharMedia(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
+                                     //identificar qual opção o usuario escolheu ordinal, nominal ...
+    var soma = parseFloat(vetEle[0]) * vetFre[0]
+    var somaFre = vetFre[0]
+  
+    for(var i = 1; i < vetEle.length; i++){ //multiplica e soma os elementos do vetor com suas frequencias
+      soma = soma + parseFloat(vetEle[i]) * vetFre[i]
+      somaFre = somaFre + vetFre[i]
+    }
+    
+    return (soma / somaFre).toFixed(1) //sai a media com apenas uma casa depois da virgula
+  
+  }
+  
+function acharModa(vetProp, vetValor) { //tem que entrar com o vetor de lista de elementos e frequencia   
+  
+  let asModa = []                      
   let propiedade
   let maior
   let indice
-  let asModa = []
   let cont = 0
-
-  for (var property in obj) { //Passando as propriedades e conteudos dos objetos para vetores
-    vetProp.push(property)
-    vetValor.push(obj[property])
-  }
-
+  
   for (var i = 0; i <= vetValor.length; i++) { //Vendo se todas os elementos do vetor são iguais assim não havera MODA
     if (vetValor[0] == vetValor[i]) {
       cont++
     }
   }
-
+  
   if (cont == vetValor.length) { //Retorno se todos forem iguais
     return 'Não tem moda'
   }
   else {
     propiedade = vetProp[0]
     maior = vetValor[0]
-
+    indice = 0
+  
     for (var i = 1; i <= vetValor.length; i++) { //Descobrindo a maior frequencia e sua posição
       if (vetValor[i] >= maior) {
-        maior = vetValor[i]
-        propriedade = vetProp[i]
-        indice = i
+        maior = vetValor[i]            // #############################  //
+        propriedade = vetProp[i]       // ####  TA DANDO ERRO AQUI ####  //
+        indice = i                     // #############################  //
       }
     }
-
+  
     for (var j = 0; j <= indice; j++) { //Vendo se a MODA encontrada se repete
       if (vetValor[j] == maior) {
         asModa.push(vetProp[j]) // # Aqui esta saido a MODA #
       }
     }
-
-    return asModa
+  
+    if(asModa.length <= 1){ //verificando se apenas um elemento e moda
+       return propiedade
+    }
+    else{
+      return asModa
+    }
   }
+}
+
+function acharDP(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
+                                     //identificar qual opção o usuario escolheu ordinal, nominal ...
+  var soma = parseFloat(vetEle[0]) * vetFre[0]
+  var somaFre = vetFre[0]
+  var media
+  var etapaUm = 0
+  var DP
+
+  for(var i = 1; i < vetEle.length; i++){ //multiplica e soma os elementos do vetor com suas frequencias
+    soma = soma + parseFloat(vetEle[i]) * vetFre[i]
+    somaFre = somaFre + vetFre[i]
+  }
+
+  media = (soma / somaFre).toFixed(1) //sai a media com apenas uma casa depois da virgula
+
+  for(var i = 0; i < vetEle.length; i++){
+    etapaUm = etapaUm + Math.pow(parseFloat(vetEle[i]) - media, 2) * vetFre[i]
+  }
+                                                    //Aplicando a formula
+  DP = (Math.sqrt(etapaUm / somaFre)).toFixed(1)
+
+  return DP
+}
+
+function acharCV(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
+                                  //identificar qual opção o usuario escolheu ordinal, nominal ...
+  var soma = parseFloat(vetEle[0]) * vetFre[0]
+  var somaFre = vetFre[0]
+  var media
+  var etapaUm = 0
+  var DP
+  var CV
+
+  for(var i = 1; i < vetEle.length; i++){ //multiplica e soma os elementos do vetor com suas frequencias
+    soma = soma + parseFloat(vetEle[i]) * vetFre[i]
+    somaFre = somaFre + vetFre[i]
+  }
+
+  media = (soma / somaFre).toFixed(1) //sai a media com apenas uma casa depois da virgula
+
+  for(var i = 0; i < vetEle.length; i++){
+    etapaUm = etapaUm + Math.pow(parseFloat(vetEle[i]) - media, 2) * vetFre[i]
+  }
+                                            //Aplicando a formula
+  DP = (Math.sqrt(etapaUm / somaFre)).toFixed(1)
+
+  CV = `${((DP / media) * 100).toFixed(0)}%`
+
+  return CV
 }
 
 
@@ -330,7 +426,7 @@ var mediamodamed = window.document.querySelector('.media-moda-med')
 
 
 function modmedmed() {
-  moda.innerHTML = `A moda é: ${acharModa(objFrequencia())}`
+  moda.innerHTML = `A moda é: ${moda}`
   media.innerHTML = `A media é: ${media}`
   mediana.innerHTML = `A mediana é: ${mediana}`
   desviop.innerHTML = `O desvio padrão é: ${desviop}`

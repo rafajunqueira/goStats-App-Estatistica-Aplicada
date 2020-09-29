@@ -14,11 +14,13 @@ function geraCabecalho(nomeVariavel) {
 
 // usado em coluna 1, e moda med med
 let valoresCol1
+let valoresCol2
 
 //abaixo gera colunas 1 e 2 
 function tabelaContinua(arrayOrdenado, totalCol2) {
 
     valoresCol1 = []
+    valoresCol2 = []
 
     //achando o priElemento do arrayOrdenado
     let priElemento = parseInt(arrayOrdenado.slice(0, 1))
@@ -81,6 +83,8 @@ function tabelaContinua(arrayOrdenado, totalCol2) {
 
             valoresCol1.push(i)
             valoresCol1.push(i + intClasse)
+            valoresCol2.push(qtdIndexEntre(arrayOrdenado, i, ultElemento) + 1)
+            valoresCol2.push(0)
         } else {
 
             corpo += `<tr class='linha${numLinha}'>
@@ -90,6 +94,8 @@ function tabelaContinua(arrayOrdenado, totalCol2) {
 
             valoresCol1.push(i)
             valoresCol1.push(i + intClasse)
+            valoresCol2.push(qtdIndexEntre(arrayOrdenado, i, i + intClasse))
+            valoresCol2.push(0)
         }
     }
 
@@ -100,7 +106,6 @@ function tabelaContinua(arrayOrdenado, totalCol2) {
 
     // depois do for, o qtd de Classes (qtd de lihas da tabela)
     const qtdLinhas = qtdClasses
-    console.log('valoresCol1 :>> ', valoresCol1);
     return [corpo, qtdLinhas]
 }
 
