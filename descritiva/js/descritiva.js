@@ -87,6 +87,32 @@ btnCalc.onclick = () => {
   // DEPOIS DO PROCESSAMENTO DE TUDO, GERAMOS OS GRÁFICOS
   geraGraf(qtdLinhas)
 
+
+  let vetElemento = a
+  let vetFrequencia = b
+
+  console.log(`A média é: ${acharMedia(vetElemento, vetFrequencia)}`)
+  console.log(`A mediana é: ${acharMediana(vetElemento)}`)
+  console.log(`A moda é: ${acharModa(vetFrequencia)}`)
+  console.log(`O desvio padrão é: ${acharDP(vetElemento, vetFrequencia)}`)
+  console.log(`O coeficiente de variação é: ${acharCV(vetElemento, vetFrequencia)}`)
+
+
+  let mediaModaMed = document.querySelector('.media-moda-med')
+
+  mediaModaMed.innerHTML = `
+  <br>
+  A média é: ${acharMedia(vetElemento, vetFrequencia)}
+  <br>
+  A mediana é: ${acharMediana(vetElemento)}
+  <br>
+  A moda é: ${acharModa(vetElemento, vetFrequencia)}
+  <br>
+  O desvio padrão é: ${acharDP(vetElemento, vetFrequencia)}
+  <br>
+  O coeficiente de variação é: ${acharCV(vetElemento, vetFrequencia)}
+  <br><br>
+  `
 }
 
 
@@ -163,61 +189,61 @@ function geraTotalCol2(freqSimples) {
   return freqSimples.reduce(calcTotal)
 }
 
-function acharMediana(vet){
+function acharMediana(vet) {
 
   let impPar
   let mediana
   let indice
 
-  if(vet.length & 1){ //ve se a quantidade de elemento do vetor e impar ou par para saber quantas medianas teram
+  if (vet.length & 1) { //ve se a quantidade de elemento do vetor e impar ou par para saber quantas medianas teram
     impPar = 'Impar'
-  } 
+  }
   else {
     impPar = 'Par'
   }
 
-  if(impPar == 'Impar'){ //descobre apenas uma mediana porque e impar
+  if (impPar == 'Impar') { //descobre apenas uma mediana porque e impar
     indice = vet.length / 2
     mediana = vet[Math.floor(indice)]
   }
-  else{ //descobre duas medianas porque e par
+  else { //descobre duas medianas porque e par
     indice = vet.length / 2
     mediana = vet[indice - 1]
     mediana += ' e ' + vet[indice] //separa com a conjunção e
   }
- 
+
   return mediana
 
 }
 
-function acharMedia(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
-                                     //identificar qual opção o usuario escolheu ordinal, nominal ...
-    var soma = parseFloat(vetEle[0]) * vetFre[0]
-    var somaFre = vetFre[0]
-  
-    for(var i = 1; i < vetEle.length; i++){ //multiplica e soma os elementos do vetor com suas frequencias
-      soma = soma + parseFloat(vetEle[i]) * vetFre[i]
-      somaFre = somaFre + vetFre[i]
-    }
-    
-    return (soma / somaFre).toFixed(1) //sai a media com apenas uma casa depois da virgula
-  
+function acharMedia(vetEle, vetFre) { //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
+  //identificar qual opção o usuario escolheu ordinal, nominal ...
+  var soma = parseFloat(vetEle[0]) * vetFre[0]
+  var somaFre = vetFre[0]
+
+  for (var i = 1; i < vetEle.length; i++) { //multiplica e soma os elementos do vetor com suas frequencias
+    soma = soma + parseFloat(vetEle[i]) * vetFre[i]
+    somaFre = somaFre + vetFre[i]
   }
-  
+
+  return (soma / somaFre).toFixed(1) //sai a media com apenas uma casa depois da virgula
+
+}
+/* 
 function acharModa(vetProp, vetValor) { //tem que entrar com o vetor de lista de elementos e frequencia   
-  
-  let asModa = []                      
+
+  let asModa = []
   let propiedade
   let maior
   let indice
   let cont = 0
-  
+
   for (var i = 0; i <= vetValor.length; i++) { //Vendo se todas os elementos do vetor são iguais assim não havera MODA
     if (vetValor[0] == vetValor[i]) {
       cont++
     }
   }
-  
+
   if (cont == vetValor.length) { //Retorno se todos forem iguais
     return 'Não tem moda'
   }
@@ -225,7 +251,7 @@ function acharModa(vetProp, vetValor) { //tem que entrar com o vetor de lista de
     propiedade = vetProp[0]
     maior = vetValor[0]
     indice = 0
-  
+
     for (var i = 1; i <= vetValor.length; i++) { //Descobrindo a maior frequencia e sua posição
       if (vetValor[i] >= maior) {
         maior = vetValor[i]            // #############################  //
@@ -233,48 +259,71 @@ function acharModa(vetProp, vetValor) { //tem que entrar com o vetor de lista de
         indice = i                     // #############################  //
       }
     }
-  
+
     for (var j = 0; j <= indice; j++) { //Vendo se a MODA encontrada se repete
       if (vetValor[j] == maior) {
         asModa.push(vetProp[j]) // # Aqui esta saido a MODA #
       }
     }
-  
-    if(asModa.length <= 1){ //verificando se apenas um elemento e moda
-       return propiedade
+
+    if (asModa.length <= 1) { //verificando se apenas um elemento e moda
+      return propiedade
     }
-    else{
+    else {
       return asModa
     }
   }
 }
+ */
 
-function acharDP(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
-                                     //identificar qual opção o usuario escolheu ordinal, nominal ...
+
+function acharModa(todasFreq) {
+
+  let moda = 1
+  let indexModa
+
+  for (let i = 0; i < todasFreq.length; i++) {
+    if (moda < todasFreq[i]) {
+      moda = todasFreq[i]
+    }
+  }
+
+  indexModa = todasFreq.find(element => element >= moda)
+
+  if (moda == 1) {
+    return 'não existe moda'
+  }
+
+  return indexModa
+}
+
+
+function acharDP(vetEle, vetFre) { //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
+  //identificar qual opção o usuario escolheu ordinal, nominal ...
   var soma = parseFloat(vetEle[0]) * vetFre[0]
   var somaFre = vetFre[0]
   var media
   var etapaUm = 0
   var DP
 
-  for(var i = 1; i < vetEle.length; i++){ //multiplica e soma os elementos do vetor com suas frequencias
+  for (var i = 1; i < vetEle.length; i++) { //multiplica e soma os elementos do vetor com suas frequencias
     soma = soma + parseFloat(vetEle[i]) * vetFre[i]
     somaFre = somaFre + vetFre[i]
   }
 
   media = (soma / somaFre).toFixed(1) //sai a media com apenas uma casa depois da virgula
 
-  for(var i = 0; i < vetEle.length; i++){
+  for (var i = 0; i < vetEle.length; i++) {
     etapaUm = etapaUm + Math.pow(parseFloat(vetEle[i]) - media, 2) * vetFre[i]
   }
-                                                    //Aplicando a formula
+  //Aplicando a formula
   DP = (Math.sqrt(etapaUm / somaFre)).toFixed(1)
 
   return DP
 }
 
-function acharCV(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
-                                  //identificar qual opção o usuario escolheu ordinal, nominal ...
+function acharCV(vetEle, vetFre) { //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
+  //identificar qual opção o usuario escolheu ordinal, nominal ...
   var soma = parseFloat(vetEle[0]) * vetFre[0]
   var somaFre = vetFre[0]
   var media
@@ -282,23 +331,26 @@ function acharCV(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de
   var DP
   var CV
 
-  for(var i = 1; i < vetEle.length; i++){ //multiplica e soma os elementos do vetor com suas frequencias
+  for (var i = 1; i < vetEle.length; i++) { //multiplica e soma os elementos do vetor com suas frequencias
     soma = soma + parseFloat(vetEle[i]) * vetFre[i]
     somaFre = somaFre + vetFre[i]
   }
 
   media = (soma / somaFre).toFixed(1) //sai a media com apenas uma casa depois da virgula
 
-  for(var i = 0; i < vetEle.length; i++){
+  for (var i = 0; i < vetEle.length; i++) {
     etapaUm = etapaUm + Math.pow(parseFloat(vetEle[i]) - media, 2) * vetFre[i]
   }
-                                            //Aplicando a formula
+  //Aplicando a formula
   DP = (Math.sqrt(etapaUm / somaFre)).toFixed(1)
 
   CV = `${((DP / media) * 100).toFixed(0)}%`
 
   return CV
 }
+
+
+
 
 
 // *******************FUNÇÃO TROCAR IMAGEM ICONES************************/
@@ -364,18 +416,18 @@ function geraGraf(qtdLinhas) {
   dadosGrafico = dadosGrafico.split(';')
   let quantDados = dadosGrafico.length
   let tipodados = qualTipo(valoresCol1)
-  
-  if((quantDados >= 10) && (tipodados == "number")){
+
+  if ((quantDados >= 10) && (tipodados == "number")) {
     tipodegrafico = 'line' //grafico Quantitativa Continua
     titulodegrafico = 'Quantitativa Contínua'
-  } else if((quantDados < 10) && (tipodados == "number")){
+  } else if ((quantDados < 10) && (tipodados == "number")) {
     tipodegrafico = 'bar' //grafico Quantitativa Discreta
     titulodegrafico = 'Quantitativa Discreta'
-  }else if(tipodados == "string"){
+  } else if (tipodados == "string") {
     tipodegrafico = 'pie' //grafico Qualitativa Ordinal ou Nominal
     titulodegrafico = 'Qualitativa Ordinal ou Nominal'
   }
-  
+
 
   var ctx = document.getElementById('myChart')
 
