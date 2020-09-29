@@ -216,9 +216,6 @@ var foto = 6;
 var fotoPopulacao = document.getElementById('fotoPopulacao')
 var fotoAmostra = document.getElementById('fotoAmostra')
 
-var tipodegrafico = 'pie'
-var titulodegrafico = 'Qualitativa Nominal'
-
 function mudaFoto(foto) {
   if (document.getElementsByName('amostra_ou_populacao')[0].checked) {
     fotoAmostra.src = "../../imagens/amostraclick.png"
@@ -228,43 +225,14 @@ function mudaFoto(foto) {
     fotoPopulacao.src = "../../imagens/populacaoclick.png"
     fotoAmostra.src = "../../imagens/amostra.png"
   }
-  if (document.getElementsByName('tipodecalculo')[0].checked) {
-    fotoNominal.src = "../../imagens/qualitativaNominalClick.png"
-    fotoOrdinal.src = "../../imagens/qualitativaOrdinal.png"
-    fotoDiscreta.src = "../../imagens/quantitativaDiscreta.png"
-    fotoContinua.src = "../../imagens/quantitativaContinua.png"
-    tipodegrafico = 'pie'
-    titulodegrafico = 'Qualitativa Nominal'
-  }
-  if (document.getElementsByName('tipodecalculo')[1].checked) {
-    fotoNominal.src = "../../imagens/qualitativaNominal.png"
-    fotoOrdinal.src = "../../imagens/qualitativaOrdinalClick.png"
-    fotoDiscreta.src = "../../imagens/quantitativaDiscreta.png"
-    fotoContinua.src = "../../imagens/quantitativaContinua.png"
-    tipodegrafico = 'doughnut'
-    titulodegrafico = 'Qualitativa Ordinal'
-  }
-  if (document.getElementsByName('tipodecalculo')[2].checked) {
-    fotoNominal.src = "../../imagens/qualitativaNominal.png"
-    fotoOrdinal.src = "../../imagens/qualitativaOrdinal.png"
-    fotoDiscreta.src = "../../imagens/quantitativaDiscretaClick.png"
-    fotoContinua.src = "../../imagens/quantitativaContinua.png"
-    tipodegrafico = 'bar'
-    titulodegrafico = 'Quantitativa Discreta'
-  }
-  if (document.getElementsByName('tipodecalculo')[3].checked) {
-    fotoNominal.src = "../../imagens/qualitativaNominal.png"
-    fotoOrdinal.src = "../../imagens/qualitativaOrdinal.png"
-    fotoDiscreta.src = "../../imagens/quantitativaDiscreta.png"
-    fotoContinua.src = "../../imagens/quantitativaContinuaClick.png"
-    tipodegrafico = 'line'
-    titulodegrafico = 'Quantitativa Contínua'
-  }
 }
 
 
 
 // *******************GRÁFICOS CHART.JS***********************/
+
+
+
 let geraCoresAleat = () => {
   let n = (Math.random() * 0xfffff * 1000000).toString(16);
   return '#' + n.slice(0, 6);
@@ -297,6 +265,26 @@ function geraGraf(qtdLinhas) {
 
   }
 
+  //*********************TIPO DE GRÁFICO ************************/
+  let tipodegrafico
+  let titulodegrafico
+  let dadosGrafico = window.document.querySelector('#coleta_de_dados').value
+  dadosGrafico = dadosGrafico.split(';')
+  let quantDados = dadosGrafico.length
+  let tipodados = qualTipo(valoresCol1)
+  
+  if((quantDados >= 10) && (tipodados == "number")){
+    tipodegrafico = 'line' //grafico Qualitativa Continua
+    titulodegrafico = 'Qualitativa Contínua'
+  } else if((quantDados < 10) && (tipodados == "number")){
+    tipodegrafico = 'bar' //grafico Qualitativa Discreta
+    titulodegrafico = 'Qualitativa Discreta'
+  }else if(tipodados == "string"){
+    tipodegrafico = 'pie' //grafico Qualitativa Discreta
+    titulodegrafico = 'Qualitativa Ordinal ou Nominal'
+  }
+  
+
   var ctx = document.getElementById('myChart')
 
   if (delGrafAnt === 'sim') {
@@ -304,6 +292,8 @@ function geraGraf(qtdLinhas) {
   }
 
   chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
+
+  Chart.defaults.scale.ticks.beginAtZero = true; //Configuração para grafico de barras iniciar no zero
 
   chart = new Chart(ctx, {
     type: tipodegrafico,
@@ -343,4 +333,5 @@ function modmedmed() {
   coeficiente.innerHTML = `O coeficiente é: ${coeficiente}`
   mediamodamed.style.backgroundColor = 'rgb(204, 203, 236)'
 }
+
 
