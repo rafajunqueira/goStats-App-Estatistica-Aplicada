@@ -274,13 +274,13 @@ function geraGraf(qtdLinhas) {
   let tipodados = qualTipo(valoresCol1)
   
   if((quantDados >= 10) && (tipodados == "number")){
-    tipodegrafico = 'line' //grafico Qualitativa Continua
-    titulodegrafico = 'Qualitativa Contínua'
+    tipodegrafico = 'line' //grafico Quantitativa Continua
+    titulodegrafico = 'Quantitativa Contínua'
   } else if((quantDados < 10) && (tipodados == "number")){
-    tipodegrafico = 'bar' //grafico Qualitativa Discreta
-    titulodegrafico = 'Qualitativa Discreta'
+    tipodegrafico = 'bar' //grafico Quantitativa Discreta
+    titulodegrafico = 'Quantitativa Discreta'
   }else if(tipodados == "string"){
-    tipodegrafico = 'pie' //grafico Qualitativa Discreta
+    tipodegrafico = 'pie' //grafico Qualitativa Ordinal ou Nominal
     titulodegrafico = 'Qualitativa Ordinal ou Nominal'
   }
   
