@@ -417,9 +417,7 @@ function geraGraf(qtdLinhas) {
   //*********************TIPO DE GRÁFICO ************************/
   let tipodegrafico
   let titulodegrafico
-  let dadosGrafico = window.document.querySelector('#coleta_de_dados').value
-  dadosGrafico = dadosGrafico.split(';')
-  let quantDados = dadosGrafico.length
+  let quantDados = valoresCol1.length
   let tipodados = qualTipo(valoresCol1)
 
   if ((quantDados >= 10) && (tipodados == "number")) {
