@@ -49,7 +49,8 @@
 
     <input required autocomplete="on" type="text" id="coleta_de_dados" size="30"
       placeholder="valores separados por ';' e decimais por ponto"
-      value="61;70;78;80;87;88;90;92;93;95;96;97;101;102;103;104;105;107;108;110;111;112;112;112;113;113;114;114;115;115;118;118;119;121;122;123;125;127;128;128;128;138">
+      value="20;20;20;20;20;20;20;20;20;20;21;21;21;21;21;21;21;21;22;22;22;22;22;22;25;25;25;25;25;25;25;25;25;25;25;25;27;27;27;27">
+    <!--value="61;70;78;80;87;88;90;92;93;95;96;97;101;102;103;104;105;107;108;110;111;112;112;112;113;113;114;114;115;115;118;118;119;121;122;123;125;127;128;128;128;138"-->
     <div class="linha"></div>
 
     <div class="amostraOuPopulacao">
@@ -68,13 +69,13 @@
 
     <input type="button" id="btnCalc" name="botao_calcular" value="Calcular" onfocus="modmedmed()">
 
-    <div class="tabelas"></div>
+    <div class="tabelas" id='ocultarElem' style="display: none"></div>
 
-    <canvas id="myChart"></canvas>
+    <canvas class="myChart" id='ocultarElem' style="display: none"></canvas>
 
-    <div class="linha"></div>
+    <div class="linha" id='ocultarElem' style="display: none"></div>
 
-    <div class="media-moda-med">
+    <div class="media-moda-med" id='ocultarElem' style="display: none">
       <p id="media"></p>
       <p id="moda"></p>
       <p id="mediana"></p>
@@ -82,7 +83,22 @@
       <p id="coeficiente"></p>
     </div>
 
-    <div class="linha"></div>
+    <div class="linha" id='ocultarElem' style="display: none"></div>
+
+    <select class="medidasSeparatriz" id='ocultarElem' style="display: none">
+      <option>Quartil (25 em 25%)</option>
+      <option>Quintil (20 em 20%)</option>
+      <option>Decil (10 em 10%)</option>
+      <option>Percentil (1 em 1%)</option>
+    </select>
+
+    <div>
+      <input type="range" id='ocultarElem' class="slider" min="25" max="100" step="25" style="display: none" value='50'>
+    </div>
+
+    <div class="vlSeparatriz" id='ocultarElem' style="display: none"></div>
+
+    <div class="porcSeparatriz" id='ocultarElem' style="display: none"></div>
 
   </section>
 
@@ -90,5 +106,6 @@
 <!-- importando scripts de Chart.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
+<script language="javascript" src="../js/medSeparatriz.js"></script>
 <script language="javascript" src="../js/geraTabela.js"></script>
 <script language="javascript" src="../js/descritiva.js"></script>

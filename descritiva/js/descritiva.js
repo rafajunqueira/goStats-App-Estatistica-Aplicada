@@ -1,3 +1,5 @@
+let qtdLinhasTabela
+
 // Rastreando o botao_calcular na DOM
 const btnCalc = document.querySelector('#btnCalc')
 
@@ -86,12 +88,22 @@ btnCalc.onclick = () => {
   domTabela.innerHTML = tabela += '</table>' //fechando tabela
 
 
-  // O RESTO DA TABELA SERÁ RESOLVIDO A PARTIR DO EXEC. FUNÇÃO:
+  // O RESTO DA TABELA SERÁ FEITO A PARTIR DO EXEC. DA FUNÇÃO:
   geraRestCol(qtdLinhas)
 
-  // DEPOIS DO PROCESSAMENTO DE TUDO, GERAMOS OS GRÁFICOS
+  // GERAMOS OS GRÁFICOS:
   geraGraf(qtdLinhas)
 
+  // GERAMOS O SLIDER DE MED. SEPARATRIZ
+  alteraSlider(qtdLinhas)
+  qtdLinhasTabela = qtdLinhas
+
+  // AO FINAL, TODOS ELEMENTOS style="display: none" VIRAM BLOCK
+  const elementosOcultos = document.querySelectorAll('#ocultarElem')
+
+  for (let element of elementosOcultos){
+    element.style.removeProperty('display')
+  }
 
 
 
@@ -534,7 +546,7 @@ function geraGraf(qtdLinhas) {
   }
 
 
-  var ctx = document.getElementById('myChart')
+  var ctx = document.querySelector('.myChart')
 
   if (delGrafAnt === 'sim') {
     chart.destroy()
@@ -584,3 +596,45 @@ function modmedmed() {
 }
 
 
+/******************* CONTROLADOR DE SLIDER ***********************/
+
+// CONTROLA SELECT
+const slctMedSeparatriz = document.querySelector('.medidasSeparatriz')
+
+slctMedSeparatriz.onchange = () => {
+  const novoSlider = document.querySelector('.slider')
+  const medidasSeparatriz = document.querySelector('option:checked').innerHTML
+
+  switch (medidasSeparatriz) {
+    case 'Quartil (25 em 25%)':
+      novoSlider.step = 25
+      novoSlider.min = 25
+      break;
+
+    case 'Quintil (20 em 20%)':
+      novoSlider.step = 20
+      novoSlider.min = 20
+      break;
+
+    case 'Decil (10 em 10%)':
+      novoSlider.step = 10
+      novoSlider.min = 10
+      break;
+
+    case 'Percentil (1 em 1%)':
+      novoSlider.step = 1
+      novoSlider.min = 1
+      break;
+  }
+
+  alteraSlider(qtdLinhasTabela)
+}
+
+
+
+// CONTROLA SLIDER MUDAR:
+const nivelSlider = document.querySelector('.slider')
+
+nivelSlider.oninput = () => {
+  alteraSlider(qtdLinhasTabela)
+}

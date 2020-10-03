@@ -173,9 +173,9 @@ function geraRestCol(qtdLinhas) {
 
 
         let novosItens = itensAtuais +
-            `<td class ='.calcFreq%${i}'>${vlCol3}%</td>
-        <td class ='.calcFreqAcum${i}'>${vlCol4}</td>
-        <td class ='.calcFreqAcum%${i}'>${(vlCol5 > 100) ? vlCol5 = 100 : vlCol5 = vlCol5}%</td>
+            `<td class ='calcFreq%${i}'>${vlCol3}%</td>
+        <td class ='calcFreqAcum${i}'>${vlCol4}</td>
+        <td class ='calcFreqAcum%${i}'>${(vlCol5 > 100) ? vlCol5 = 100 : vlCol5 = vlCol5}%</td>
         `
 
         linhaAtual.innerHTML = novosItens
