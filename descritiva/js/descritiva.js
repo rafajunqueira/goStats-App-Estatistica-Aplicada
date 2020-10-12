@@ -38,18 +38,6 @@ btnCalc.onclick = () => {
   // Desestruturando o retorno da função:
   [a, b, arrayFreq] = geraFreq(arrayOrdenado) //Gerando objeto com array usado
 
-  /*   console.log('a :>> ', a);  //TRAZ OS VALORES!
-    console.log('b :>> ', b); //TRAZ AS REPETIÇÕES DESTES VALORES!
-  */
-
-  /*acima o arrayFreq é array que tem array dentro e todos os 
-  elementos com suas respectivas frequências, dê um console.log para ver*/
-
-  // dadosInseridos é coluna1
-  //  let objFrequencia = geraFrequencia(arrayOrdenado) //Gerando objeto com array usado
-  //console.log('objFrequencia :>> ', objFrequencia);
-
-
   let dadosInseridos = a // aqui pegamos os numeros (sem repetição)
 
   // freqSimples é coluna2 da tabela 
@@ -108,7 +96,7 @@ btnCalc.onclick = () => {
 
 
 
-  if ((a.length > 10) && (qualTipo(arrayOrdenado) == 'number')) { //tem que mudar esse estradaOrdenada
+  if ((a.length > 10) && (qualTipo(arrayOrdenado) == 'number')) { 
   
     let vetEleCalc = vetPraCont1(rogerCol1, rogerCol2)
     let vetFreCalc = vetPraCont2(rogerCol1, rogerCol2)
@@ -119,7 +107,7 @@ btnCalc.onclick = () => {
     <br>
     A média é: ${acharMedia(vetEleCalc, vetFreCalc)}
     <br>
-    A mediana é: ${acharMediana(arrayOrdenado, rogerCol1, a)} 
+    A mediana é: ${acharMediana(arrayOrdenado, rogerCol1, rogerCol2)} 
     <br>
     A moda é: ${acharModa(vetEleCalc, vetFreCalc)}
     <br>
@@ -167,9 +155,11 @@ btnCalc.onclick = () => {
     <br><br>
     `
   
-  }  
+  } 
 
 }
+
+
 
 /******************** ÁREA DE FUNÇÕES: ********************/
 
@@ -244,7 +234,7 @@ function geraTotalCol2(freqSimples) {
 
 //################################################################################
 
-function acharMediana(vet, vetPr, vetEl){
+function acharMediana(vet, vetPr, vetFr){
 
   let impPar
   let mediana
@@ -253,8 +243,9 @@ function acharMediana(vet, vetPr, vetEl){
   let tipo
   let pInd
   let sInd
-  let medianaAux
-  let media
+  let freAnt = 0
+  let p1 = 0
+  let ind
 
   if(vet.length & 1){ //ve se a quantidade de elemento do vetor e impar ou par para saber quantas medianas teram
     impPar = 'Impar'
@@ -269,7 +260,6 @@ function acharMediana(vet, vetPr, vetEl){
   }
   else{ //descobre duas medianas porque e par
     indice = vet.length / 2
-    medianaAux = vet[indice - 1]
     mediana = vet[indice - 1]
 
     if(vet[indice] != mediana){
@@ -284,28 +274,38 @@ function acharMediana(vet, vetPr, vetEl){
     tipo = 'number' // se for number
   }
 
-  if((vetEl.length > 10) && (tipo == 'number')){
+  //Divisão entre outros e continua que vem a seguir
+
+  if((vetPr.length > 10) && (tipo == 'number')){
 
     for(var i = 0; i <= vetPr.length; i++){
 
-      if(vetPr[i] <= parseFloat(medianaAux)){
+      if(vetPr[i] <= parseFloat(mediana)){
         
         pInd = vetPr[i]
+        ind = i
+
       }
     }
 
     for(var i = 0; i <= vetPr.length; i++){
 
-      if(vetPr[i] > parseFloat(medianaAux)){
+      if(vetPr[i] > parseFloat(mediana)){
 
         sInd = vetPr[i]
         break
       }
     }
 
-    media = (pInd + sInd) / 2
+    for(var i = 0; i < ind; i++){
 
-    return media
+      freAnt = freAnt + vetFr[i]
+
+    }
+
+    p1 = ((vet.length / 2 - freAnt) / vetFr[ind]) * (sInd - pInd) + pInd
+
+    return p1
   }
   else{
 
@@ -334,15 +334,17 @@ function acharMedia(vetEle, vetFre){ //entrar com o vetor de lista de elemento e
   
 function acharModa(vetProp, vetValor) { //tem que entrar com o vetor de lista de elementos e frequencia   
   
-  let maior = vetValor[0]
+  let maior = 0
+  let aModa
   let posicao
   let modas = []
 
-  for(var i = 1; i <= vetValor.length; i++){
+  for(var i = 0; i <= vetValor.length; i++){
     
     if(vetValor[i] >= maior){
 
       maior = vetValor[i]
+      aModa = vetProp[i]
       posicao = i
 
     }
@@ -363,9 +365,13 @@ function acharModa(vetProp, vetValor) { //tem que entrar com o vetor de lista de
 
   }
   else{
-
-    return modas
-
+    
+    if(modas.length <= 1){
+      return aModa
+    }
+    else{
+      return modas
+    }  
   }
 }
 
