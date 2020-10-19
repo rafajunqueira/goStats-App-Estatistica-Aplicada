@@ -1,16 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>goStats</title>
-    <link rel="shortcut icon" href="../imagens/logo-aba-navegador.png"/>
-    <link rel="stylesheet" href="../css/manutencao.css">
+  <meta charset="UTF-8" />
+  <title>goStats</title>
+  <link rel="shortcut icon" href="../imagens/logo-aba-navegador.png" />
+
+
+  <!-- importando bootstrap abaixo -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+  <link rel="stylesheet" type="text/css" href="../css/descritiva.css" />
+  <link rel="stylesheet" type="text/css" href="../css/style.css" />
+
+
 </head>
-<body>
-    <h1>EM CONSTRUÇÃO...</h1>
-    <div class="manutencao">
-        <img src="https://pa1.narvii.com/6465/08e7e5eb4ac64643f5372bc1a6c62a46331967a3_hq.gif">
+
+
+<body class="fundoPag2">
+
+  <!--MENU RESPONSIVO-->
+  <header>
+    <nav class="menu" id="menu">
+      <input type="checkbox" id="btn-menu">
+      <label for="btn-menu">&#9776;</label>
+      <a href="../index.html">
+        <img id="logo" src="../imagens/logo-menu.png" />
+      </a>
+
+      <ul>
+        <li><a href="../descritiva/descritiva.html">Estatística Descritiva</a></li>
+        <li><a href="../probabilidade/probabilidade.html">Probabilidade</a></li>
+        <li><a href="../correlacao/correlacao.html">Correlação e Regressão</a></li>
+        <li><a href="../sobreNos/sobreNos.html">Sobre nós</a></li>
+      </ul>
+
+      <div id=botaoLogin>
+        <a href="../login/login.html">Login</a>
+      </div>
+
+    </nav>
+  </header>
+  <div class="form-dados">
+    <div class="container descritiva-main form-custom formulario">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 text-center">
+          
+          <blockquote class="blockquote">
+            <p class="mb-0">Importe seus arquivos ou os insira manualmente</p>
+            <footer class="blockquote-footer">A análise será feita automaticamente</footer>
+          </blockquote>
+
+          <a class="btn btn-outline-secondary btn-custom mb-3"
+            href="./binomial/binomial.html"
+            style="width: 77%;">Binomial</a>
+            <br>
+            <a class="btn btn-outline-secondary btn-custom mb-3"
+            href="./uniforme/uniforme.html"
+            style="width: 77%;">Uniforme</a>
+            <br>
+            <a class="btn btn-outline-secondary btn-custom mb-3"
+            href="./normal/normal.html"
+            style="width: 77%;">Normal</a>
+
+        </div>
+      </div>
     </div>
+  </div>
+
+
 </body>
-</html>
