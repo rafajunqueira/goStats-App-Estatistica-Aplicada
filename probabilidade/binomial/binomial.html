@@ -4,8 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <title>goStats</title>
+
+  <!-- importando bootstrap abaixo -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
   <link rel="shortcut icon" href="../../imagens/logo-aba-navegador.png" />
   <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+  <style>
+  .valuePadding {
+    border: 1px inset #ccc;
+  }
+  .valuePadding input {
+    border: none;
+    padding:0px;
+    outline: none;
+  }
+  </style>
 </head>
 
 
@@ -40,72 +57,49 @@
 
     </div>
 
-    <dt>Nome da variavel:</dt><input required autocomplete="on" type="text" class="nomeVariavel" size="30"
-      maxlength="12" placeholder="Insira o nome da var. (1ª coluna)" value='teste'>
-    <br>
-    <div class="linha"></div>
-
-    <dt>Coleta de dados:</dt>
-
-    <input required autocomplete="on" type="text" id="coleta_de_dados" size="30"
-      placeholder="valores separados por ';' e decimais por ponto"
-      value="20;20;20;20;20;20;20;20;20;20;21;21;21;21;21;21;21;21;22;22;22;22;22;22;25;25;25;25;25;25;25;25;25;25;25;25;27;27;27;27">
-    <!--value="61;70;78;80;87;88;90;92;93;95;96;97;101;102;103;104;105;107;108;110;111;112;112;112;113;113;114;114;115;115;118;118;119;121;122;123;125;127;128;128;128;138"-->
-    <div class="linha"></div>
-
-    <div class="amostraOuPopulacao">
-      <input type="radio" class="todoInput" class="amostra" name="amostra_ou_populacao" id="btn-amostra" value="Amostra"
-        onclick="mudaFoto()">
-      <label for="btn-amostra"><img id='fotoAmostra' src="../../imagens/amostra.png"></label>
-
-      <input type="radio" class="todoInput" class="populacao" name="amostra_ou_populacao" id="btn-populacao"
-        value="populacao" onclick="mudaFoto()">
-      <label for="btn-populacao"><img id='fotoPopulacao' src="../../imagens/populacao.png"></label>
+    <dt>Amostra</dt>
+    <div class="input-group mb-3">
+      <input type="number" class="form-control"
+      placeholder="Amostra (N)"
+      value="4"
+      id="Amostra">
     </div>
 
-    <code>*detec. auto. o tipo de var. onde a partir de 10 elementos tabela contínua sendo gerada</code>
-
-    <div class="linha"></div>
-
-    <input type="button" id="btnCalc" name="botao_calcular" value="Calcular" onfocus="modmedmed()">
-
-    <div class="tabelas" id='ocultarElem' style="display: none"></div>
-
-    <canvas class="myChart" id='ocultarElem' style="display: none"></canvas>
-
-    <div class="linha" id='ocultarElem' style="display: none"></div>
-
-    <div class="media-moda-med" id='ocultarElem' style="display: none">
-      <p id="media"></p>
-      <p id="moda"></p>
-      <p id="mediana"></p>
-      <p id="desviop"></p>
-      <p id="coeficiente"></p>
+    <dt>Sucesso</dt>
+    <div class="input-group mb-3">
+      <input type="number" class="form-control"
+      placeholder="Sucesso (p)"
+      value="30"
+      id="Sucesso"
+      onkeyup= 'EvSucesso()'>
+      <div class="input-group-append">
+        <span class="input-group-text">%</span>
+      </div>
     </div>
 
-    <div class="linha" id='ocultarElem' style="display: none"></div>
-
-    <select class="medidasSeparatriz" id='ocultarElem' style="display: none">
-      <option>Quartil (25 em 25%)</option>
-      <option>Quintil (20 em 20%)</option>
-      <option>Decil (10 em 10%)</option>
-      <option>Percentil (1 em 1%)</option>
-    </select>
-
-    <div>
-      <input type="range" id='ocultarElem' class="slider" min="25" max="100" step="25" style="display: none" value='50'>
+    <dt>Fracasso</dt>
+    <div class="input-group mb-3">
+      <input type="number" class="form-control"
+      placeholder="Fracasso (q)"
+      value="70"
+      id="Fracasso"
+      onkeyup= 'EvFracasso()'>
+      <div class="input-group-append">
+        <span class="input-group-text">%</span>
+      </div>
     </div>
 
-    <div class="vlSeparatriz" id='ocultarElem' style="display: none"></div>
+    <dt>Evento</dt>
+    <div class="input-group mb-3">
+      <input type="number" class="form-control"
+      placeholder="Evento (K)"
+      value="1"
+      id="Evento">
+    </div>
 
-    <div class="porcSeparatriz" id='ocultarElem' style="display: none"></div>
-
-  </section>
+    <input type="button" id="btnCalc" name="botao_calcular" value="Calcular">
 
 </body>
-<!-- importando scripts de Chart.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-<script language="javascript" src="../js/medSeparatriz.js"></script>
-<script language="javascript" src="../js/geraTabela.js"></script>
-<script language="javascript" src="../js/descritiva.js"></script>
+<!-- importando scripts  -->
+<script language="javascript" src="../binomial/binomial.js"></script>
