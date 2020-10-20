@@ -278,6 +278,7 @@ section.formulario h1{
     letter-spacing: 1.5pt;
     font-weight: 600;
     box-shadow: 0px 4px 3px 0 rgba(0,0,0,0.2);
+    font-size: 30px;
 }
 section.formulario dt{
     font-size: 12pt;
