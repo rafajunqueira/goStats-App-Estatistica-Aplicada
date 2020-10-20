@@ -7,8 +7,6 @@ function fatorial(n) { // calc fatorial
         return (n * fatorial(n - 1))
 }
 
-
-
 btnCalc.onclick = () => {
     const vlAmostra = parseFloat(document.querySelector('#Amostra').value)
     const vlSucesso = parseFloat(document.querySelector('#Sucesso').value)
@@ -16,7 +14,6 @@ btnCalc.onclick = () => {
     const vlEvento = parseFloat(document.querySelector('#Evento').value)
     let vlResult
     let formulaProba = () => (vlSucesso ** vlEvento) * (vlFracasso ** (vlAmostra - vlEvento))
-
 
     if ((vlAmostra == 0) || (vlAmostra == vlEvento)) { // análise comb. é 1
         vlResult = 1 * formulaProba()
@@ -30,15 +27,14 @@ btnCalc.onclick = () => {
     }
     vlResult = parseFloat(vlResult).toFixed(2) / 1000000
 
-    console.log('vlResult :>> ', vlResult)
+    const Resultado = document.querySelector('.vlResult')
+    Resultado.style.removeProperty('display')
+    Resultado.innerHTML = `Resultado: ${vlResult}%`
 
 }
 
 
-
-
-/* ----------- TESTE ---------- */
-
+/* ----------- EVENTOS DE JS ---------- */
 
 const EvFracasso = () => {
     document.querySelector('#Sucesso').value = 100 - document.querySelector('#Fracasso').value
