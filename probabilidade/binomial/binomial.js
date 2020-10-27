@@ -1,3 +1,4 @@
+const Resultado = document.querySelector('.vlResult')
 const btnCalc = document.querySelector('#btnCalc')
 
 function fatorial(n) { // calc fatorial
@@ -8,30 +9,88 @@ function fatorial(n) { // calc fatorial
 }
 
 btnCalc.onclick = () => {
-    const vlAmostra = parseFloat(document.querySelector('#Amostra').value)
-    const vlSucesso = parseFloat(document.querySelector('#Sucesso').value)
-    const vlFracasso = parseFloat(document.querySelector('#Fracasso').value)
-    const vlEvento = parseFloat(document.querySelector('#Evento').value)
-    let vlResult
-    let formulaProba = () => (vlSucesso ** vlEvento) * (vlFracasso ** (vlAmostra - vlEvento))
 
-    if ((vlAmostra == 0) || (vlAmostra == vlEvento)) { // análise comb. é 1
-        vlResult = 1 * formulaProba()
+    const amostra = document.querySelector('#Amostra').value
+    const sucesso = document.querySelector('#Sucesso').value
+    const fracasso = document.querySelector('#Fracasso').value
+    const evento = document.querySelector('#Evento').value
 
-    } else if (vlAmostra == 1) { // análise comb. é o própio vlAmostra
-        vlResult = vlAostra * formulaProba()
 
-    } else { // senao análise comb. precisa ser calculada
-        let vlAnaComb = fatorial(vlAmostra) / fatorial(vlAmostra - vlEvento) * fatorial(vlEvento)
-        vlResult = vlAnaComb * formulaProba()
+    let evento_tratado = []
+    var au = evento.split(';')
+    let probabilidade = 0, media = 0, dp = 0
+    let analise, fat_n, fat_k, fat_nk, aux, aux2
+
+    for (let i = 0; i < au.length; i++) {
+        evento_tratado.push(parseInt(au[i]))
     }
-    vlResult = parseFloat(vlResult).toFixed(2) / 1000000
+    if (evento_tratado.length == 1) {
+        aux = amostra - evento
+        fat_k = fatorial(evento)
+        fat_n = fatorial(amostra)
+        fat_nk = fatorial(aux)
 
-    const Resultado = document.querySelector('.vlResult')
+        if (parseInt(evento) == 0) {
+            analise = 1
+        } else if (parseInt(evento) == 1) {
+            analise = amostra
+        } else {
+            analise = (fat_n / (fat_nk * fat_k))
+        }
+
+        probabilidade = ((analise * ((sucesso / 100) ** evento) * ((fracasso / 100) ** aux)) * 100).toFixed(2)
+
+
+
+    } else {
+
+        for (let i = 0; i < evento_tratado.length; i++) {
+            aux = amostra - evento_tratado[i]
+            fat_k = fatorial(evento_tratado[i])
+            fat_n = fatorial(amostra)
+            fat_nk = fatorial(aux)
+
+            if (parseInt(evento_tratado[i]) == 0) {
+                analise = 1
+            } else if (parseInt(evento_tratado[i]) == 1) {
+                analise = amostra
+            } else {
+                analise = (fat_n / (fat_nk * fat_k))
+            }
+
+            aux2 = ((analise * ((sucesso / 100) ** evento_tratado[i])
+                * ((fracasso / 100) ** aux)) * 100).toFixed(2)
+
+            aux2 = parseFloat(aux2)
+
+            probabilidade += aux2
+        }
+
+    }
+
+    media = amostra * (sucesso / 100)
+    dp = (((amostra * (sucesso / 100) * (fracasso / 100)) ** (1 / 2))).toFixed(2)
+
+
+
+    /* VOLTAR A EXIBIR a div Resultado */
     Resultado.style.removeProperty('display')
-    Resultado.innerHTML = `Resultado: ${vlResult}%`
+    Resultado.innerHTML =
+        `
+        <div>Probabilidade: ${probabilidade}%</div>
+
+        <div>Média: ${media}</div>
+        
+        <div>Desvio padrão: ${dp}</div>`
+
 
 }
+
+
+
+
+
+
 
 
 /* ----------- EVENTOS DE JS ---------- */
