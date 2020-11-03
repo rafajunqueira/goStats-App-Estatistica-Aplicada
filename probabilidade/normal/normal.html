@@ -1,16 +1,92 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
     <title>goStats</title>
-    <link rel="shortcut icon" href="../imagens/logo-aba-navegador.png"/>
-    <link rel="stylesheet" href="../css/manutencao.css">
+
+    <!-- importando bootstrap abaixo -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="shortcut icon" href="../../imagens/logo-aba-navegador.png" />
+    <link rel="stylesheet" type="text/css" href="../../css/style.css" />
+    <style>
+        .valuePadding {
+            border: 1px inset #ccc;
+        }
+
+        .valuePadding input {
+            border: none;
+            padding: 0px;
+            outline: none;
+        }
+    </style>
 </head>
-<body>
-    <h1>EM CONSTRUÇÃO...</h1>
-    <div class="manutencao">
-        <img src="https://pa1.narvii.com/6465/08e7e5eb4ac64643f5372bc1a6c62a46331967a3_hq.gif">
-    </div>
+
+
+<body class="fundoPag2">
+
+    <!--MENU RESPONSIVO-->
+    <header>
+        <nav class="menu" id="menu">
+            <input type="checkbox" id="btn-menu">
+            <label for="btn-menu">&#9776;</label>
+            <a href="../../index.html">
+                <img id="logo" src="../../imagens/logo-menu.png" />
+            </a>
+
+            <ul>
+                <li><a href="../../descritiva/descritiva.html">Estatística Descritiva</a></li>
+                <li><a href="../../probabilidade/probabilidade.html">Probabilidade</a></li>
+                <li><a href="../../correlacao/correlacao.html">Correlação e Regressão</a></li>
+                <li><a href="../../sobreNos/sobreNos.html">Sobre nós</a></li>
+            </ul>
+
+            <div id=botaoLogin>
+                <a href="../../login/login.html">Login</a>
+            </div>
+
+        </nav>
+    </header>
+
+    <section id="formularioDescritiva" class="formulario">
+        <br>
+        <h1>Normal</h1>
+
+        <form>
+            <div class="form-row">
+                <div class="form-group col-12"><input type="text" id="normalMedia" placeholder="Informe a média"
+                        class="form-control" required="" autocomplete="off" value="300"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12"><input type="text" id="normalDesvio"
+                        placeholder="Informe o desvio padrão" class="form-control" required="" autocomplete="off"
+                        value="20"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12 text-center d-flex flex-column">
+                    <div class="btn-group btn-group-toggle" data-toggle="buttons"><label
+                            class="btn btn-secondary">Menor<input type="radio" name="menor"></label><label
+                            class="btn btn-secondary active">Entre<input type="radio" name="entre"></label><label
+                            class="btn btn-secondary">Maior<input type="radio" name="maior"></label></div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12"><input type="text" id="intervalo"
+                        placeholder="Informe o valor a ser calculado" class="form-control" required=""
+                        autocomplete="off" value="280;300"></div>
+            </div>
+            <input type="button" id="btnCalc" name="botao_calcular" value="Calcular">
+            <br>
+        </form>
+
+
+        <dt id='ocultarElem' style="display: none" class="vlResult">Resultado: </dt>
+
 </body>
-</html>
+
+<!-- importando scripts  -->
+<script language="javascript" src="./normal.js"></script>
