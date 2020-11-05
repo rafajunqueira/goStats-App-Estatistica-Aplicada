@@ -1,7 +1,7 @@
 
 function geraCabecalho(nomeVariavel) {
     // processo de geração de cabeçalho da tabela :
-    let cabecalho = `<table border='1'>
+    let cabecalho = `<table class="table-responsive" border='1'>
                         <tr class='linhaCabec'>
                             <th>${nomeVariavel}</th>
                             <th>Frequência Simples</th>

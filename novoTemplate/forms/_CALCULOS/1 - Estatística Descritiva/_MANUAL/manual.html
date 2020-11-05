@@ -35,6 +35,7 @@
 		class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
 		class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
 		class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+		class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
 		class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
 	<!--===================== É NOIS =====================-->
 
@@ -114,6 +115,26 @@
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
+	<nav class="mobile-nav d-lg-none">
+		<ul>
+			<li class=""><a href="index.html">Home</a></li>
+			<li class=""><a href="#about">About Us</a></li>
+
+
+
+			<li class="drop-down"><a href="">Módulos</a>
+				<ul>
+					<li><a href="#">Estatística Descritiva</a></li>
+					<li><a href="#">Probabilidade</a></li>
+					<li><a href="#">Correlação e Regressão</a></li>
+
+				</ul>
+			</li>
+
+
+		</ul>
+	</nav>
+	<div class="mobile-nav-overly"></div>
 	<nav class="mobile-nav d-lg-none">
 		<ul>
 			<li class=""><a href="index.html">Home</a></li>
@@ -383,91 +404,102 @@
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100" style="
-    padding-right: 20px;
-    padding-left: 20px;
-    padding-top: 33px;
-    border-top-width: 50px;
-    margin-top: 50px;
-">
-				<section id="formularioDescritiva" class="formulario">
-					<form style="margin-left: auto; margin-right: auto;">
-						<div class="form-row">
-							<h4 class="card-title" style="margin-left: auto; margin-right: auto;">Estatística Descritiva
-							</h4>
-							<div class="form-group col-12"><input type="text" id="nomeVariavel"
-									placeholder="Nome da variável" class="form-control" required="" autocomplete="on"
-									value="teste"></div>
+				padding-right: 20px;
+				padding-left: 20px;
+				padding-top: 33px;
+				border-top-width: 50px;
+				margin-top: 50px;
+			">
+
+				<form style="margin-left: auto; margin-right: auto;">
+					<div class="form-row">
+						<h4 class="card-title" style="margin-left: auto; margin-right: auto;">Estatística Descritiva
+						</h4>
+						<div class="form-group col-12"><input type="text" id="nomeVariavel"
+								placeholder="Nome da variável" class="form-control" required="" autocomplete="on"
+								value="teste"></div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-12"><input type="text" id="coleta_de_dados"
+								placeholder="Dados separados por ';'" class="form-control" required="" autocomplete="on"
+								value="20;20;20;20;20;20;20;20;20;20;21;21;21;21;21;21;21;21;22;22;22;22;22;22;25;25;25;25;25;25;25;25;25;25;25;25;27;27;27;27">
 						</div>
-						<div class="form-row">
-							<div class="form-group col-12"><input type="text" id="coleta_de_dados"
-									placeholder="Dados separados por ';'" class="form-control" required=""
-									autocomplete="on"
-									value="20;20;20;20;20;20;20;20;20;20;21;21;21;21;21;21;21;21;22;22;22;22;22;22;25;25;25;25;25;25;25;25;25;25;25;25;27;27;27;27">
-							</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-12 text-center d-flex flex-column">
+							<div class="btn-group btn-group-toggle" data-toggle="buttons"><label
+									class="btn btn-secondary active">Amostra<input type="radio" name="options"
+										id="amostra" checked=""></label><label class="btn btn-secondary">População<input
+										type="radio" name="options" id="populacao"></label></div>
 						</div>
-						<div class="form-row">
-							<div class="form-group col-12 text-center d-flex flex-column">
-								<div class="btn-group btn-group-toggle" data-toggle="buttons"><label
-										class="btn btn-secondary active">Amostra<input type="radio" name="options"
-											id="amostra" checked=""></label><label
-										class="btn btn-secondary">População<input type="radio" name="options"
-											id="populacao"></label></div>
-							</div>
-						</div>
-						<div class="form-row mt-0.5">
-							<div class="col-12 text-center"><a class="btn btn-outline-success" id="btnCalc" style="
-    padding-top: 6px;
-    border-top-width: 1px;" onfocus="modmedmed()">Calcular<i class="fa fa-long-arrow-right m-l-5"
-										aria-hidden="true"></i></a></div>
-						</div>
+					</div>
+					<div class="form-row mt-0.5">
+						<div class="col-12 text-center"><a class="btn btn-outline-success" id="btnCalc" style="padding-top: 6px;
+							border-top-width: 1px;
+							background-color: #28a745; color: white;" onfocus="modmedmed()">Calcular<i class="fa fa-long-arrow-right m-l-5"
+									aria-hidden="true"></i></a></div>
+					</div>
 
-						<link rel="stylesheet" type="text/css" href="../../../css/descritiva.css">
-						<link rel="stylesheet" type="text/css" href="../../../css/style.css">
+				</form>
 
 
-
-						<div class="tabelas" id="ocultarElem" style="display: none"></div>
-
-						<canvas class="myChart" id="ocultarElem" style="display: none"></canvas>
-
-						<div class="linha" id="ocultarElem" style="display: none"></div>
-
-						<div class="media-moda-med" id="ocultarElem" style="display: none">
-							<p id="media"></p>
-							<p id="moda"></p>
-							<p id="mediana"></p>
-							<p id="desviop"></p>
-							<p id="coeficiente"></p>
-						</div>
-
-						<div class="linha" id="ocultarElem" style="display: none"></div>
-
-						<select class="medidasSeparatriz" id="ocultarElem" style="display: none">
-							<option>Quartil (25 em 25%)</option>
-							<option>Quintil (20 em 20%)</option>
-							<option>Decil (10 em 10%)</option>
-							<option>Percentil (1 em 1%)</option>
-						</select>
-
-						<div>
-							<input type="range" id="ocultarElem" class="slider" min="25" max="100" step="25"
-								style="display: none" value="50">
-						</div>
-
-						<div class="vlSeparatriz" id="ocultarElem" style="display: none"></div>
-
-						<div class="porcSeparatriz" id="ocultarElem" style="display: none"></div>
-
-
-
-					</form>
-
-
-
-
-				</section>
 			</div>
+			<div id="ocultarElem" class="wrap-login100" style="
+										padding-right: 20px;
+										padding-left: 20px;
+										padding-top: 33px;
+										border-top-width: 50px;
+										margin-top: 50px;
+										display: none;
+										text-align: center;
+										padding-bottom: 10px;">
+				<h4 class="card-title" style="margin-left: auto; margin-right: auto;">Resultados:
+				</h4>
+				<section id="formularioDescritiva" class="formulario"
+					style="margin-left: auto; margin-right: auto;padding-left: 0px;padding-right: 0px; border-radius: 0px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); width: 100%;margin-top: 0px;">
+					<link rel="stylesheet" type="text/css" href="../../../css/descritiva.css">
+					<link rel="stylesheet" type="text/css" href="../../../css/style.css">
+
+
+
+					<div class="tabelas"></div>
+
+					<canvas class="myChart"></canvas>
+					<div class="linha"></div>
+
+					<div class="media-moda-med" style="background: #23b38840;">
+						<p id="media"></p>
+						<p id="moda"></p>
+						<p id="mediana"></p>
+						<p id="desviop"></p>
+						<p id="coeficiente"></p>
+					</div>
+
+
+					<select class="medidasSeparatriz" style="margin-top: 15px;">
+						<option>Quartil (25 em 25%)</option>
+						<option>Quintil (20 em 20%)</option>
+						<option>Decil (10 em 10%)</option>
+						<option>Percentil (1 em 1%)</option>
+					</select>
+
+					<div>
+						<input type="range" class="slider" min="25" max="100" step="25" value="50">
+					</div>
+
+					<div class="vlSeparatriz"></div>
+
+					<div class="porcSeparatriz"></div>
+				</section>
+
+
+
+
+
+			</div>
+
 		</div>
+
 	</div>
 
 
@@ -502,6 +534,6 @@
 
 
 
-</body>
 
-</html>
+
+</body>
