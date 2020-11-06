@@ -100,4 +100,6 @@ const EvSucesso = () => {
 
 const trocarAbas = () => {
     resultadoBinomial.innerHTML = ''
+    resultadoNormal.innerHTML = ''
+    resultadoUniforme.innerHTML = ''
 }
