@@ -32,7 +32,7 @@ header label:hover{
 }
 .menu{
     height: 55px;
-	background-color: #ffffff;
+	background-color: white;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
     padding: 3px;
 }
@@ -90,7 +90,7 @@ div#botaoLogin a{
     display: flex;
     justify-content: center;
     padding: 10px 0px;
-    color: #ffffff;
+    color: white;
     text-decoration: none;
     font-family: 'Italiana-Regular';
     font-size: 15pt;
@@ -258,7 +258,7 @@ body.fundoPag2 {
 }
 
 section.formulario {
-    background-color: rgba(255, 249, 249, 0.918);
+    background-color: white;
     border-radius: 25px;
     width: 50%;
     margin-top: 5vh;
@@ -273,7 +273,7 @@ section.formulario h1{
     text-align: center;
     font-family: 'Italiana-Regular';
     border-radius: 10px;
-    color: #ffffff;
+    color: white;
     background:linear-gradient(#3b3b5a, #64647a);
     letter-spacing: 1.5pt;
     font-weight: 600;
@@ -401,28 +401,33 @@ table {
 	margin: 30px auto;
 	text-align: left;
     width: 100%;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 5px;
 }	
 
 th {
-	background:linear-gradient(#7a7aa0, #64647a);
-	color: rgb(255, 255, 255);
-    font-weight: bold;
-	padding: 10px 15px;
-	position: relative;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.534);	
-    border-radius: 05px;
-    
+    background: linear-gradient(#7ba9a9,#3737cc, #7ba9a9);
+    color: white;
+    /* font-weight: bold; */
+    padding: 10px 15px;
+    /* position: relative; */
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.534);
+}
+
+table {
+    margin-top: 0px; 
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+
 }
 
 td {
-    background-color: rgb(255, 255, 255);
+    text-align: center;
     font-weight: 600;
 	padding: 10px 15px;
 	position: relative;
     transition: all 300ms;
-    border-radius: 05px;;
+    border-radius: 05px;
     color: rgb(12, 12, 12);
 }
 

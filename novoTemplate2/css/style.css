@@ -1,4 +1,4 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css");
+﻿@import url("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css");
 
 @font-face {
 	font-family: 'Italiana-Regular';
@@ -329,9 +329,6 @@ input{
     padding-left: 10px;    
 }
 
-input#coleta_de_dados{
-    width: 97.5%;
-}
 
 input#btnCalc {
     margin-bottom: 10px;
@@ -409,7 +406,7 @@ th {
     background: linear-gradient(#7ba9a9,#3737cc, #7ba9a9);
     color: white;
     /* font-weight: bold; */
-    padding: 10px 15px;
+    padding: 3px !important;
     /* position: relative; */
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.534);
 }
@@ -421,7 +418,7 @@ table {
 td {
     text-align: center;
     font-weight: 600;
-	padding: 10px 15px;
+	padding: 3px !important;
 	position: relative;
     transition: all 300ms;
     border-radius: 05px;;

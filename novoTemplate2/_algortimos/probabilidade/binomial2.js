@@ -99,7 +99,7 @@ const EvSucesso = () => {
 }
 
 const trocarAbas = () => {
-    resultadoBinomial.innerHTML = ''
-    resultadoNormal.innerHTML = ''
-    resultadoUniforme.innerHTML = ''
+    document.querySelector('.resultadoBinomial').innerHTML = ''
+    document.querySelector('.resultadoNormal').innerHTML = ''
+    document.querySelector('.resultadoUniforme').innerHTML = ''
 }

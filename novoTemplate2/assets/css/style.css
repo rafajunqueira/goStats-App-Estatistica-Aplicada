@@ -138,7 +138,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
   letter-spacing: 3px;
   padding-left: 10px;
-  border-left: 4px solid #18d26e;
+  border-left: 4px solid #18d26e00;
 }
 
 #header .logo a {
@@ -1276,7 +1276,7 @@ section {
 #team .member {
   text-align: center;
   margin-bottom: 20px;
-  background: #000;
+  background: #18d26e29;
   position: relative;
 }
 
@@ -1521,7 +1521,7 @@ section {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   letter-spacing: 3px;
-  border-left: 4px solid #18d26e;
+  border-left: 4px solid #18d26e00;
 }
 
 #footer .footer-top .footer-info p {

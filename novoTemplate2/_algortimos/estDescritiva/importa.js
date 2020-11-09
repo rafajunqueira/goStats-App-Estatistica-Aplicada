@@ -7,8 +7,6 @@ document.getElementById('input').addEventListener("change", (event) => {
     selectedFile = event.target.files[0]
 })
 
-
-
 let data = [{
     "name": "jayanth",
     "data": "scd",
@@ -20,11 +18,7 @@ let data = [{
 
 let todasPlanilhas
 
-const botaoSubir = document.querySelector('#button')
-const formVer = document.querySelector('.verificaPlanilha');
-
-botaoSubir.onclick = () => {
-
+function processaExcel() {
     XLSX.utils.json_to_sheet(data, 'out.xlsx')
     if (selectedFile) {
         fileReader = new FileReader()
@@ -39,10 +33,9 @@ botaoSubir.onclick = () => {
 
             console.log('todasPlanilhas :>> ', todasPlanilhas);
 
+
             if (qtdPlanilhas > 1) {
                 //quando for mais de 1 PLanilha:
-
-                formVer.style.display = 'initial'
 
                 modalEscolha(nomesPlanilhas)
             } else {
@@ -66,15 +59,25 @@ botaoSubir.onclick = () => {
 
 function modalEscolha([...nomesPlanilhas]) {
 
-    let opcoes = `<input type="radio" name="radioOpc" value="${nomesPlanilhas[0]}" checked>  <label>${nomesPlanilhas[0]}</label><br>`
-    for (let i = 1; i < nomesPlanilhas.length; i++) {
-        opcoes += `<input type="radio" name="radioOpc" value="${nomesPlanilhas[i]}">  <label>${nomesPlanilhas[i]}</label><br>`
-    }
+    const formImport = document.querySelector('#formImport');
+    formImport.style.display = 'none'
 
-    let divVer = document.querySelector('.radios')
-    divVer.innerHTML = `<br>
-        <p>Certo, detectamos que o inserido possui ${nomesPlanilhas.length} planilhas, marque abaixo qual delas vamos fazer análise:</p>
-    <footer>A análise será feita automaticamente</footer>${opcoes}`
+    const formResultado = document.querySelector('#formResultado');
+    formResultado.style.display = 'none'
+
+    const verifImport = document.querySelector('#verifImport');
+    verifImport.style.removeProperty('display')
+
+
+    const divMsg = document.querySelector('#divMsg');
+    divMsg.innerHTML = ''
+    divMsg.innerHTML = `Certo, detectamos que o inserido possui ${nomesPlanilhas.length} planilhas, marque abaixo qual delas vamos fazer análise:`
+
+    const selectsPlanilha = document.querySelector('#selectsPlanilha');
+    selectsPlanilha.innerHTML = `<option>Selecione uma opção</option>`
+    for (let i = 0; i < nomesPlanilhas.length; i++) {
+        selectsPlanilha.innerHTML += `<option>${nomesPlanilhas[i]}</option>`
+    }
 
 }
 
@@ -82,20 +85,31 @@ function modalEscolha([...nomesPlanilhas]) {
 let preNomeVar = []
 let preInput = []
 
-const escolhaFinal = document.querySelector('.btnFinal')
+const escolhaFinal = document.querySelector('#btnFinal')
 
 
 
 escolhaFinal.onclick = () => {
 
-    formVer.style.display = 'none'
+    //aqui pegamos o select (planilha) selecionada:
+    let planEscolhida = document.querySelector('#selectsPlanilha').value
 
-    //aqui pegamos o radio (planilha) selecionada:
-    let planEscolhida = document.querySelector('input[name="radioOpc"]:checked').value
+    if (planEscolhida == 'Selecione uma opção') {
+        alert('Por favor, selecione uma opção dentre as planilhas.')
+    } else {
+        verifImport.style.display = 'none'
 
-    valoresEscolhidos = todasPlanilhas[planEscolhida]
+        valoresEscolhidos = todasPlanilhas[planEscolhida]
 
-    pegaValores(valoresEscolhidos)
+        pegaValores(valoresEscolhidos)
+
+        const formImport = document.querySelector('#formImport');
+        formImport.style.removeProperty('display')
+
+        const divResultados = document.querySelector('#divResultados');
+        divResultados.innerHTML = `Resultados (Planilha ${planEscolhida}):`
+    }
+
 }
 
 
@@ -116,6 +130,9 @@ function pegaValores(valoresEscolhidos) {
     }
 
     preNomeVar = arrayImportado.shift()
-
     preInput = arrayImportado
+
+    geraResultado(preNomeVar, preInput)
+
+    //return [preNomeVar, preInput]
 }
