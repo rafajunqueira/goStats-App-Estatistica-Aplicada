@@ -1,18 +1,15 @@
 let resultadoNormal = document.querySelector('.resultadoNormal')
 let btnCalcNormal = document.querySelector('#btnCalcNormal')
 
-btnCalcNormal.onclick = () => {
+document.querySelector('#btnCalcNormal').onclick = () => {
     const media = document.querySelector('#normalMedia').value
     const desv = document.querySelector('#normalDesvio').value
     const opt_intervalo = document.querySelector('label.active').innerText
     const intervalo = document.querySelector('#intervalo').value
 
+    let i, y, z, coluna, linha, p, probabilidade_int, prob = []
 
-    let i = 0, y = 0, z = 0, coluna = 0, linha = 0, p = 0, probabilidade_int = 0
-    let prob = []
-
-
-    let vetIntervalo = intervalo.split(';').map(num => Number(num))
+    let vetIntervalo = intervalo.split(';').map(Number)
 
     switch (opt_intervalo) {
         case 'Menor':
