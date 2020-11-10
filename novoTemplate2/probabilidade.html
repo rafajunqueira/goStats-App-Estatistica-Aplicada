@@ -23,6 +23,10 @@
 </head>
 
 <body data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="0" class=""><button type="button"
+		class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+		class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+		class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+		class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
 		class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
 	<!--===================== É NOIS =====================-->
 
@@ -95,6 +99,70 @@
 
 	<!-- Template Main JS File -->
 	<script src="assets/js/main.js"></script>
+	<nav class="mobile-nav d-lg-none">
+		<ul>
+			<li class=""><a href="index.html">Home</a></li>
+			<li class=""><a href="#about">About Us</a></li>
+
+			<li class="drop-down"><a href="">Módulos</a>
+				<ul>
+					<li><a href="#">Estatística Descritiva</a></li>
+					<li><a href="#">Probabilidade</a></li>
+					<li><a href="#">Correlação e Regressão</a></li>
+
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<div class="mobile-nav-overly"></div>
+	<nav class="mobile-nav d-lg-none">
+		<ul>
+			<li class=""><a href="index.html">Home</a></li>
+			<li class=""><a href="#about">About Us</a></li>
+
+			<li class="drop-down"><a href="">Módulos</a>
+				<ul>
+					<li><a href="#">Estatística Descritiva</a></li>
+					<li><a href="#">Probabilidade</a></li>
+					<li><a href="#">Correlação e Regressão</a></li>
+
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<div class="mobile-nav-overly"></div>
+	<nav class="mobile-nav d-lg-none">
+		<ul>
+			<li class=""><a href="index.html">Home</a></li>
+			<li class=""><a href="#about">About Us</a></li>
+
+			<li class="drop-down"><a href="">Módulos</a>
+				<ul>
+					<li><a href="#">Estatística Descritiva</a></li>
+					<li><a href="#">Probabilidade</a></li>
+					<li><a href="#">Correlação e Regressão</a></li>
+
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<div class="mobile-nav-overly"></div>
+	<nav class="mobile-nav d-lg-none">
+		<ul>
+			<li class=""><a href="index.html">Home</a></li>
+			<li class=""><a href="#about">About Us</a></li>
+
+			<li class="drop-down"><a href="">Módulos</a>
+				<ul>
+					<li><a href="#">Estatística Descritiva</a></li>
+					<li><a href="#">Probabilidade</a></li>
+					<li><a href="#">Correlação e Regressão</a></li>
+
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<div class="mobile-nav-overly"></div>
 	<nav class="mobile-nav d-lg-none">
 		<ul>
 			<li class=""><a href="index.html">Home</a></li>
@@ -188,20 +256,21 @@
 				<div class="col-md-12 col-sm-12">
 					<div class="form-custom formulario">
 						<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-							<li class="nav-item" role="presentation"><a class="nav-link text-secondary"
-									id="binomial-tab" data-toggle="tab" href="#binomial" role="tab"
-									aria-controls="binomial" aria-selected="false" onclick="trocarAbas()">Binomial</a>
-							</li>
 							<li class="nav-item" role="presentation"><a class="nav-link text-secondary active"
-									id="normal-tab" data-toggle="tab" href="#normal" role="tab" aria-controls="normal"
-									aria-selected="true" onclick="trocarAbas()">Normal</a></li>
+									id="binomial-tab" data-toggle="tab" href="#binomial" role="tab"
+									aria-controls="binomial" aria-selected="true" onclick="trocarAbas()">Binomial</a>
+							</li>
+							<li class="nav-item" role="presentation"><a class="nav-link text-secondary" id="normal-tab"
+									data-toggle="tab" href="#normal" role="tab" aria-controls="normal"
+									aria-selected="false" onclick="trocarAbas()">Normal</a></li>
 							<li class="nav-item" role="presentation"><a class="nav-link text-secondary"
 									id="uniforme-tab" data-toggle="tab" href="#uniforme" role="tab"
 									aria-controls="uniforme" aria-selected="false" onclick="trocarAbas()">Uniforme</a>
 							</li>
 						</ul>
 						<div class="tab-content" id="myTabContent">
-							<div class="tab-pane fade" id="binomial" role="tabpanel" aria-labelledby="binomial-tab">
+							<div class="tab-pane fade active show" id="binomial" role="tabpanel"
+								aria-labelledby="binomial-tab">
 								<form>
 									<div class="form-row">
 										<div class="input-group mb-3"><input type="text" id="Amostra"
@@ -256,8 +325,7 @@
 									</div>
 								</form>
 							</div>
-							<div class="tab-pane fade active show" id="normal" role="tabpanel"
-								aria-labelledby="normal-tab">
+							<div class="tab-pane fade" id="normal" role="tabpanel" aria-labelledby="normal-tab">
 								<form>
 									<div class="form-row">
 										<div class="input-group mb-3"><input type="text" id="normalMedia"
@@ -281,21 +349,23 @@
 									</div>
 									<div class="form-row">
 										<div class="form-group col-12 text-center d-flex flex-column">
-											<div class="btn-group btn-group-toggle" data-toggle="buttons"><label
+											<div id="botoesNormal" class="btn-group btn-group-toggle"
+												data-toggle="buttons"><label id="MenorNormal"
 													class="btn btn-secondary active">Menor<input type="radio"
-														name="menor" checked=""></label><label
-													class="btn btn-secondary">Entre<input type="radio"
-														name="entre"></label><label
-													class="btn btn-secondary">Maior<input type="radio"
-														name="maior"></label></div>
+														name="menor" checked=""></label><label class="btn btn-secondary"
+													id="EntreNormal">Entre<input type="radio"
+														name="entre"></label><label class="btn btn-secondary"
+													id="MaiorNormal">Maior<input type="radio" name="maior"></label>
+											</div>
 										</div>
 									</div>
 									<div class="form-row">
-										<div class="input-group mb-3"><input type="text" id="intervalo"
+										<div id="vlNormal" class="input-group mb-3">
+											<input type="text" id="intervalo"
 												placeholder="Informe o valor a ser calculado" class="form-control"
 												required="" autocomplete="on" name="normal3">
-											<div class="input-group-append"><span class="input-group-text"
-													style="cursor:grab"
+											<div class="input-group-append" id="limparNormal">
+												<span class="input-group-text" style="cursor:grab"
 													onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
 											</div>
 										</div>
@@ -337,22 +407,26 @@
 									</div>
 									<div class="form-row">
 										<div class="form-group col-12 text-center d-flex flex-column">
-											<div class="btn-group btn-group-toggle" data-toggle="buttons">
-												<div class="btn btn-secondary active">Menor<input type="radio"
-														name="menor" checked=""></div>
-												<div class="btn btn-secondary">Entre<input type="radio" name="entre">
+											<div id="botoesUniforme" class="btn-group btn-group-toggle"
+												data-toggle="buttons">
+												<div id="MenorUniforme" class="btn btn-secondary active">Menor<input
+														type="radio" name="menor" checked=""></div>
+												<div class="btn btn-secondary" id="EntreUniforme">Entre<input
+														type="radio" name="entre">
 												</div>
-												<div class="btn btn-secondary">Maior<input type="radio" name="maior">
+												<div id="MaiorUniforme" class="btn btn-secondary">Maior<input
+														type="radio" name="maior">
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class="form-row">
-										<div class="input-group mb-3"><input type="text" id="uniformeValor"
-												placeholder="Informe o valor" class="form-control" required=""
-												autocomplete="on" name="Uniforme3">
-											<div class="input-group-append"><span class="input-group-text"
-													style="cursor:grab"
+										<div id="vlUniforme" class="input-group mb-3">
+											<input type="text" id="intervaloUniforme"
+												placeholder="Informe o valor a ser calculado" class="form-control"
+												required="" autocomplete="on" name="Uniforme3">
+											<div class="input-group-append" id="limparUniforme">
+												<span class="input-group-text" style="cursor:grab"
 													onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
 											</div>
 										</div>
@@ -396,11 +470,12 @@
 	<!--===============================================================================================-->
 	<script src="js/main.js"></script>
 
-	<!-- importando scripts -->
-
-	<script language="javascript" src="_algortimos/probabilidade/probabilidade.js"></script>
-
+	<!-- importando algoritmos -->
+	<script language="javascript" src="_algortimos/probabilidade/binomial.js"></script>
+	<script language="javascript" src="_algortimos/probabilidade/eventos.js"></script>
+	<script language="javascript" src="_algortimos/probabilidade/normal.js"></script>
 	<script language="javascript" src="_algortimos/probabilidade/tabela.js"></script>
+	<script language="javascript" src="_algortimos/probabilidade/uniforme.js"></script>
 
 
 </body>

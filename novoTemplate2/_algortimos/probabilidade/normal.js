@@ -1,6 +1,4 @@
-let resultadoNormal = document.querySelector('.resultadoNormal')
-let btnCalcNormal = document.querySelector('#btnCalcNormal')
-
+//PROBABILIDADE NORMAL
 document.querySelector('#btnCalcNormal').onclick = () => {
     const media = document.querySelector('#normalMedia').value
     const desv = document.querySelector('#normalDesvio').value
@@ -126,6 +124,8 @@ document.querySelector('#btnCalcNormal').onclick = () => {
     }
 
     /* VOLTAR A EXIBIR a div resultadoNormal */
+    const resultadoNormal = document.querySelector('.resultadoNormal')
+
     resultadoNormal.style.removeProperty('display')
     resultadoNormal.innerHTML = `
         <div>
