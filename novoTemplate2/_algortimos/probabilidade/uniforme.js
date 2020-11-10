@@ -1,14 +1,29 @@
-//PROBABILIDADE UNIFORME
 document.querySelector('#btnCalcUniforme').onclick = () => {
-    //document.getElementById("tabela-probabilidade").style.display = 'none';
+
+    // Capturando elementos para usar em funções...
     let pontoMin = parseFloat(document.querySelector('#uniformeMinimo').value)
     let pontoMax = parseFloat(document.querySelector('#uniformeMaximo').value)
-    let menorQProbabilidade = parseFloat(document.querySelector('#intervaloUniforme').value)
-    let maiorQProbabilidade = parseFloat(document.querySelector('#intervaloUniforme').value)
-    let inicialProbabilidade = parseFloat(document.querySelector('input[name="uniforme3"]').value)
-    let finalProbabilidade = parseFloat(document.querySelector('input[name="uniforme4"]').value)
-    let MenorEntreMaior_Unif = document.querySelector('div.active').innerText
+    let Menor, Inicial, Final, Maior
 
+    // abaixo verificando qual botão foi clicado (a partir da classe ativa)
+    const MenorEntreMaior_Unif = document.querySelector('div#botoesUniforme > div.active').innerText
+    switch (MenorEntreMaior_Unif) {
+        case 'Menor':
+            Menor = parseFloat(document.querySelector('#intervaloUniforme').value)
+            break;
+
+        case 'Entre':
+            Inicial = parseFloat(document.getElementsByName('uniforme3')[0].value)
+            Final = parseFloat(document.getElementsByName('uniforme4')[0].value)
+            break;
+
+        case 'Maior':
+            Maior = parseFloat(document.querySelector('#intervaloUniforme').value)
+            break;
+    }
+
+
+    // Validações + cálculos
     if ((isNaN(pontoMin)) && (isNaN(pontoMax))) {
         alert("Insira o ponto mínimo e o ponto máximo")
 
@@ -18,42 +33,51 @@ document.querySelector('#btnCalcUniforme').onclick = () => {
     } else if (isNaN(pontoMax)) {
         alert("Insira o ponto máximo")
 
+    } else if (MenorEntreMaior_Unif == 'Menor') {
         debugger
-        let intervalo = (menorQProbabilidade - pontoMin);
+        let intervalo = (Menor - pontoMin);
         let probabilidade = ((1 / (pontoMax - pontoMin)) * intervalo);
-        console.log(menorQProbabilidade, intervalo);
-        //document.getElementById("tabela-probabilidade").style.display = 'block';
+        console.log(Menor, intervalo);
         calcMedidas(probabilidade)
 
     } else if (MenorEntreMaior_Unif == 'Entre') {
-        if ((isNaN(inicialProbabilidade)) || (isNaN(finalProbabilidade))) {
+        debugger
+        if ((isNaN(Inicial)) || (isNaN(Final))) {
             alert("Insira o(s) campo(s) que falta(m)")
 
         } else {
-            let intervalo = finalProbabilidade - inicialProbabilidade;
+            debugger
+            let intervalo = Final - Inicial;
             let probabilidade = (1 / (pontoMax - pontoMin)) * intervalo;
-            console.log(inicialProbabilidade, finalProbabilidade, probabilidade);
-            //document.getElementById("tabela-probabilidade").style.display = 'block';
+            console.log(Inicial, Final, probabilidade);
             calcMedidas(probabilidade)
         }
 
     } else if (MenorEntreMaior_Unif == 'Maior') {
-        if (isNaN(maiorQProbabilidade)) {
+        debugger
+        if (isNaN(Maior)) {
             alert("Insira o campo que falta")
 
         } else {
-            let intervalo = pontoMax - maiorQProbabilidade;
+            debugger
+            let intervalo = pontoMax - Maior;
             let probabilidade = (1 / (pontoMax - pontoMin)) * intervalo;
-            console.log(maiorQProbabilidade, probabilidade);
-            //document.getElementById("tabela-probabilidade").style.display = 'block';
+            console.log(Maior, probabilidade);
             calcMedidas(probabilidade)
         }
     }
 
+
+    // Exibição de Resultado
     function calcMedidas(probabilidade) {
+        debugger
         let media = (pontoMax + pontoMin) / 2;
         let desvio = Math.sqrt((Math.pow((pontoMax - pontoMin), 2)) / 12);
         let variacao = (desvio / media) * 100;
-        document.querySelector('#resultadoUniforme').innerHTML = `<tr><div>${(probabilidade * 100).toFixed(2)}%</div><div>${media.toFixed(2)}</div><div>${desvio.toFixed(2)}</div><div>${variacao.toFixed(2)}%</div></tr>`
+        document.querySelector('.resultadoUniforme').innerHTML = `
+        <div>Probabilidade: ${(probabilidade * 100).toFixed(2)}%</div>
+        <div>Média: ${media.toFixed(2)}</div>
+        <div>Desvio Padrão: ${desvio.toFixed(2)}</div>
+        <div>Variância: ${variacao.toFixed(2)}%</div>`
     }
 }

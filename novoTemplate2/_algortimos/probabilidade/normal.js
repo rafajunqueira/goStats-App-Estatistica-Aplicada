@@ -3,11 +3,11 @@ document.querySelector('#btnCalcNormal').onclick = () => {
     const media = document.querySelector('#normalMedia').value
     const desv = document.querySelector('#normalDesvio').value
     const opt_intervalo = document.querySelector('label.active').innerText
-    const intervalo = document.querySelector('#intervalo').value
+    const intervaloNormal = document.querySelector('#intervaloNormal').value
 
     let i, y, z, coluna, linha, p, probabilidade_int, prob = []
 
-    let vetIntervalo = intervalo.split(';').map(Number)
+    let vetIntervalo = intervaloNormal.split(';').map(Number)
 
     switch (opt_intervalo) {
         case 'Menor':
