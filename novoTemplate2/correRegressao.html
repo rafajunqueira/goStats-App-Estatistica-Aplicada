@@ -43,6 +43,7 @@
 
 
 <body data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="0" class=""><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
     <!--=====================É NOIS=====================-->
     <!-- Google Fonts -->
@@ -129,6 +130,20 @@
             </li>
         </ul>
     </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
     <div class="mobile-nav-overly" style="display: none;"></div>
     <nav class="mobile-nav d-lg-none">
         <ul>
@@ -165,130 +180,73 @@
 
 
 
-            <div id="formManual" class="wrap-login100" style="
+            <div style="
  padding-right: 20px;
     padding-left: 20px;
     padding-top: 33px;
     border-top-width: 50px;
     margin-top: 50px;
-    ">
-
-                <form id="correlationAndRegression" class="c-form__box content is-active" data-cr="">
-                    <h2>Entrada de dados</h2>
-                    <div class="o-label--input">
-                        <label for="cr-name-independente" class="o-label-title">Nome da variavel independente
-                            (X)</label>
-                        <input type="text" id="cr-name-independente" class="o-label-input" required="true"
-                            data-cr-name-x="">
-                    </div>
-
-                    <div class="o-label--input">
-                        <label for="cr-name-dependente" class="o-label-title">Nome da variavel dependente (Y)</label>
-                        <input type="text" id="cr-name-dependente" class="o-label-input" required="true"
-                            data-cr-name-y="">
-                    </div>
-
-                    <div class="o-label--input">
-                        <label for="cr-independente" class="o-label-title">Historico da variavel independente
-                            (X)</label>
-                        <input type="text" id="cr-independente" class="o-label-input" required="true" data-cr-x="">
-                    </div>
-
-                    <div class="o-label--input">
-                        <label for="cr-dependente" class="o-label-title">Historico da variavel dependente (Y)</label>
-                        <input type="text" id="cr-dependente" class="o-label-input" required="true" data-cr-y="">
-                    </div>
-
-                    <button type="button" class="o-button o-button--calculate" button-cr-empty="">Limpar os
-                        campos</button>
-
-                    <div class="o-button o-button--file">
-                        <input type="file" id="file-cr" accept=".csv,.txt" data-cr-file="">
-                        <label class="o-button_label" for="file-cr">Escolha o arquivo</label>
-                    </div>
-
-                    <button class="o-button o-button--calculate" data-button-cr="">Calcular</button>
-
-                </form>
-                <form style="margin-left: auto; margin-right: auto;" id="testeVal">
-                    <div class="form-row">
-                        <h4 class="card-title" style="margin-left: auto; margin-right: auto;">Insira abaixo os dados :
-                        </h4>
+    " class="wrap-login100" id="formManual">
+                <div id="Change_CorelaRegress" style="display: block;">
+                    <div class="container" style="margin-top: 50px; border: #9fa0a0 2px dashed; padding: 9%;">
                         <div class="input-group mb-3">
-                            <input type="text" id="nomeVariavel" placeholder="Nome da variável" class="form-control"
-                                required="" autocomplete="on" name="nomeVariavel">
-                            <div class="input-group-append">
-                                <span class="input-group-text" style="cursor:grab"
-                                    onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">(X)</span>
+                            </div>
+                            <input type="text" id="varX" class="form-control"
+                                placeholder="Insira os valores separados por ';' " aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">(Y)</span>
+                            </div>
+                            <input type="text" id="varY" class="form-control"
+                                placeholder="Insira os valores separados por ';'" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button type="button" onclick="corelacao()" class="btn btn-secondary col-md-12"
+                                    style="margin-bottom: 5px;">Entrada</button>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Escolher arquivo CSV</label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <input type="text" id="inputDados"
-                            placeholder="Insira valores separados por ';' - em decimais use ponto" class="form-control"
-                            required="" autocomplete="on" value="" name="dadosAqui">
-                        <div class="input-group-append">
-                            <span class="input-group-text" style="cursor:grab"
-                                onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-12 text-center d-flex flex-column">
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons"><label
-                                    class="btn btn-secondary active">Amostra<input type="radio" name="options"
-                                        id="amostra" checked=""></label><label class="btn btn-secondary">População<input
-                                        type="radio" name="options" id="populacao"></label></div>
-                        </div>
-                    </div>
-                    <div class="form-row mt-0.5">
-                        <div class="col-12 text-center"><a class="btn btn-outline-success" id="btnCalcManual" style="padding-top: 6px;
- border-top-width: 1px;
-    background-color: #28a745;
-    color: white;
-    " onfocus="modmedmed()">Calcular<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></a></div>
-                    </div>
-                </form>
-            </div>
-            <div id="formResultado" class="wrap-login100" style="
- padding-right: 20px;
-    padding-left: 20px;
-    padding-top: 33px;
-    border-top-width: 50px;
-    margin-top: 25px;
-    text-align: center;
-    padding-bottom: 10px;
-    ">
-                <h4 id="divResultados" class="card-title" style="margin-left: auto; margin-right: auto;">Resultados:
-                </h4>
-                <div class="s-section s-section--result" data-result-holder="">
-                    <div class="c-form-wrapp c-form-wrapp--result">
-                        <div data-content-pdf="">
-                            <h2 class="c-form-wrapp__title">Resultados</h2>
-                            <div data-table-result=""></div>
-                            <div class="c-result__canvas-holder" data-canvas=""></div>
-                        </div>
-                        <div class="o-buttons__holder">
-                            <a class="o-button o-button--result" href=".s-section--form" data-jump="">Voltar a entrada
-                                de dados</a>
-                            <button class="o-button o-button--result" data-export-pdf="">Exportar</button>
-                            <div class="o-button-loading" data-export-load="">
-                                <div class="ball"></div>
-                                <div class="ball"></div>
-                                <div class="ball"></div>
+                        <div id="corelacao_results"></div>
+                        <hr>
+                        Pontos Futuros
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">(X)</span>
                             </div>
+                            <input type="text" id="x_future" oninput="regressaoX()" class="form-control"
+                                placeholder="Insira os valores separados por ';' " aria-label="Username"
+                                aria-describedby="basic-addon1">
                         </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">(Y)</span>
+                            </div>
+                            <input type="text" id="y_future" oninput="regressaoY()" class="form-control"
+                                placeholder="Insira os valores separados por ';'" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                        <div id="regressao_future"></div>
+
                     </div>
-                </div><a class="btn btn-outline-success" id="btnCalc" style="
- padding-top: 6px;
-    border-top-width: 1px;
-    background-color: #28a745;
-    color: white;
-    margin-top: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    " onfocus="modmedmed()" onclick="history.go(0);
-    ">Refrescar Página<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></a>
+
+                    <hr>
+                    <div class="graficos">
+                        <h2 align="center">Grafico</h2>
+                        <hr>
+                        <canvas id="myChartgraficoCorrelacao" class="chart" width="20" height="20"></canvas>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
     <!--===============================================================================================-->
@@ -310,11 +268,13 @@
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
 
-    <script src="/_algortimos/correRegressao/correRegressao.js"></script>
-    <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
-    <script src="https://raw.githubusercontent.com/olado/doT/v2/doT.js"></script>
+    <!-- importando scripts de Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-    
+    <script src="_algortimos/correRegressao/correRegressao_new.js"></script>
+
+
+
 
 </body>
 

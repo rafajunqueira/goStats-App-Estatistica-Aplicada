@@ -1,7 +1,5 @@
-/* import MicroModal from 'micromodal'; */
-/* import Jump from 'jump.js';*/
-/* import doT from 'dot'; */
-import Chart from 'chart.js';
+
+/* import Chart from 'chart.js'; */
 
 class CorrelationNRegression {
   constructor() {
