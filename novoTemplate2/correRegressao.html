@@ -44,6 +44,7 @@
 
 <body data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="0" class=""><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
     <!--=====================É NOIS=====================-->
     <!-- Google Fonts -->
@@ -144,6 +145,20 @@
             </li>
         </ul>
     </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
     <div class="mobile-nav-overly" style="display: none;"></div>
     <nav class="mobile-nav d-lg-none">
         <ul>
@@ -181,67 +196,69 @@
 
 
             <div style="
- padding-right: 20px;
-    padding-left: 20px;
-    padding-top: 33px;
-    border-top-width: 50px;
-    margin-top: 50px;
-    " class="wrap-login100" id="formManual">
-                <div id="Change_CorelaRegress" style="display: block;">
-                    <div class="container" style="margin-top: 50px; border: #9fa0a0 2px dashed; padding: 9%;">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">(X)</span>
-                            </div>
-                            <input type="text" id="varX" class="form-control"
-                                placeholder="Insira os valores separados por ';' " aria-label="Username"
-                                aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">(Y)</span>
-                            </div>
-                            <input type="text" id="varY" class="form-control"
-                                placeholder="Insira os valores separados por ';'" aria-label="Username"
-                                aria-describedby="basic-addon1">
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <button type="button" onclick="corelacao()" class="btn btn-secondary col-md-12"
-                                    style="margin-bottom: 5px;">Entrada</button>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Escolher arquivo CSV</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="corelacao_results"></div>
-                        <hr>
-                        Pontos Futuros
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">(X)</span>
-                            </div>
-                            <input type="text" id="x_future" oninput="regressaoX()" class="form-control"
-                                placeholder="Insira os valores separados por ';' " aria-label="Username"
-                                aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">(Y)</span>
-                            </div>
-                            <input type="text" id="y_future" oninput="regressaoY()" class="form-control"
-                                placeholder="Insira os valores separados por ';'" aria-label="Username"
-                                aria-describedby="basic-addon1">
-                        </div>
-                        <div id="regressao_future"></div>
+            padding-right: 20px;
+               padding-left: 20px;
+               padding-top: 33px;
+               border-top-width: 50px;
+               margin-top: 50px;
+               " class="wrap-login100" id="formManual">
+                <div id="Change_CorelaRegress" style="margin-left: auto; margin-right: auto;">
 
+                    <h4 class="card-title" style="text-align: center">Estatística Descritiva</h4>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">(X)</span>
+                        </div>
+                        <input type="text" id="varX" class="form-control" name="varX" autocomplete="on"
+                            placeholder="Insira os valores separados por ';' " aria-label="Username"
+                            aria-describedby="basic-addon1">
                     </div>
-
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">(Y)</span>
+                        </div>
+                        <input type="text" id="varY" class="form-control" name="varY" autocomplete="on"
+                            placeholder="Insira os valores separados por ';'" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="button" id="correRegressao" class="btn btn-secondary col-md-12"
+                                style="margin-bottom: 5px;">Entrada</button>
+                            <div class="form-row"><input class="form-control" type="file" id="input" accept=".xls,.xlsx"
+                                    style="
+ border-bottom-width: 1px;
+    margin-bottom: 10px;
+    "></div>
+                        </div>
+                    </div>
+                    <div id="corelacao_results"></div>
                     <hr>
+                    Pontos Futuros
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">(X)</span>
+                        </div>
+                        <input type="text" id="x_future" oninput="regressaoX()" class="form-control"
+                            placeholder="Insira os valores separados por ';' " aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">(Y)</span>
+                        </div>
+                        <input type="text" id="y_future" oninput="regressaoY()" class="form-control"
+                            placeholder="Insira os valores separados por ';'" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div id="regressao_future"></div>
+
+
+
+
                     <div class="graficos">
-                        <h2 align="center">Grafico</h2>
-                        <hr>
+                        <h4 class="card-title" style="text-align: center">Resultados</h4>
+
                         <canvas id="myChartgraficoCorrelacao" class="chart" width="20" height="20"></canvas>
                     </div>
                 </div>
@@ -271,9 +288,7 @@
     <!-- importando scripts de Chart.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-    <script src="_algortimos/correRegressao/correRegressao_new.js"></script>
-
-
+    <script src="_algortimos/correRegressao/correRegressao.js"></script>
 
 
 </body>

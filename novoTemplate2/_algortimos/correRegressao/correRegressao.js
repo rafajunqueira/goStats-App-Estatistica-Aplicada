@@ -1,307 +1,183 @@
+document.querySelector('#correRegressao').onclick = () => corelacao()
 
-/* import Chart from 'chart.js'; */
+function corelacao() {
+	corelacao_results.innerHTML = ''
+	let cor = document.getElementById('varX').value;
+	let reg = document.getElementById('varY').value;
 
-class CorrelationNRegression {
-  constructor() {
-    this.submitButton = document.querySelector('[data-button-cr]');
-    this.fileButton = document.querySelector('[data-cr-file]');
-    this.buttonEmpty = document.querySelector('[button-cr-empty]');
-    this.modalMessage = document.querySelector('[data-modal]').querySelector('[data-modal-message]');
-    this.holderResult = document.querySelector('[data-result-holder]');
-    this.canvasHolder = document.querySelector('[data-canvas]');
-    this.containerResult = document.createElement('div');
-    this.crTemplate = doT.template('<div class="c-prob-result"><p class="c-prob-result__cell"><b>Coeficiente de correlação:</b><br /> {{=it.cr}}</p><p class="c-prob-result__cell"><b>Nivel de correlção:</b> <br />{{=it.crNvl}}</p><p class="c-prob-result__cell"><b>Equação da reta:</b> <br />{{=it.equaCR}}</p></div>');
-    this.dataX = { name: null, value: null, somX: null, somXsqr: null };
-    this.dataY = { name: null, value: null, somY: null, somYsqr: null };
-    this.dataXY = null;
-    this.dataR = null;
-    this.dataA = null;
-    this.dataB = null;
-    this.rateR = null;
-    this.inputX = document.createElement('input');
-    this.inputY = document.createElement('input');
-    this.title = document.createElement('h2');
-    this.containerFuture = document.createElement('div');
-    this.valueX = null;
-    this.valueY = null;
-    this.result = null;
-    this.setup();
-  }
+	let vetCorrelacao = cor.toString().split(';');
+	let vetregressao = reg.toString().split(';');
 
-  setup() {
-    this.setupListeners();
-  }
+	let x = 0; let xy = 0; let y = 0; let xx = 0; let yy = 0; var vetval = [];
+	let n = vetCorrelacao.length
+	for (let i = 0; i < vetCorrelacao.length; i++) {
+		x += Number(vetCorrelacao[i])
+		y += Number(vetregressao[i])
+		xy += Number(vetregressao[i] * vetCorrelacao[i])
+		xx += Number(Math.pow(vetCorrelacao[i], 2))
+		yy += Number(Math.pow(vetregressao[i], 2))
+	}
+	//-----------CORRELACAO--------------------------------------------------//
+	let calcdividendo = (n * xy) - (x * y)
+	let calcdivisor = (Math.sqrt((n * xx - (x * x))).toFixed(2) * Math.sqrt((n * yy - y * y)).toFixed(2)).toFixed(2)
+	let r = parseFloat(((calcdividendo / calcdivisor) * 100)).toFixed(2)
 
-  setupListeners() {
-    this.buttonEmpty.addEventListener('click', () => CorrelationNRegression.setEmpty());
 
-    this.fileButton.addEventListener('change', () => this.readFile());
+	//----------REGRESSAO-----------------------------------------------------//
+	var a = ((n * xy - x * y) / (n * xx - x * x))
+	vetval.push(a)
+	let regy = y / n
+	let regx = x / n
+	var b = (regy - a * regx)
+	vetval.push(b)
 
-    this.submitButton.addEventListener('click', (evt) => {
-      evt.preventDefault();
-      this.recoverData();
-      this.validateData();
-    });
-  }
+	a = parseFloat(a.toFixed(2))
+	b = parseFloat(b.toFixed(2))
 
-  static setEmpty() {
-    document.querySelector('[data-cr-name-x]').value = '';
-    document.querySelector('[data-cr-name-y]').value = '';
-    document.querySelector('[data-cr-x]').value = '';
-    document.querySelector('[data-cr-y]').value = '';
-  }
+	corelacao_results.innerHTML += `Correlação: ${r} %  | y = ${a.toFixed(2)}X + ${b.toFixed(2)}`
 
-  readFile() {
-    if (window.File && window.FileReader && window.FileList && window.Blob) {
-      const file = this.fileButton.files[this.fileButton.files.length - 1];
-      const inputX = document.querySelector('[data-cr-x]');
-      const inputY = document.querySelector('[data-cr-y]');
-      const regExp = /.csv$||.txt$/;
-      if (regExp.test(file.name)) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          const data = reader.result.split(/\n/);
-          inputX.value = data[0];
-          inputY.value = data[1];
-        };
-        reader.readAsText(file);
-      } else {
-        this.modalMessage.innerHTML = 'Escolha um arquivo no formato csv';
-        MicroModal.show('modal-1');
-      }
-    } else {
-      this.modalMessage.innerHTML = 'Seu navegador nao suporta essa funcionalidade';
-      MicroModal.show('modal-1');
-    }
-  }
+	corrigeGrafico()
 
-  recoverData() {
-    this.dataX.name = document.querySelector('[data-cr-name-x]').value;
-    this.dataY.name = document.querySelector('[data-cr-name-y]').value;
-    this.dataX.value = document.querySelector('[data-cr-x]').value.replace(/,/g, '.');
-    this.dataY.value = document.querySelector('[data-cr-y]').value.replace(/,/g, '.');
-  }
+	return vetval
 
-  validateData() {
-    const regExpNumber = /^[\d]+([;,.][\d]+)*$/;
-
-    if (!this.dataX.name || !this.dataY.name || !this.dataX.value || !this.dataY.value) { // eslint-disable-line
-      this.modalMessage.innerHTML = 'Preencha todos os campos!!!';
-      MicroModal.show('modal-1');
-    } else if (!regExpNumber.test(this.dataX.value) || !regExpNumber.test(this.dataY.value)) {
-      this.modalMessage.innerHTML = 'Preencha todos os corretamente!!!';
-      MicroModal.show('modal-1');
-    } else {
-      this.convertData();
-      if (this.dataX.value.length !== this.dataY.value.length) {
-        this.modalMessage.innerHTML = 'Parece que a quantidade de históricos da variável dependente esta diferente da variável independente.' // eslint-disable-line
-        MicroModal.show('modal-1');
-      } else {
-        this.generateMatrix();
-        this.generateR();
-        this.regression();
-        this.futureProjection();
-        this.createResult();
-        this.createChart();
-        this.appendResult();
-      }
-    }
-  }
-
-  convertData() {
-    this.dataX.value = this.dataX.value.split(/;/);
-    this.dataY.value = this.dataY.value.split(/;/);
-    this.dataX.value = this.dataX.value.map(num => parseFloat(num));
-    this.dataY.value = this.dataY.value.map(num => parseFloat(num));
-  }
-
-  generateMatrix() {
-    this.dataX.somX = null;
-    this.dataY.somY = null;
-    this.dataX.somXsqr = null;
-    this.dataY.somYsqr = null;
-    this.dataXY = null;
-
-    for (let index = 0; index < this.dataX.value.length; index += 1) {
-      this.dataX.somX += this.dataX.value[index];
-      this.dataY.somY += this.dataY.value[index];
-      this.dataX.somXsqr += Math.pow(this.dataX.value[index], 2); // eslint-disable-line
-      this.dataY.somYsqr += Math.pow(this.dataY.value[index], 2); // eslint-disable-line
-      this.dataXY += (this.dataX.value[index] * this.dataY.value[index]);
-    }
-  }
-
-  generateR() {
-    const size = this.dataX.value.length;
-    this.dataR = (size * this.dataXY) - (this.dataX.somX * this.dataY.somY);
-
-    const qd1 = (size * this.dataX.somXsqr) - Math.pow(this.dataX.somX, 2); // eslint-disable-line
-    const qd2 = (size * this.dataY.somYsqr) - Math.pow(this.dataY.somY, 2); // eslint-disable-line
-
-    this.dataR = this.dataR / Math.sqrt(qd1 * qd2);
-    this.dataR = this.dataR * 100;
-    this.dataR = Math.round(this.dataR);
-    this.dataR = this.dataR / 100;
-
-    if (this.dataR < 0.3) {
-      this.rateR = 'inexistente ou muito fraca';
-    } else if (this.dataR >= 0.3 && this.dataR < 0.6) {
-      this.rateR = 'fraca';
-    } else if (this.dataR >= 0.6 && this.dataR <= 1) {
-      this.rateR = 'média a forte';
-    }
-  }
-
-  regression() {
-    const size = this.dataX.value.length;
-    this.dataA = (size * this.dataXY) - (this.dataX.somX * this.dataY.somY);
-    const qd1 = (size * this.dataX.somXsqr) - Math.pow(this.dataX.somX, 2); // eslint-disable-line
-    this.dataA = (this.dataA / qd1).toFixed(2);
-    this.dataB = (this.dataY.somY / size) - (this.dataA * (this.dataX.somX / size));
-    this.dataB = (Math.round(this.dataB * 100)) / 100;
-  }
-
-  futureProjection() {
-    this.containerFuture.innerHTML = '';
-    this.inputX.addEventListener('keyup', (e) => { this.listenerX(e); });
-    this.inputY.addEventListener('keyup', (e) => { this.listenerY(e); });
-
-    const title = document.createElement('h2');
-    const nodeTitle = document.createTextNode('Calculo de projeção futura');
-    const elemA = document.createElement('p');
-    const nodeA = document.createTextNode(` = ${this.dataA} x`);
-    const elemB = document.createElement('p');
-    const nodeB = document.createTextNode(`+${this.dataB}`);
-
-    title.appendChild(nodeTitle);
-    elemA.appendChild(nodeA);
-    elemB.appendChild(nodeB);
-
-    title.classList.add('c-projection__title');
-    elemA.classList.add('c-projection__text');
-    elemB.classList.add('c-projection__text');
-    this.inputX.classList.add('c-projection__input');
-    this.inputY.classList.add('c-projection__input');
-    this.containerFuture.classList.add('c-projection');
-
-    this.containerFuture.appendChild(title);
-    this.containerFuture.appendChild(this.inputY);
-    this.containerFuture.appendChild(elemA);
-    this.containerFuture.appendChild(this.inputX);
-    this.containerFuture.appendChild(elemB);
-  }
-
-  listenerX(e) {
-    if (this.inputX.value === '') {
-      this.inputY.value = '';
-    } else {
-      this.valueX = e.currentTarget.value;
-
-      this.valueY = ((this.dataA * this.valueX) + this.dataB).toFixed(2);
-      this.inputY.value = this.valueY;
-    }
-  }
-
-  listenerY(e) {
-    if (this.inputY.value === '') {
-      this.inputX.value = '';
-    } else {
-      this.valueY = e.currentTarget.value;
-      this.valueX = ((this.valueY - this.dataB) / this.dataA).toFixed(2);
-      this.inputX.value = this.valueX;
-    }
-  }
-
-  createResult() {
-    this.containerResult.innerHTML = '';
-    this.result = this.crTemplate({
-      cr: this.dataR,
-      crNvl: this.rateR,
-      equaCR: `y = ${this.dataA}x + ${this.dataB}`,
-    });
-
-    const resultCells = document.createElement('div');
-
-    resultCells.innerHTML = this.result;
-
-    this.containerResult.appendChild(resultCells);
-    this.containerResult.appendChild(this.containerFuture);
-  }
-
-  createChart() {
-    this.canvasHolder.innerHTML = '';
-
-    const canvas = document.createElement('canvas');
-    let yMenor = this.dataY.value[0];
-    let yMaior = 0;
-    const scatter = [];
-
-    for (let index = 0; index < this.dataX.value.length; index += 1) {
-      scatter.push({ x: this.dataX.value[index], y: this.dataY.value[index] });
-
-      if (this.dataY.value[index] < yMenor) { yMenor = this.dataY.value[index]; }
-      if (this.dataY.value[index] > yMaior) { yMaior = this.dataY.value[index]; }
-    }
-
-    const scatterChart = new Chart(canvas, { // eslint-disable-line
-      type: 'scatter',
-      data: {
-        datasets: [{
-          label: 'X e Y',
-          data: scatter,
-          backgroundColor: '#470097',
-        },
-        {
-          type: 'line',
-          label: 'Projeção',
-          data: [{
-            x: (yMaior - this.dataB) / this.dataA,
-            y: yMaior,
-          },
-          {
-            x: (yMenor - this.dataB) / this.dataA,
-            y: yMenor,
-          }],
-          showLine: true,
-          backgroundColor: 'rgba(0,0,255,0)',
-          pointBorderColor: 'rgba(0,0,255,0)',
-          borderColor: '#1aaad8',
-        }],
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            beginAtZero: true,
-          }],
-          xAxes: [{
-            beginAtZero: true,
-          }],
-        },
-      },
-    });
-
-    this.canvasHolder.appendChild(canvas);
-  }
-
-  appendResult() {
-    if (this.containerResult !== undefined) {
-      if (this.holderResult.className.indexOf('is-active') === -1) {
-        this.holderResult.classList.add('is-active');
-      }
-
-      this.holderResult.querySelector('[data-table-result]').innerHTML = '';
-      this.holderResult.querySelector('[data-table-result]').appendChild(this.containerResult);
-      /* setTimeout(() => {
-        Jump('.s-section--result');
-      }, 500); */
-    }
-  }
 }
 
-export default {
-  create() {
-    return new CorrelationNRegression();
-  },
-};
+function corrigeGrafico() {
+	// Inversão de parâmetros para que o gráfico fique no eixo certo
+	let reg = document.getElementById('varX').value;
+	let cor = document.getElementById('varY').value;
 
-export const Class = CorrelationNRegression;
+	let vetCorrelacao = cor.toString().split(';');
+	let vetregressao = reg.toString().split(';');
+
+	let x = 0; let xy = 0; let y = 0; let xx = 0; let yy = 0; var vetval = [];
+	let n = vetCorrelacao.length
+	for (let i = 0; i < vetCorrelacao.length; i++) {
+		x += Number(vetCorrelacao[i])
+		y += Number(vetregressao[i])
+		xy += Number(vetregressao[i] * vetCorrelacao[i])
+		xx += Number(Math.pow(vetCorrelacao[i], 2))
+		yy += Number(Math.pow(vetregressao[i], 2))
+	}
+	//-----------CORRELACAO--------------------------------------------------//
+	let calcdividendo = (n * xy) - (x * y)
+	let calcdivisor = (Math.sqrt((n * xx - (x * x))).toFixed(2) * Math.sqrt((n * yy - y * y)).toFixed(2)).toFixed(2)
+	let r = parseFloat(((calcdividendo / calcdivisor) * 100)).toFixed(2)
+
+
+	//----------REGRESSAO-----------------------------------------------------//
+	var a = ((n * xy - x * y) / (n * xx - x * x))
+	vetval.push(a)
+	let regy = y / n
+	let regx = x / n
+	var b = (regy - a * regx)
+	vetval.push(b)
+
+	a = parseFloat(a.toFixed(2))
+	b = parseFloat(b.toFixed(2))
+
+	graficocorelaco(cor, reg, a, b)
+
+	return vetval
+}
+
+function regressaoX(vetval) {
+	let vet = corelacao(vetval)
+
+	let a = (vet[0]).toFixed(4); let b = (vet[1]).toFixed(4)
+
+	var x_future = document.getElementById('x_future').value;
+	let future_y = (Number(a) * Number(x_future) + Number(b)).toFixed(2)
+
+
+	document.getElementById('y_future').value = future_y;
+
+}
+
+function regressaoY(vetval) {
+	let vet = corelacao(vetval)
+
+	let a = (vet[0]).toFixed(4); let b = (vet[1]).toFixed(4)
+
+	var y_future = document.getElementById('y_future').value;
+	let future_x = ((Number(y_future) - Number(b)) / Number(a)).toFixed(2)
+
+
+	document.getElementById('x_future').value = future_x;
+
+}
+
+function graficocorelaco(cor, reg, a = null, b = null) {
+
+	var valX = cor.split(';')
+	var valY = reg.split(';')
+	debugger
+
+	var ctx = document.getElementById("myChartgraficoCorrelacao").getContext('2d');
+	Chart.defaults.global.defaultFontSize = 25;
+	var dados = [];
+
+	//Monta os pontos no grafico//
+	for (var i = 0; i < cor.length; i++) {
+		var dd = {
+			x: valY[i],
+			y: valX[i]
+		}
+		dados.push(dd)
+	}
+
+
+	var reta = [{ x: Math.min(...valY), y: (Math.min(...valY) - b) / a }, { x: Math.max(...valY), y: (Math.max(...valY) - b) / a }];
+
+
+	new Chart(ctx, {
+		type: 'line',
+		data: {
+			datasets: [{
+				type: 'line',
+				label: 'Reta Regressão',
+				data: reta,
+				fill: false,
+				backgroundColor: "#18d26e",
+				borderColor: "#18d26e",
+				pointRadius: 3
+			}, {
+				type: 'bubble',
+				label: 'Pontos',
+				data: dados,
+				backgroundColor: "rgba(76,78,80, .7)",
+				borderColor: "transparent",
+			}]
+		},
+		options: {
+			legend: {
+				labels: {
+					// This more specific font property overrides the global property
+					fontSize: 12
+				}
+			},
+			scales: {
+				xAxes: [{
+					type: 'linear',
+					position: 'bottom',
+					ticks: {
+						fontSize: 12
+					}
+
+				}],
+				yAxes: [{
+					type: 'linear',
+					position: 'left',
+					ticks: {
+						fontSize: 12
+					}
+				}],
+
+			}
+		}
+	});
+}
+
+
+
+// --------------------------------FIM CORRELAÇÃO E REGRESSÃO --------------------------------------------------
