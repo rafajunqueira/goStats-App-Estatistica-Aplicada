@@ -146,6 +146,10 @@
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
     <!--=====================É NOIS=====================-->
     <!-- Google Fonts -->
@@ -205,6 +209,62 @@
     <script src="assets/vendor/aos/aos.js"></script>
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
     <nav class="mobile-nav d-lg-none">
         <ul>
             <li class=""><a href="index.html">Home</a></li>
@@ -428,26 +488,25 @@
                 <div class="col-md-12 col-sm-12">
                     <div class="form-custom formulario">
                         <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
-                            <li class="nav-item" role="presentation"><a class="nav-link text-secondary active"
-                                    id="binomial-tab" data-toggle="tab" href="#binomial" role="tab"
-                                    aria-controls="binomial" aria-selected="true" onclick="trocarAbas()">Digitar
+                            <li class="nav-item" role="presentation"><a class="nav-link text-secondary" id="manualTab"
+                                    data-toggle="tab" href="#binomial" role="tab" aria-controls="binomial"
+                                    aria-selected="false" onclick="trocarAbas()">Digitar
                                     Manualmente</a>
                             </li>
-                            <li class="nav-item" role="presentation"><a class="nav-link text-secondary" id="normal-tab"
-                                    data-toggle="tab" href="#normal" role="tab" aria-controls="normal"
-                                    aria-selected="false" onclick="trocarAbas()">Importar Planilha</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-secondary active"
+                                    id="importTab" data-toggle="tab" href="#normal" role="tab" aria-controls="normal"
+                                    aria-selected="true" onclick="trocarAbas()">Importar Planilha</a></li>
 
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade active show" id="binomial" role="tabpanel"
-                                aria-labelledby="binomial-tab">
+                            <div class="tab-pane fade" id="binomial" role="tabpanel" aria-labelledby="binomial-tab">
                                 <form>
                                     <div class="form-row">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">(X)</span>
                                             </div>
-                                            <input type="text" id="varX" class="form-control" name="varX"
+                                            <input type="text" id="varXManual" class="form-control" name="varX"
                                                 autocomplete="on" placeholder="Insira os valores separados por ';' "
                                                 aria-label="Username" aria-describedby="basic-addon1">
 
@@ -465,7 +524,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">(Y)</span>
                                             </div>
-                                            <input type="text" id="varY" class="form-control" name="varY"
+                                            <input type="text" id="varYManual" class="form-control" name="varY"
                                                 autocomplete="on" placeholder="Insira os valores separados por ';'"
                                                 aria-label="Username" aria-describedby="basic-addon1">
                                             <div class="input-group-append">
@@ -489,14 +548,20 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="tab-pane fade" id="normal" role="tabpanel" aria-labelledby="normal-tab">
+                            <div class="tab-pane fade active show" id="normal" role="tabpanel"
+                                aria-labelledby="normal-tab">
                                 <form>
+                                    <div class="form-row"><input class="form-control" type="file" id="input"
+                                            accept=".xls,.xlsx" style="
+ border-bottom-width: 1px;
+    margin-bottom: 10px;
+    "></div>
                                     <div class="form-row">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">(X)</span>
                                             </div>
-                                            <input type="text" id="varX" class="form-control" name="varX"
+                                            <input type="text" id="varXImport" class="form-control" name="varX"
                                                 autocomplete="on" placeholder="Insira os valores separados por ';' "
                                                 aria-label="Username" aria-describedby="basic-addon1" disabled="">
 
@@ -511,7 +576,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">(Y)</span>
                                             </div>
-                                            <input type="text" id="varY" class="form-control" name="varY"
+                                            <input type="text" id="varYImport" class="form-control" name="varY"
                                                 autocomplete="on" placeholder="Insira os valores separados por ';'"
                                                 aria-label="Username" aria-describedby="basic-addon1" disabled="">
 
@@ -522,11 +587,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-row"><input class="form-control" type="file" id="input"
-                                            accept=".xls,.xlsx" style="
- border-bottom-width: 1px;
-    margin-bottom: 10px;
-    "></div>
+
                                     <div class="form-row mt-0.5">
                                         <div class="col-12 text-center"><a class="btn btn-outline-success"
                                                 id="btnCalcImport" style="padding-top: 6px;
@@ -545,7 +606,7 @@
             </div>
 
             <div id="formResultado" class="wrap-login100"
-                style="padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px;">
+                style="padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px; display: none;">
                 <form style="margin-left: auto; margin-right: auto;" id="testeVal">
                     <div class="form-row">
                         <h4 class="card-title" style="margin-left: auto; margin-right: auto;" id="divResultados">
@@ -640,6 +701,14 @@
     <script language="javascript" src="_algortimos/correRegressao/geraResultado.js"></script>
 
     <script language="javascript" src="_algortimos/correRegressao/eventosDOM.js"></script>
+
+
+
+
+
+
+
+
 
 
 

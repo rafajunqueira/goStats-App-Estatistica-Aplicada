@@ -1,9 +1,23 @@
-document.querySelector('#correRegressao').onclick = () => corelacao()
-
 function corelacao() {
+
+	const tabAtiva = document.querySelector('a.active');
+	let cor
+	let reg
+
+	switch (tabAtiva.id) {
+		case 'manualTab':
+			cor = document.getElementById('varXManual').value;
+			reg = document.getElementById('varYManual').value;
+			break;
+
+		case 'importTab':
+			cor = document.getElementById('varXImport').value;
+			reg = document.getElementById('varYImport').value;
+			break;
+	}
+
 	corelacao_results.innerHTML = ''
-	let cor = document.getElementById('varX').value;
-	let reg = document.getElementById('varY').value;
+
 
 	let vetCorrelacao = cor.toString().split(';');
 	let vetregressao = reg.toString().split(';');
@@ -22,6 +36,18 @@ function corelacao() {
 	let calcdivisor = (Math.sqrt((n * xx - (x * x))).toFixed(2) * Math.sqrt((n * yy - y * y)).toFixed(2)).toFixed(2)
 	let r = parseFloat(((calcdividendo / calcdivisor) * 100)).toFixed(2)
 
+	//----------- DETECTANDO O GRAU --------------------------------------------------//
+	let grau
+	let valor =*
+	if (r < 30){
+		grau = "Fraca"
+	}else if (r === 30 || r < 70){
+		grau = "Moderada"
+	}else if (r === 70 || r < 100){
+		grau = "Forte"
+	}else if (r === 100){
+		grau = "Perfeita"
+	}
 
 	//----------REGRESSAO-----------------------------------------------------//
 	var a = ((n * xy - x * y) / (n * xx - x * x))
@@ -34,7 +60,9 @@ function corelacao() {
 	a = parseFloat(a.toFixed(2))
 	b = parseFloat(b.toFixed(2))
 
-	corelacao_results.innerHTML += `Correlação: ${r} %  | y = ${a.toFixed(2)}X + ${b.toFixed(2)}`
+	corelacao_results.innerHTML += `Correlação: ${r} % [${grau}]
+	Equação da reta:
+	y = ${a.toFixed(2)}X + (${b.toFixed(2)})`
 
 	corrigeGrafico()
 
@@ -44,8 +72,23 @@ function corelacao() {
 
 function corrigeGrafico() {
 	// Inversão de parâmetros para que o gráfico fique no eixo certo
-	let reg = document.getElementById('varX').value;
-	let cor = document.getElementById('varY').value;
+	const tabAtiva = document.querySelector('a.active');
+	let cor
+	let reg
+
+	switch (tabAtiva.id) {
+		case 'manualTab':
+			reg = document.getElementById('varXManual').value;
+			cor = document.getElementById('varYManual').value;
+			break;
+
+		case 'importTab':
+			reg = document.getElementById('varXImport').value;
+			cor = document.getElementById('varYImport').value;
+			break;
+	}
+
+
 
 	let vetCorrelacao = cor.toString().split(';');
 	let vetregressao = reg.toString().split(';');

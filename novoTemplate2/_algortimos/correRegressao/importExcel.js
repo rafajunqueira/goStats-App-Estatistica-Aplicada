@@ -1,7 +1,18 @@
 const btnCalcImport = document.querySelector('#btnCalcImport')
 
 btnCalcImport.onclick = () => {
-    processaExcel()
+    const varXImport = document.querySelector('#varXImport').value
+    const varYImport = document.querySelector('#varYImport').value
+
+    if (varXImport == '' && varYImport == '') {
+        processaExcel()
+        debugger
+    } else {
+        const formResultado = document.querySelector('#formResultado');
+        formResultado.style.removeProperty('display')
+        corelacao()
+    }
+
 }
 
 
@@ -60,10 +71,6 @@ function processaExcel() {
 
 //Codigo responsa para CRIAR modal de Escolha
 
-//var escolhaFinal
-
-//let arrayTeste = []
-
 function modalEscolha([...nomesPlanilhas]) {
 
     const formResultado = document.querySelector('#formResultado');
@@ -109,9 +116,6 @@ escolhaFinal.onclick = () => {
         console.log('valoresEscolhidos :>> ', valoresEscolhidos);
         pegaValores(valoresEscolhidos)
 
-        const formImport = document.querySelector('#formImport');
-        formImport.style.removeProperty('display')
-
         const divResultados = document.querySelector('#divResultados');
         divResultados.innerHTML = `Resultados (Planilha ${planEscolhida}):`
     }
@@ -135,34 +139,24 @@ function pegaValores(valoresEscolhidos) {
     }
     debugger
 
-    /* inputX =
+    valoresX.shift()
+    valoresY.shift()
 
-        valoresEscolhidos
-
-    inputY
-
-    valoresEscolhidos */
+    debugger
 
 
+    // detectando tab ativa para passar no input certo os dados da planilha:
+    const tabAtiva = document.querySelector('a.active');
 
-    /*  let tamanho = Object.values(valoresEscolhidos).length
-     tamanho -= 2 // nesse 2 aqui descontamos tab de planilha (formatação excel)
- debugger
-     let valores = Object.values(valoresEscolhidos)
- console.log('valores :>> ', valores);
-     // esse arrayImportado passará depois para o input no HTML
-     let arrayImportado = []
-     debugger
-     for (let i = 1; i <= tamanho; i++) {
- 
-         let valorLinha = valores[i].v
-         arrayImportado.push(valorLinha)
-     }
-     debugger
-     preNomeVar = arrayImportado.shift()
-     preInput = arrayImportado
-     debugger
-     geraResultado(preNomeVar, preInput)
- 
-     //return [preNomeVar, preInput] */
+    switch (tabAtiva.id) {
+        case 'manualTab':
+            document.getElementById('varXManual').value = valoresX.join(';')
+            document.getElementById('varYManual').value = valoresY.join(';')
+            break;
+
+        case 'importTab':
+            document.getElementById('varXImport').value = valoresX.join(';')
+            document.getElementById('varYImport').value = valoresY.join(';')
+            break;
+    }
 }
