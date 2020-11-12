@@ -37,12 +37,113 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
         }
     </style>
+    <style type="text/css">
+        /* Chart.js */
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: .99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            animation: chartjs-render-animation 1ms
+        }
+
+        .chartjs-size-monitor,
+        .chartjs-size-monitor-expand,
+        .chartjs-size-monitor-shrink {
+            position: absolute;
+            direction: ltr;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            visibility: hidden;
+            z-index: -1
+        }
+
+        .chartjs-size-monitor-expand>div {
+            position: absolute;
+            width: 1000000px;
+            height: 1000000px;
+            left: 0;
+            top: 0
+        }
+
+        .chartjs-size-monitor-shrink>div {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            left: 0;
+            top: 0
+        }
+    </style>
+    <style type="text/css">
+        /* Chart.js */
+        @keyframes chartjs-render-animation {
+            from {
+                opacity: .99
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+
+        .chartjs-render-monitor {
+            animation: chartjs-render-animation 1ms
+        }
+
+        .chartjs-size-monitor,
+        .chartjs-size-monitor-expand,
+        .chartjs-size-monitor-shrink {
+            position: absolute;
+            direction: ltr;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            pointer-events: none;
+            visibility: hidden;
+            z-index: -1
+        }
+
+        .chartjs-size-monitor-expand>div {
+            position: absolute;
+            width: 1000000px;
+            height: 1000000px;
+            left: 0;
+            top: 0
+        }
+
+        .chartjs-size-monitor-shrink>div {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            left: 0;
+            top: 0
+        }
+    </style>
 </head>
 
 
 
 
 <body data-aos-easing="ease" data-aos-duration="1000" data-aos-delay="0" class=""><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
@@ -62,7 +163,7 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet"><button type="button" class="mobile-nav-toggle d-lg-none"><i
             class="icofont-navigation-menu"></i></button>
-    <header id="header" class="fixed-top" style="padding-top: 5px;
+    <header id="header" class="fixed-top header-scrolled" style="padding-top: 5px;
  padding-bottom: 5px;
     ">
         <div class="container-fluid">
@@ -88,7 +189,7 @@
                 </div>
             </div>
         </div>
-    </header><a href="#" class="back-to-top" style="display: none;"><i class="fa fa-chevron-up"></i></a>
+    </header><a href="#" class="back-to-top" style="display: inline;"><i class="fa fa-chevron-up"></i></a>
     <!-- Uncomment below i you want to use a preloader -->
     <!-- <div id="preloader"></div>-->
     <!-- Vendor JS Files -->
@@ -104,6 +205,104 @@
     <script src="assets/vendor/aos/aos.js"></script>
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
     <nav class="mobile-nav d-lg-none">
         <ul>
             <li class=""><a href="index.html">Home</a></li>
@@ -193,49 +392,168 @@
     <div class="limiter">
         <div class="container-login100">
 
-
-
-            <div style="
-            padding-right: 20px;
-               padding-left: 20px;
-               padding-top: 33px;
-               border-top-width: 50px;
-               margin-top: 50px;
-               " class="wrap-login100" id="formManual">
-                <div id="Change_CorelaRegress" style="margin-left: auto; margin-right: auto;">
-
-                    <h4 class="card-title" style="text-align: center">Estatística Descritiva</h4>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">(X)</span>
+            <div id="verifImport" class="wrap-login100"
+                style="padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px;">
+                <form style="margin-left: auto; margin-right: auto;" id="testeVal">
+                    <div class="form-row">
+                        <h4 class="card-title" style="margin-left: auto; margin-right: auto;">Faça uma escolha:</h4>
+                        <div id="divMsg" class="form-group col-12" style="text-align: center;">Certo, detectamos que o
+                            inserido possui 4 planilhas, marque abaixo qual delas vamos fazer análise:</div>
+                        <div class="form-group col-12">
+                            <select id="selectsPlanilha" class="form-control">
+                                <option>Selecione uma opção</option>
+                            </select>
                         </div>
-                        <input type="text" id="varX" class="form-control" name="varX" autocomplete="on"
-                            placeholder="Insira os valores separados por ';' " aria-label="Username"
-                            aria-describedby="basic-addon1">
                     </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">(Y)</span>
-                        </div>
-                        <input type="text" id="varY" class="form-control" name="varY" autocomplete="on"
-                            placeholder="Insira os valores separados por ';'" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                    <div class="form-row mt-0.5">
+                        <div class="col-12 text-center"><a class="btn btn-outline-success" id="btnFinal" style="padding-top: 6px;
+ border-top-width: 1px;
+    background-color: #28a745;
+    color: white;
+    ">Já Escolhi!<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></a></div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <button type="button" id="correRegressao" class="btn btn-secondary col-md-12"
-                                style="margin-bottom: 5px;">Entrada</button>
-                            <div class="form-row"><input class="form-control" type="file" id="input" accept=".xls,.xlsx"
-                                    style="
+                </form>
+            </div>
+
+
+            <div class="wrap-login100" style="
+				padding-right: 20px;
+				padding-left: 20px;
+				padding-top: 33px;
+				border-top-width: 50px;
+				margin-top: 50px; max-width: 750px;
+			" id="formEscolha">
+
+                <h4 class="card-title" style="margin-left: auto; margin-right: auto;">Correlação e Regressão</h4>
+                <div class="col-md-12 col-sm-12">
+                    <div class="form-custom formulario">
+                        <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation"><a class="nav-link text-secondary active"
+                                    id="binomial-tab" data-toggle="tab" href="#binomial" role="tab"
+                                    aria-controls="binomial" aria-selected="true" onclick="trocarAbas()">Digitar
+                                    Manualmente</a>
+                            </li>
+                            <li class="nav-item" role="presentation"><a class="nav-link text-secondary" id="normal-tab"
+                                    data-toggle="tab" href="#normal" role="tab" aria-controls="normal"
+                                    aria-selected="false" onclick="trocarAbas()">Importar Planilha</a></li>
+
+                        </ul>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade active show" id="binomial" role="tabpanel"
+                                aria-labelledby="binomial-tab">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">(X)</span>
+                                            </div>
+                                            <input type="text" id="varX" class="form-control" name="varX"
+                                                autocomplete="on" placeholder="Insira os valores separados por ';' "
+                                                aria-label="Username" aria-describedby="basic-addon1">
+
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" style="cursor:grab"
+                                                    onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-row">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">(Y)</span>
+                                            </div>
+                                            <input type="text" id="varY" class="form-control" name="varY"
+                                                autocomplete="on" placeholder="Insira os valores separados por ';'"
+                                                aria-label="Username" aria-describedby="basic-addon1">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" style="cursor:grab"
+                                                    onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row mt-0.5">
+                                        <div class="col-12 text-center">
+                                            <div class="form-row mt-0.5">
+                                                <div class="col-12 text-center"><a class="btn btn-outline-success"
+                                                        id="btnCalcManual" style="padding-top: 6px;
+							border-top-width: 1px;
+							background-color: #28a745; color: white;">Calcular<i class="fa fa-long-arrow-right m-l-5"
+                                                            aria-hidden="true"></i></a></div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="normal" role="tabpanel" aria-labelledby="normal-tab">
+                                <form>
+                                    <div class="form-row">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">(X)</span>
+                                            </div>
+                                            <input type="text" id="varX" class="form-control" name="varX"
+                                                autocomplete="on" placeholder="Insira os valores separados por ';' "
+                                                aria-label="Username" aria-describedby="basic-addon1" disabled="">
+
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" style="cursor:grab"
+                                                    onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">(Y)</span>
+                                            </div>
+                                            <input type="text" id="varY" class="form-control" name="varY"
+                                                autocomplete="on" placeholder="Insira os valores separados por ';'"
+                                                aria-label="Username" aria-describedby="basic-addon1" disabled="">
+
+                                            <div class="input-group-append"><span class="input-group-text"
+                                                    style="cursor:grab"
+                                                    onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row"><input class="form-control" type="file" id="input"
+                                            accept=".xls,.xlsx" style="
  border-bottom-width: 1px;
     margin-bottom: 10px;
     "></div>
+                                    <div class="form-row mt-0.5">
+                                        <div class="col-12 text-center"><a class="btn btn-outline-success"
+                                                id="btnCalcImport" style="padding-top: 6px;
+							border-top-width: 1px;
+							background-color: #28a745; color: white;">Calcular<i class="fa fa-long-arrow-right m-l-5"
+                                                    aria-hidden="true"></i></a></div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+
                         </div>
                     </div>
-                    <div id="corelacao_results"></div>
-                    <hr>
-                    Pontos Futuros
-                    <div class="input-group mb-3">
+                </div>
+            </div>
+
+            <div id="formResultado" class="wrap-login100"
+                style="padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px;">
+                <form style="margin-left: auto; margin-right: auto;" id="testeVal">
+                    <div class="form-row">
+                        <h4 class="card-title" style="margin-left: auto; margin-right: auto;" id="divResultados">
+                            Resultados</h4>
+
+
+                    </div>
+                    <div id="corelacao_results"></div>Pontos Futuros<div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">(X)</span>
                         </div>
@@ -251,19 +569,42 @@
                             placeholder="Insira os valores separados por ';'" aria-label="Username"
                             aria-describedby="basic-addon1">
                     </div>
-                    <div id="regressao_future"></div>
+                    <div class="form-row mt-0.5">
+                        <div class="graficos">
+                            <div class="chartjs-size-monitor">
+                                <div class="chartjs-size-monitor-expand">
+                                    <div class=""></div>
+                                </div>
+                                <div class="chartjs-size-monitor-shrink">
+                                    <div class=""></div>
+                                </div>
+                            </div>
+                            <div class="chartjs-size-monitor">
+                                <div class="chartjs-size-monitor-expand">
+                                    <div class=""></div>
+                                </div>
+                                <div class="chartjs-size-monitor-shrink">
+                                    <div class=""></div>
+                                </div>
+                            </div>
 
 
+                            <canvas id="myChartgraficoCorrelacao" class="chart" width="400" height="400"></canvas>
 
-
-                    <div class="graficos">
-                        <h4 class="card-title" style="text-align: center">Resultados</h4>
-
-                        <canvas id="myChartgraficoCorrelacao" class="chart" width="20" height="20"></canvas>
+                        </div>
+                        <div class="col-12 text-center"><a class="btn btn-outline-success" id="btnCalc" style="
+ padding-top: 6px;
+    border-top-width: 1px;
+    background-color: #28a745;
+    color: white;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    " onfocus="modmedmed()" onclick="history.go(0);
+    ">Refrescar Página<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></a></div>
                     </div>
-                </div>
+                </form>
             </div>
-
         </div>
     </div>
     <!--===============================================================================================-->
@@ -285,10 +626,21 @@
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
 
-    <!-- importando scripts de Chart.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
 
-    <script src="_algortimos/correRegressao/correRegressao.js"></script>
+
+    <!-- importando framework Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <!-- importando framework de import XLSX -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
+
+    <!-- importando algoritmos desenvolvidos pelo grupo: -->
+    <script language="javascript" src="_algortimos/correRegressao/importExcel.js"></script>
+    <script language="javascript" src="_algortimos/correRegressao/digitarManual.js"></script>
+
+    <script language="javascript" src="_algortimos/correRegressao/geraResultado.js"></script>
+
+    <script language="javascript" src="_algortimos/correRegressao/eventosDOM.js"></script>
+
 
 
 </body>

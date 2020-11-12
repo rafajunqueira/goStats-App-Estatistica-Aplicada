@@ -1,3 +1,11 @@
+const btnCalcImport = document.querySelector('#btnCalcImport')
+
+btnCalcImport.onclick = () => {
+    processaExcel()
+    
+}
+
+
 let valoresEscolhidos
 
 
@@ -122,16 +130,16 @@ function pegaValores(valoresEscolhidos) {
 
     // esse arrayImportado passará depois para o input no HTML
     let arrayImportado = []
-
+    
     for (let i = 1; i <= tamanho; i++) {
 
         let valorLinha = valores[i].v
         arrayImportado.push(valorLinha)
     }
-
+    
     preNomeVar = arrayImportado.shift()
     preInput = arrayImportado
-
+    
     geraResultado(preNomeVar, preInput)
 
     //return [preNomeVar, preInput]

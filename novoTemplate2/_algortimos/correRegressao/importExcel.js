@@ -1,3 +1,10 @@
+const btnCalcImport = document.querySelector('#btnCalcImport')
+
+btnCalcImport.onclick = () => {
+    processaExcel()
+}
+
+
 let valoresEscolhidos
 
 
@@ -59,9 +66,6 @@ function processaExcel() {
 
 function modalEscolha([...nomesPlanilhas]) {
 
-    const formImport = document.querySelector('#formImport');
-    formImport.style.display = 'none'
-
     const formResultado = document.querySelector('#formResultado');
     formResultado.style.display = 'none'
 
@@ -87,8 +91,6 @@ let preInput = []
 
 const escolhaFinal = document.querySelector('#btnFinal')
 
-
-
 escolhaFinal.onclick = () => {
 
     //aqui pegamos o select (planilha) selecionada:
@@ -96,11 +98,15 @@ escolhaFinal.onclick = () => {
 
     if (planEscolhida == 'Selecione uma opção') {
         alert('Por favor, selecione uma opção dentre as planilhas.')
+
+    } else if (planEscolhida != 'Correlacao' && planEscolhida != 'Correlação') {
+        alert('Por favor, selecione uma planilha com o conteúdo de Correlação.')
+
     } else {
         verifImport.style.display = 'none'
 
         valoresEscolhidos = todasPlanilhas[planEscolhida]
-
+        console.log('valoresEscolhidos :>> ', valoresEscolhidos);
         pegaValores(valoresEscolhidos)
 
         const formImport = document.querySelector('#formImport');
@@ -114,25 +120,49 @@ escolhaFinal.onclick = () => {
 
 
 function pegaValores(valoresEscolhidos) {
+    let tamanho = Object.values(valoresEscolhidos).length - 2
+    let valoresX = []
 
-    let tamanho = Object.values(valoresEscolhidos).length
-    tamanho -= 2 // nesse 2 aqui descontamos tab de planilha (formatação excel)
-
-    let valores = Object.values(valoresEscolhidos)
-
-    // esse arrayImportado passará depois para o input no HTML
-    let arrayImportado = []
-
-    for (let i = 1; i <= tamanho; i++) {
-
-        let valorLinha = valores[i].v
-        arrayImportado.push(valorLinha)
+    for (let i = 1; tamanho / 2 >= i; i++) {
+        valoresX.push(valoresEscolhidos[`A${i}`].v)
     }
+    debugger
 
-    preNomeVar = arrayImportado.shift()
-    preInput = arrayImportado
+    let valoresY = []
 
-    geraResultado(preNomeVar, preInput)
+    for (let i = 1; tamanho / 2 >= i; i++) {
+        valoresY.push(valoresEscolhidos[`B${i}`].v)
+    }
+    debugger
 
-    //return [preNomeVar, preInput]
+    /* inputX =
+
+        valoresEscolhidos
+
+    inputY
+
+    valoresEscolhidos */
+
+
+
+    /*  let tamanho = Object.values(valoresEscolhidos).length
+     tamanho -= 2 // nesse 2 aqui descontamos tab de planilha (formatação excel)
+ debugger
+     let valores = Object.values(valoresEscolhidos)
+ console.log('valores :>> ', valores);
+     // esse arrayImportado passará depois para o input no HTML
+     let arrayImportado = []
+     debugger
+     for (let i = 1; i <= tamanho; i++) {
+ 
+         let valorLinha = valores[i].v
+         arrayImportado.push(valorLinha)
+     }
+     debugger
+     preNomeVar = arrayImportado.shift()
+     preInput = arrayImportado
+     debugger
+     geraResultado(preNomeVar, preInput)
+ 
+     //return [preNomeVar, preInput] */
 }

@@ -1,49 +1,4 @@
-// AO FINAL, TODOS ELEMENTOS style="display: none" VIRAM BLOCK
-const elementosOcultos = document.querySelectorAll('#ocultarElem')
-
-// AO CLICAR NO FORM DE 
-function ShowformImport() {
-    const formImport = document.querySelector('#formImport')
-    formImport.style.removeProperty('display')
-
-    hideformIntro()
-}
-
-function ShowformManual() {
-    const formManual = document.querySelector('#formManual')
-    formManual.style.removeProperty('display')
-
-    hideformIntro()
-}
-
-function hideformIntro() {
-    const formIntro = document.querySelector('#formIntro')
-    formIntro.style.display = 'none'
-}
-
-
 let qtdLinhasTabela
-
-// Rastreando o botao_calcular na DOM
-const btnCalcManual = document.querySelector('#btnCalcManual')
-const btnCalcImport = document.querySelector('#btnCalcImport')
-
-// Quando botao_calcular sofrer onclick a seguinte função vai disparar:
-console.log('preNomeVar :>> ', preNomeVar);
-
-btnCalcImport.onclick = () => {
-    processaExcel()
-    
-}
-
-btnCalcManual.onclick = () => {
-    nomeVariavel = document.querySelector('#nomeVariavel').value
-
-    inputDados = document.querySelector('#inputDados').value
-    inputDados = inputDados.split(';'); // Separando ';' dos dados
-
-    geraResultado(nomeVariavel, inputDados)
-}
 
 function geraResultado(nomeVariavel_p, inputDados_p) {
 
