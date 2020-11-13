@@ -434,3 +434,8 @@ div.media-moda-med {
     color: rgb(33, 0, 59);
 }
 
+
+/***************** CONFIG PLACEHOLDER ITALICO *************************/
+#y_future:placeholder-shown{
+    font-style: italic;
+ }

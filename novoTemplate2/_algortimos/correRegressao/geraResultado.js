@@ -38,14 +38,15 @@ function corelacao() {
 
 	//----------- DETECTANDO O GRAU --------------------------------------------------//
 	let grau
-	let valor =*
-	if (r < 30){
+	let valor = r
+	debugger
+	if (valor < 30) {
 		grau = "Fraca"
-	}else if (r === 30 || r < 70){
+	} else if (valor === 30 || valor < 70) {
 		grau = "Moderada"
-	}else if (r === 70 || r < 100){
+	} else if (valor === 70 || valor < 100) {
 		grau = "Forte"
-	}else if (r === 100){
+	} else if (valor === 100) {
 		grau = "Perfeita"
 	}
 
@@ -60,10 +61,18 @@ function corelacao() {
 	a = parseFloat(a.toFixed(2))
 	b = parseFloat(b.toFixed(2))
 
-	corelacao_results.innerHTML += `Correlação: ${r} % [${grau}]
-	Equação da reta:
-	y = ${a.toFixed(2)}X + (${b.toFixed(2)})`
 
+	const correlacao = document.querySelector('#correlacao')
+const eqReta = document.querySelector('#eqReta');
+
+correlacao.innerHTML += `Correlação: ${r} % [${grau}]`
+
+eqReta.innerHTML += `
+	Equação da reta: <input type="text" id="y_future" oninput="regressaoY()" placeholder="Y" style="width: 35px">
+	= ${a.toFixed(2)}
+	<input type="text" id="x_future" oninput="regressaoX()" placeholder="X" style="width: 35px">
++ (${b.toFixed(2)})`
+debugger
 	corrigeGrafico()
 
 	return vetval
@@ -75,7 +84,7 @@ function corrigeGrafico() {
 	const tabAtiva = document.querySelector('a.active');
 	let cor
 	let reg
-
+	debugger
 	switch (tabAtiva.id) {
 		case 'manualTab':
 			reg = document.getElementById('varXManual').value;
@@ -89,7 +98,7 @@ function corrigeGrafico() {
 	}
 
 
-
+	debugger
 	let vetCorrelacao = cor.toString().split(';');
 	let vetregressao = reg.toString().split(';');
 
@@ -118,14 +127,95 @@ function corrigeGrafico() {
 
 	a = parseFloat(a.toFixed(2))
 	b = parseFloat(b.toFixed(2))
-
+	debugger
 	graficocorelaco(cor, reg, a, b)
 
 	return vetval
 }
 
+function recalculaEq() {
+
+	const tabAtiva = document.querySelector('a.active');
+	let cor
+	let reg
+
+	switch (tabAtiva.id) {
+		case 'manualTab':
+			cor = document.getElementById('varXManual').value;
+			reg = document.getElementById('varYManual').value;
+			break;
+
+		case 'importTab':
+			cor = document.getElementById('varXImport').value;
+			reg = document.getElementById('varYImport').value;
+			break;
+	}
+
+	corelacao_results.innerHTML = ''
+
+
+	let vetCorrelacao = cor.toString().split(';');
+	let vetregressao = reg.toString().split(';');
+
+	let x = 0; let xy = 0; let y = 0; let xx = 0; let yy = 0; var vetval = [];
+	let n = vetCorrelacao.length
+	for (let i = 0; i < vetCorrelacao.length; i++) {
+		x += Number(vetCorrelacao[i])
+		y += Number(vetregressao[i])
+		xy += Number(vetregressao[i] * vetCorrelacao[i])
+		xx += Number(Math.pow(vetCorrelacao[i], 2))
+		yy += Number(Math.pow(vetregressao[i], 2))
+	}
+	//-----------CORRELACAO--------------------------------------------------//
+	let calcdividendo = (n * xy) - (x * y)
+	let calcdivisor = (Math.sqrt((n * xx - (x * x))).toFixed(2) * Math.sqrt((n * yy - y * y)).toFixed(2)).toFixed(2)
+	let r = parseFloat(((calcdividendo / calcdivisor) * 100)).toFixed(2)
+
+	//----------- DETECTANDO O GRAU --------------------------------------------------//
+	let grau
+	let valor = r
+	debugger
+	if (valor < 30) {
+		grau = "Fraca"
+	} else if (valor === 30 || valor < 70) {
+		grau = "Moderada"
+	} else if (valor === 70 || valor < 100) {
+		grau = "Forte"
+	} else if (valor === 100) {
+		grau = "Perfeita"
+	}
+
+	//----------REGRESSAO-----------------------------------------------------//
+	var a = ((n * xy - x * y) / (n * xx - x * x))
+	vetval.push(a)
+	let regy = y / n
+	let regx = x / n
+	var b = (regy - a * regx)
+	vetval.push(b)
+
+	a = parseFloat(a.toFixed(2))
+	b = parseFloat(b.toFixed(2))
+/* 
+
+	const correlacao = document.querySelector('#correlacao')
+const eqReta = document.querySelector('#eqReta');
+
+correlacao.innerHTML += `Correlação: ${r} % [${grau}]`
+
+eqReta.innerHTML += `
+	Equação da reta: <input type="text" id="y_future" oninput="regressaoY()" placeholder="Y" style="width: 35px">
+	= ${a.toFixed(2)}
+	<input type="text" id="x_future" oninput="regressaoX()" placeholder="X" style="width: 35px">
++ (${b.toFixed(2)})`
+debugger
+	corrigeGrafico() */
+
+	return vetval
+
+}
+
 function regressaoX(vetval) {
-	let vet = corelacao(vetval)
+	let vet = recalculaEq(vetval)
 
 	let a = (vet[0]).toFixed(4); let b = (vet[1]).toFixed(4)
 
@@ -138,7 +228,7 @@ function regressaoX(vetval) {
 }
 
 function regressaoY(vetval) {
-	let vet = corelacao(vetval)
+	let vet = recalculaEq(vetval)
 
 	let a = (vet[0]).toFixed(4); let b = (vet[1]).toFixed(4)
 
@@ -172,7 +262,7 @@ function graficocorelaco(cor, reg, a = null, b = null) {
 
 	var reta = [{ x: Math.min(...valY), y: (Math.min(...valY) - b) / a }, { x: Math.max(...valY), y: (Math.max(...valY) - b) / a }];
 
-
+debugger
 	new Chart(ctx, {
 		type: 'line',
 		data: {
@@ -195,7 +285,6 @@ function graficocorelaco(cor, reg, a = null, b = null) {
 		options: {
 			legend: {
 				labels: {
-					// This more specific font property overrides the global property
 					fontSize: 12
 				}
 			},
