@@ -16,6 +16,8 @@ function corelacao() {
 			break;
 	}
 
+
+	const corelacao_results = document.querySelector('#corelacao_results')
 	corelacao_results.innerHTML = ''
 
 
@@ -65,12 +67,13 @@ function corelacao() {
 	const correlacao = document.querySelector('#correlacao')
 const eqReta = document.querySelector('#eqReta');
 
-correlacao.innerHTML += `Correlação: ${r} % [${grau}]`
+correlacao.innerHTML = `<div><b>Correlação: ${r} % [${grau}]</b><div>`
 
-eqReta.innerHTML += `
-	Equação da reta: <input type="text" id="y_future" oninput="regressaoY()" placeholder="Y" style="width: 35px">
+eqReta.innerHTML = `
+	<div><b>Equação da reta:</b><div>
+	<input type="text" id="y_future" oninput="regressaoY()" placeholder="Y" style="width: 75px;border-radius: 7px;padding-left: 5px;">
 	= ${a.toFixed(2)}
-	<input type="text" id="x_future" oninput="regressaoX()" placeholder="X" style="width: 35px">
+	<input type="text" id="x_future" oninput="regressaoX()" placeholder="X" style="width: 75px;border-radius: 7px;padding-left: 5px;">
 + (${b.toFixed(2)})`
 debugger
 	corrigeGrafico()
@@ -246,7 +249,10 @@ function graficocorelaco(cor, reg, a = null, b = null) {
 	var valY = reg.split(';')
 	debugger
 
-	var ctx = document.getElementById("myChartgraficoCorrelacao").getContext('2d');
+	var ctx = document.querySelector('.myChart')
+	/* ctx.style */
+
+	ctx.getContext('2d');
 	Chart.defaults.global.defaultFontSize = 25;
 	var dados = [];
 

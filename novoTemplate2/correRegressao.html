@@ -149,6 +149,7 @@
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
     <!--=====================É NOIS=====================-->
     <!-- Google Fonts -->
@@ -166,7 +167,7 @@
     <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet"><button type="button" class="mobile-nav-toggle d-lg-none"><i
             class="icofont-navigation-menu"></i></button>
-    <header id="header" class="fixed-top header-scrolled" style="padding-top: 5px;
+    <header id="header" class="fixed-top" style="padding-top: 5px;
  padding-bottom: 5px;
     ">
         <div class="container-fluid">
@@ -192,7 +193,7 @@
                 </div>
             </div>
         </div>
-    </header><a href="#" class="back-to-top" style="display: inline;"><i class="fa fa-chevron-up"></i></a>
+    </header><a href="#" class="back-to-top" style="display: none;"><i class="fa fa-chevron-up"></i></a>
     <!-- Uncomment below i you want to use a preloader -->
     <!-- <div id="preloader"></div>-->
     <!-- Vendor JS Files -->
@@ -208,6 +209,20 @@
     <script src="assets/vendor/aos/aos.js"></script>
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div class="mobile-nav-overly"></div>
     <nav class="mobile-nav d-lg-none">
         <ul>
             <li class=""><a href="index.html">Home</a></li>
@@ -590,74 +605,27 @@
                     </div>
                 </form>
             </div>
-            <div style="padding: 33px 20px 10px; border-top-width: 50px; margin-top: 25px; text-align: center;"
-                class="wrap-login100" id="formResultado">
-                <h4 id="divResultados" class="card-title" style="margin-left: auto; margin-right: auto;">Resultados:
-                </h4>
-                <section id="formularioDescritiva" class="formulario"
-                    style="margin-left: auto; margin-right: auto;padding-left: 0px;padding-right: 0px; border-radius: 0px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); width: 100%;margin-top: 0px;">
-                    <link rel="stylesheet" type="text/css" href="../css/descritiva.css">
-                    <link rel="stylesheet" type="text/css" href="../css/style.css">
-                    <div id="corelacao_results"></div>Pontos Futuros<div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">(X)</span>
-                        </div>
-                        <input type="text" id="x_future" oninput="regressaoX()" class="form-control"
-                            placeholder="Insira os valores separados por ';' " aria-label="Username"
-                            aria-describedby="basic-addon1">
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1">(Y)</span>
-                        </div>
-                        <input type="text" id="y_future" oninput="regressaoY()" class="form-control"
-                            placeholder="Insira os valores separados por ';'" aria-label="Username"
-                            aria-describedby="basic-addon1">
-                    </div>
-                    <div class="form-row mt-0.5">
-                        <div class="graficos">
-                            <div class="chartjs-size-monitor">
-                                <div class="chartjs-size-monitor-expand">
-                                    <div class=""></div>
-                                </div>
-                                <div class="chartjs-size-monitor-shrink">
-                                    <div class=""></div>
-                                </div>
-                            </div>
-                            <div class="chartjs-size-monitor">
-                                <div class="chartjs-size-monitor-expand">
-                                    <div class=""></div>
-                                </div>
-                                <div class="chartjs-size-monitor-shrink">
-                                    <div class=""></div>
-                                </div>
-                            </div>
+            <div style="
+ padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 33px;
+    border-top-width: 50px;
+    margin-top: 50px;
+    " class="wrap-login100" id="formResultado">
 
+                <h4 class="card-title" style=" text-align:center; margin-left: auto; margin-right:auto; width:100%;">
+                    Resultados</h4>
+                <canvas class="myChart"></canvas>
+                <div id="corelacao_results"></div>
+                <div class="divCalculos" style="background: #23b38840; width: 80%;
+                                                    margin: auto;
+                                                    border-radius: 10px;
+                                                    padding: .5px 5px .5px 10px;
+                                                    text-align: center;">
+                    <p id="correlacao" style="margin-bottom: 5px;"></p>
+                    <p id="eqReta" style="margin-bottom: 5px;"></p>
+                </div>
 
-                            <canvas id="myChartgraficoCorrelacao" class="chart" width="400" height="400"></canvas>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="divCalculos" style="background: #23b38840;">
-                        <p id="correlacao"></p>
-                        <p id="eqReta"></p>
-                    </div>
-
-
-
-                </section><a class="btn btn-outline-success" id="btnCalc" style="
- padding-top: 6px;
-    border-top-width: 1px;
-    background-color: #28a745;
-    color: white;
-    margin-top: 5px;
-    margin-left: auto;
-    margin-right: auto;
-    " onfocus="modmedmed()" onclick="history.go(0);
-    ">Refrescar Página<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i></a>
             </div>
         </div>
     </div>
@@ -694,6 +662,8 @@
     <script language="javascript" src="_algortimos/correRegressao/geraResultado.js"></script>
 
     <script language="javascript" src="_algortimos/correRegressao/eventosDOM.js"></script>
+
+
 
 </body>
 

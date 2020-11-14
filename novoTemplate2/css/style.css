@@ -426,7 +426,7 @@ td {
 }
 
 /******************MODA MEDIA MEDIANA**********************/
-div.media-moda-med {
+div.media-moda-med, div.divCalculos {
     width: 60%;
     margin: auto;
     border-radius: 10px;
