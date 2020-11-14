@@ -4,7 +4,7 @@ btnCalcImport.onclick = () => {
     const varXImport = document.querySelector('#varXImport').value
     const varYImport = document.querySelector('#varYImport').value
 
-    if (varXImport == '' && varYImport == '') {
+    if (varXImport.trim() == '' && varYImport.trim() == '') {
         processaExcel()
         debugger
     } else {
@@ -12,7 +12,6 @@ btnCalcImport.onclick = () => {
         formResultado.style.removeProperty('display')
         corelacao()
     }
-
 }
 
 
@@ -90,6 +89,8 @@ function modalEscolha([...nomesPlanilhas]) {
         selectsPlanilha.innerHTML += `<option>${nomesPlanilhas[i]}</option>`
     }
 
+    const formImport = document.querySelector('#formImport')
+    formImport.style.display = 'none'
 }
 
 
@@ -112,12 +113,14 @@ escolhaFinal.onclick = () => {
     } else {
         verifImport.style.display = 'none'
 
-        valoresEscolhidos = todasPlanilhas[planEscolhida]
-        console.log('valoresEscolhidos :>> ', valoresEscolhidos);
-        pegaValores(valoresEscolhidos)
+        const formImport = document.querySelector('#formImport');
+        formImport.style.removeProperty('display')
 
-        const divResultados = document.querySelector('#divResultados');
+        const divResultados = document.querySelector('#divResultados')
         divResultados.innerHTML = `Resultados (Planilha ${planEscolhida}):`
+
+        valoresEscolhidos = todasPlanilhas[planEscolhida]
+        pegaValores(valoresEscolhidos)
     }
 
 }

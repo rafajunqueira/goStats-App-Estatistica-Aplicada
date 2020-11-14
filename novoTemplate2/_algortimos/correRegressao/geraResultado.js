@@ -65,17 +65,17 @@ function corelacao() {
 
 
 	const correlacao = document.querySelector('#correlacao')
-const eqReta = document.querySelector('#eqReta');
+	const eqReta = document.querySelector('#eqReta');
 
-correlacao.innerHTML = `<div><b>Correlação: ${r} % [${grau}]</b><div>`
+	correlacao.innerHTML = `<div><b>Correlação: ${r} % [${grau}]</b><div>`
 
-eqReta.innerHTML = `
+	eqReta.innerHTML = `
 	<div><b>Equação da reta:</b><div>
 	<input type="text" id="y_future" oninput="regressaoY()" placeholder="Y" style="width: 75px;border-radius: 7px;padding-left: 5px;">
 	= ${a.toFixed(2)}
 	<input type="text" id="x_future" oninput="regressaoX()" placeholder="X" style="width: 75px;border-radius: 7px;padding-left: 5px;">
 + (${b.toFixed(2)})`
-debugger
+	debugger
 	corrigeGrafico()
 
 	return vetval
@@ -198,20 +198,6 @@ function recalculaEq() {
 
 	a = parseFloat(a.toFixed(2))
 	b = parseFloat(b.toFixed(2))
-/* 
-
-	const correlacao = document.querySelector('#correlacao')
-const eqReta = document.querySelector('#eqReta');
-
-correlacao.innerHTML += `Correlação: ${r} % [${grau}]`
-
-eqReta.innerHTML += `
-	Equação da reta: <input type="text" id="y_future" oninput="regressaoY()" placeholder="Y" style="width: 35px">
-	= ${a.toFixed(2)}
-	<input type="text" id="x_future" oninput="regressaoX()" placeholder="X" style="width: 35px">
-+ (${b.toFixed(2)})`
-debugger
-	corrigeGrafico() */
 
 	return vetval
 
@@ -268,7 +254,17 @@ function graficocorelaco(cor, reg, a = null, b = null) {
 
 	var reta = [{ x: Math.min(...valY), y: (Math.min(...valY) - b) / a }, { x: Math.max(...valY), y: (Math.max(...valY) - b) / a }];
 
-debugger
+
+	var ctx = document.querySelector('.myChart')
+
+	// variável auxiliar para excluir gráfico anteriormente usado
+	let delGrafAnt
+
+	if (delGrafAnt === 'sim') {
+		chart.destroy()
+	}
+
+	debugger
 	new Chart(ctx, {
 		type: 'line',
 		data: {
@@ -314,6 +310,8 @@ debugger
 			}
 		}
 	});
+
+	delGrafAnt = 'sim'
 }
 
 

@@ -150,6 +150,7 @@
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
+        class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button><button type="button"
         class="mobile-nav-toggle d-lg-none"><i class="icofont-navigation-menu"></i></button>
     <!--=====================É NOIS=====================-->
     <!-- Google Fonts -->
@@ -418,6 +419,20 @@
             </li>
         </ul>
     </nav>
+    <div class="mobile-nav-overly"></div>
+    <nav class="mobile-nav d-lg-none">
+        <ul>
+            <li class=""><a href="index.html">Home</a></li>
+            <li class=""><a href="#about">About Us</a></li>
+            <li class="drop-down"><a href="">Módulos</a>
+                <ul>
+                    <li><a href="#">Estatística Descritiva</a></li>
+                    <li><a href="#">Probabilidade</a></li>
+                    <li><a href="#">Correlação e Regressão</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
     <div class="mobile-nav-overly" style="display: none;"></div>
     <nav class="mobile-nav d-lg-none">
         <ul>
@@ -459,8 +474,8 @@
     border-top-width: 50px;
     margin-top: 50px;
     ">
-                <form style="margin-left: auto; margin-right: auto;" id="testeVal">
-                    <h4 class="card-title" style="text-align:center">Faça uma escolha:</h4>
+                <form style="margin-left: auto; margin-right: auto;">
+                    <h4 class="card-title" style="text-align:center">Correlação e Regressão</h4>
                     <div class="col-md-12 col-sm-12">
                         <div class="form-custom formulario">
                             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
@@ -586,7 +601,7 @@
     padding-left: 20px;
     padding-top: 33px;
     border-top-width: 50px;
-    margin-top: 50px;
+    margin-top: 50px;display: none;
     ">
                 <form style="margin-left: auto; margin-right: auto;" id="testeVal">
                     <div class="form-row">
@@ -605,15 +620,10 @@
                     </div>
                 </form>
             </div>
-            <div style="
- padding-right: 20px;
-    padding-left: 20px;
-    padding-top: 33px;
-    border-top-width: 50px;
-    margin-top: 50px;
-    " class="wrap-login100" id="formResultado">
+            <div style="padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px; display: none;"
+                class="wrap-login100" id="formResultado">
 
-                <h4 class="card-title" style=" text-align:center; margin-left: auto; margin-right:auto; width:100%;">
+                <h4 id="divResultados" class="card-title" style=" text-align:center; margin-left: auto; margin-right:auto; width:100%;">
                     Resultados</h4>
                 <canvas class="myChart"></canvas>
                 <div id="corelacao_results"></div>
@@ -662,6 +672,8 @@
     <script language="javascript" src="_algortimos/correRegressao/geraResultado.js"></script>
 
     <script language="javascript" src="_algortimos/correRegressao/eventosDOM.js"></script>
+
+
 
 
 

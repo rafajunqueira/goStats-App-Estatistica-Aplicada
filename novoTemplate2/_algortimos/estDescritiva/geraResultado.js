@@ -469,9 +469,6 @@ let geraCoresAleat = () => {
     return '#' + n.slice(0, 6);
 };
 
-// variaveis auxiliares nos gráficos:
-let delGrafAnt
-let chart
 
 function geraGraf(qtdLinhas) {
 
@@ -514,12 +511,16 @@ function geraGraf(qtdLinhas) {
     }
 
 
-    var ctx = document.querySelector('.myChart')
-
+    // variável auxiliar para excluir gráfico anteriormente usado
+    let delGrafAnt
+    
     if (delGrafAnt === 'sim') {
         chart.destroy()
     }
 
+    var ctx = document.querySelector('.myChart')
+    
+    let chart
     chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
 
     Chart.defaults.scale.ticks.beginAtZero = true; //Configuração para grafico de barras iniciar no zero
