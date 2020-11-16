@@ -7,23 +7,10 @@ complexidade: 1 - baixo, 2 - médio, 3 - alto
 2 - dar uma limpada no html, mudar fontes
 
 
-3 - ajeitar page de home
-
-
-
-15..
-
 1 - mudar covers de entrada no softare, textos explicativos
 
 
-2 - ajeitar page de login
-
-
-
-2 - limpar todo css inline para interno
-
-
-3 - finalizar todas validações
+3 - finalizar todas validações, mudar algoritmo do normal
 
 
 3 - limpar código, comentar, organizar:
@@ -38,6 +25,6 @@ d - Organização do código-fonte (estruturas de arquivos e diretórios do código-f
 
 
 
-
+2 - limpar todo css inline para interno
 ligar documentação
 ligar video
