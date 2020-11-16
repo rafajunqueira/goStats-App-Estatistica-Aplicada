@@ -5,8 +5,8 @@ btnCalcManual.onclick = () => {
     const varXManual = document.querySelector('#varXManual').value
     const varYManual = document.querySelector('#varYManual').value
 
-    if (varYManual.trim() == '' || varXManual.trim() == '') {
-        alert("Por favor preencha os campos que estão faltando")
+    if (regex(varYManual) == false || regex(varXManual) == false) {
+        alert("Por favor preencha os campos corretamente")
     } else {
         corelacao()
         const formResultado = document.querySelector('#formResultado')

@@ -2,14 +2,6 @@ o que tem para fazer
 complexidade: 1 - baixo, 2 - médio, 3 - alto
 
 
-14-11-2020
-
-2 - dar uma limpada no html, mudar fontes
-
-
-1 - mudar covers de entrada no softare, textos explicativos
-
-
 3 - finalizar todas validações, mudar algoritmo do normal
 
 
