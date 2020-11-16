@@ -1,4 +1,4 @@
-﻿@import url("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css");
 
 @font-face {
 	font-family: 'Italiana-Regular';
@@ -329,6 +329,9 @@ input{
     padding-left: 10px;    
 }
 
+input#coleta_de_dados{
+    width: 97.5%;
+}
 
 input#btnCalc {
     margin-bottom: 10px;
@@ -398,35 +401,38 @@ table {
 	margin: 30px auto;
 	text-align: left;
     width: 100%;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-top-left-radius: 5px;
 }	
 
 th {
     background: linear-gradient(#7ba9a9,#3737cc, #7ba9a9);
     color: white;
     /* font-weight: bold; */
-    padding: 3px !important;
+    padding: 10px 15px;
     /* position: relative; */
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.534);
 }
 
 table {
-    margin-top: 0px;
+    margin-top: 0px; 
+    border-right-width: 0px;
+    border-bottom-width: 0px;
+    border-top-width: 0px;
+
 }
 
 td {
     text-align: center;
     font-weight: 600;
-	padding: 3px !important;
+	padding: 10px 15px;
 	position: relative;
     transition: all 300ms;
-    border-radius: 05px;;
+    border-radius: 05px;
     color: rgb(12, 12, 12);
 }
 
 /******************MODA MEDIA MEDIANA**********************/
-div.media-moda-med, div.divCalculos {
+div.media-moda-med {
     width: 60%;
     margin: auto;
     border-radius: 10px;
@@ -434,8 +440,3 @@ div.media-moda-med, div.divCalculos {
     color: rgb(33, 0, 59);
 }
 
-
-/***************** CONFIG PLACEHOLDER ITALICO *************************/
-#y_future:placeholder-shown{
-    font-style: italic;
- }
