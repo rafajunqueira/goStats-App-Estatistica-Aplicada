@@ -1,11 +1,18 @@
 const btnCalcManual = document.querySelector('#btnCalcManual')
 
 btnCalcManual.onclick = () => {
-    let nomeVariavel = document.querySelector('#nomeVariavel')
-    nomeVariavel = nomeVariavel.value
-	
-    inputDados = document.querySelector('#inputDados').value
-    inputDados = inputDados.split(';'); // Separando ';' dos dados
+    // Realizando validação e procedendo com os resultados:
 
-    geraResultado(nomeVariavel, inputDados)
+    let nomeVariavel = document.querySelector('#nomeVariavel').value
+    let inputDados = document.querySelector('#inputDados').value
+
+    //Validação com Regex dos dados:
+    if (nomeVariavel.trim() == '' || regex(inputDados) == false) {
+        triggerModal()
+    } else {
+        // Se tudo ok com a validação, prosseguir com os resultados:
+        inputDados = inputDados.split(';'); // criando array mediante ';'
+        geraResultado(nomeVariavel, inputDados)
+    }
+
 }

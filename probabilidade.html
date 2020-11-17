@@ -31,6 +31,34 @@
 		}
 	</style>
 </head>
+<!--===================== MODAL DE ALERTA (LIGADO AO REGEX) =====================-->
+
+<!-- Button trigger modal -->
+<button id="triggerModal" style="display: none;" type="button" class="btn btn-primary" data-toggle="modal"
+	data-target="#exampleModalCenter">Mostrar Modal de Validação</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">👎 Algo ocorreu errado..</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Algum dado inserido está inválido (para decimais use ponto '.')
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Entendi!</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--===================== FIM MODAL DE ALERTA (LIGADO AO REGEX) =====================-->
 
 <body class="" data-aos-delay="0" data-aos-duration="1000" data-aos-easing="ease">
 	<!--===================== NAV DE OPÇÕES =====================-->
@@ -210,7 +238,7 @@
 										<div class="input-group mb-3">
 											<input autocomplete="on" class="form-control numerico" id="Amostra"
 												name="binomial1" placeholder="Informe o valor da Amostra (N)"
-												required="" type="number">
+												required="" type="text">
 											<div class="input-group-append">
 												<span class="input-group-text"
 													onclick="this.parentNode.previousElementSibling.value= ''"
@@ -220,14 +248,14 @@
 									</div>
 									<div class="input-group mb-3">
 										<input class="form-control" id="Sucesso" name="binomial2" onkeyup="EvSucesso()"
-											placeholder="Sucesso (p)" type="number" value="">
+											placeholder="Sucesso (p)" type="text" value="">
 										<div class="input-group-append">
 											<span class="input-group-text">%</span>
 										</div>
 									</div>
 									<div class="input-group mb-3">
 										<input class="form-control" id="Fracasso" name="binomial3"
-											onkeyup="EvFracasso()" placeholder="Fracasso (q)" type="number" value="">
+											onkeyup="EvFracasso()" placeholder="Fracasso (q)" type="text" value="">
 										<div class="input-group-append">
 											<span class="input-group-text">%</span>
 										</div>
@@ -236,7 +264,7 @@
 										<div class="input-group mb-3">
 											<input autocomplete="on" class="form-control" id="Evento" name="binomial4"
 												placeholder="Informe o valor do Evento (K) separado por ';'" required=""
-												type="number">
+												type="text">
 											<div class="input-group-append">
 												<span class="input-group-text"
 													onclick="this.parentNode.previousElementSibling.value= ''"
@@ -268,7 +296,7 @@
 									<div class="form-row">
 										<div class="input-group mb-3">
 											<input autocomplete="on" class="form-control" id="normalMedia"
-												name="normal1" placeholder="Informe a média" required="" type="number">
+												name="normal1" placeholder="Informe a média" required="" type="text">
 											<div class="input-group-append">
 												<span class="input-group-text"
 													onclick="this.parentNode.previousElementSibling.value= ''"
@@ -280,7 +308,7 @@
 										<div class="input-group mb-3">
 											<input autocomplete="on" class="form-control" id="normalDesvio"
 												name="normal2" placeholder="Informe o desvio padrão" required=""
-												type="number">
+												type="text">
 											<div class="input-group-append">
 												<span class="input-group-text"
 													onclick="this.parentNode.previousElementSibling.value= ''"
@@ -304,7 +332,7 @@
 										<div class="input-group mb-3" id="vlNormal">
 											<input autocomplete="on" class="form-control" id="intervaloNormal"
 												name="normal3" placeholder="Informe o valor a ser calculado" required=""
-												type="number">
+												type="text">
 											<div class="input-group-append" id="limparNormal">
 												<span class="input-group-text"
 													onclick="this.parentNode.previousElementSibling.value= ''"
@@ -332,7 +360,7 @@
 										<div class="input-group mb-3">
 											<input autocomplete="on" class="form-control" id="uniformeMinimo"
 												name="Uniforme1" placeholder="Informe o valor do ponto mínimo"
-												required="" type="number">
+												required="" type="text">
 											<div class="input-group-append">
 												<span class="input-group-text"
 													onclick="this.parentNode.previousElementSibling.value= ''"
@@ -344,7 +372,7 @@
 										<div class="input-group mb-3">
 											<input autocomplete="on" class="form-control" id="uniformeMaximo"
 												name="Uniforme2" placeholder="Informe o valor do ponto máximo"
-												required="" type="number">
+												required="" type="text">
 											<div class="input-group-append">
 												<span class="input-group-text"
 													onclick="this.parentNode.previousElementSibling.value= ''"
@@ -372,7 +400,7 @@
 										<div class="input-group mb-3" id="vlUniforme">
 											<input autocomplete="on" class="form-control" id="intervaloUniforme"
 												name="Uniforme3" placeholder="Informe o valor a ser calculado"
-												required="" type="number">
+												required="" type="text">
 											<div class="input-group-append" id="limparUniforme">
 												<span class="input-group-text"
 													onclick="this.parentNode.previousElementSibling.value= ''"
@@ -437,6 +465,8 @@
 	</script>
 	<script language="javascript" src="_algortimos/probabilidade/uniforme.js">
 	</script>
+	    <script language="javascript" src="_algortimos/validadorRegex.js">
+		</script>
 </body>
 
 </html>

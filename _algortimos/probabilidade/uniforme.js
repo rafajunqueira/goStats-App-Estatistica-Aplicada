@@ -8,16 +8,16 @@ document.querySelector('#btnCalcUniforme').onclick = () => {
     // abaixo verificando qual botão foi clicado (a partir da classe ativa)
     const MenorEntreMaior_Unif = document.querySelector('div#botoesUniforme > div.active').innerText
     switch (MenorEntreMaior_Unif) {
-        case 'Menor':
+        case 'Menor': //caso 'Menor', fazer querySelector de seu valor
             Menor = parseFloat(document.querySelector('#intervaloUniforme').value)
             break;
 
-        case 'Entre':
+        case 'Entre': //caso 'Entre', fazer querySelector de seus valores
             Inicial = parseFloat(document.getElementsByName('uniforme3')[0].value)
             Final = parseFloat(document.getElementsByName('uniforme4')[0].value)
             break;
 
-        case 'Maior':
+        case 'Maior': //caso 'Maior', fazer querySelector de seu valor
             Maior = parseFloat(document.querySelector('#intervaloUniforme').value)
             break;
     }
@@ -71,9 +71,12 @@ document.querySelector('#btnCalcUniforme').onclick = () => {
     // Exibição de Resultado
     function calcMedidas(probabilidade) {
         debugger
+        // Organizando variáveis de Resultado
         let media = (pontoMax + pontoMin) / 2;
         let desvio = Math.sqrt((Math.pow((pontoMax - pontoMin), 2)) / 12);
         let variacao = (desvio / media) * 100;
+
+        // querySelector mostrando alterando innerHTML com div de resultados
         document.querySelector('.resultadoUniforme').innerHTML = `
         <div>Probabilidade: ${(probabilidade * 100).toFixed(2)}%</div>
         <div>Média: ${media.toFixed(2)}</div>

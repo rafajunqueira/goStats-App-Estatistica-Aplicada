@@ -5,10 +5,12 @@ btnCalcManual.onclick = () => {
     const varXManual = document.querySelector('#varXManual').value
     const varYManual = document.querySelector('#varYManual').value
 
+    //Validação com Regex dos dados:
     if (regex(varYManual) == false || regex(varXManual) == false) {
-        alert("Por favor preencha os campos corretamente")
+        triggerModal()
     } else {
-        corelacao()
+        // Se tudo ok com a validação, prosseguir com os resultados:
+        correRegressao()
         const formResultado = document.querySelector('#formResultado')
         formResultado.style.removeProperty('display')
     }

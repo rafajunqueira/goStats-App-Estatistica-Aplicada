@@ -10,7 +10,7 @@ btnCalcImport.onclick = () => {
     } else {
         const formResultado = document.querySelector('#formResultado');
         formResultado.style.removeProperty('display')
-        corelacao()
+        correRegressao()
     }
 }
 

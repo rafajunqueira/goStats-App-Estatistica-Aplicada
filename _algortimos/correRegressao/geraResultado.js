@@ -1,4 +1,4 @@
-function corelacao() {
+function correRegressao() {
 
 	const tabAtiva = document.querySelector('a.active');
 	let cor
@@ -17,8 +17,8 @@ function corelacao() {
 	}
 
 
-	const corelacao_results = document.querySelector('#corelacao_results')
-	corelacao_results.innerHTML = ''
+	const correRegResult = document.querySelector('#correRegResult')
+	correRegResult.innerHTML = ''
 
 
 	let vetCorrelacao = cor.toString().split(';');
@@ -154,7 +154,7 @@ function recalculaEq() {
 			break;
 	}
 
-	corelacao_results.innerHTML = ''
+	correRegResult.innerHTML = ''
 
 
 	let vetCorrelacao = cor.toString().split(';');

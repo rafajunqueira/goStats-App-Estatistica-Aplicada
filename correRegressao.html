@@ -32,6 +32,35 @@
     </style>
 </head>
 
+<!--===================== MODAL DE ALERTA (LIGADO AO REGEX) =====================-->
+
+<!-- Button trigger modal -->
+<button id="triggerModal" style="display: none;" type="button" class="btn btn-primary" data-toggle="modal"
+    data-target="#exampleModalCenter">Mostrar Modal de Validação</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">👎 Algo ocorreu errado..</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Algum dado inserido está inválido (para decimais use ponto '.')
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Entendi!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--===================== FIM MODAL DE ALERTA (LIGADO AO REGEX) =====================-->
+
 <body class="" data-aos-delay="0" data-aos-duration="1000" data-aos-easing="ease">
     <!--===================== NAV DE OPÇÕES =====================-->
     <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -177,7 +206,9 @@
             </li>
         </ul>
     </nav>
+
     <!--===================== NAV DE OPÇÕES =====================-->
+
     <div class="limiter">
         <div class="container-login100">
             <div class="wrap-login100" id="formImport"
@@ -317,7 +348,7 @@
                 <h4 class="card-title" id="divResultados"
                     style=" text-align:center; margin-left: auto; margin-right:auto; width:100%;">Resultados</h4>
                 <canvas class="myChart"></canvas>
-                <div id="corelacao_results"></div>
+                <div id="correRegResult"></div>
                 <div class="divCalculos"
                     style="background: #23b38840; width: 80%; margin: auto; border-radius: 10px; padding: .5px 5px .5px 10px; text-align: center;">
                     <p id="correlacao" style="margin-bottom: 5px;"></p>

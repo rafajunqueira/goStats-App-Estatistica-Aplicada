@@ -9,3 +9,9 @@ function regex(valor) {
         return false
     }
 }
+
+
+// MODAL DE ALERT PARA CARACTERES INVÁLIDOS
+function triggerModal() {
+    document.querySelector('#triggerModal').click()
+}
