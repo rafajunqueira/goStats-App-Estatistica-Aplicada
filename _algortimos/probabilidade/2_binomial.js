@@ -54,7 +54,6 @@ document.querySelector('#btnCalcBinomial').onclick = () => {
 }
 
 // declarando function Fatorial:
-
 function Fatorial(valor) {
     if ((valor == 0) || (valor == 1)) {
         return 1;

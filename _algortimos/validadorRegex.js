@@ -1,18 +1,24 @@
+
+// função que valida a partir de máscara regex
 function regex(valor) {
+
+    // a var verPontVirg serve para verificar se o campo tem somente ';'
+    let verPontVirg = valor.replace(';', '')
+
+    // criando expressão dentro da var mascara   
     let mascara = /^[0-9)\(;.]+$/g
 
-    if (mascara.test(valor) == true) { //se der true o teste o valor pode conter ';' ou '.' ou '1 até 9'
-        console.log("todos caracteres válidos")
+    if (mascara.test(valor) == true || verPontVirg.trim() !='') {
+        // SE PASSAR: todos caracteres válidos
         return true
     } else {
-        console.log("existem caracteres inválidos")
+        // SE não PASSAR: existem caracteres inválidos
         return false
     }
 }
 
-
 // MODAL DE ALERT PARA CARACTERES INVÁLIDOS
-function triggerModal(msg = "Algum dado inserido está inválido (para decimais use ponto '.')") {
+function triggerModal(msg = "Algum dado inserido está inválido ou em branco (para decimais use ponto '.')") {
     // passagem de valor de msg ao modal
     document.querySelector('.modal-body').innerHTML = msg
 

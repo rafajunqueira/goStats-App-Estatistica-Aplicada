@@ -2,11 +2,7 @@ o que tem para fazer
 complexidade: 1 - baixo, 2 - médio, 3 - alto
 
 
-14-11-2020
-
-
-
-3 - finalizar todas validações, mudar algoritmo do normal
+PROCURAR PELOS ALERT, DEBUGGER, //DEBUGGER, COLOCAR QUICKSORT EM DESCRITIVA!, também por /**/
 
 
 

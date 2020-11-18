@@ -1,13 +1,26 @@
 //PROBABILIDADE NORMAL
 document.querySelector('#btnCalcNormal').onclick = () => {
     let media = document.querySelector('#normalMedia').value
-    let desv = document.querySelector('#normalDesvio').value
+    let desvio = document.querySelector('#normalDesvio').value
     let intervaloAtivo = document.querySelector('label.active').innerText // aqui peguei a label que estiver com classe ativa no momento do click
     let intervaloNormal = document.querySelector('#intervaloNormal').value
 
+    // Validando campos:
+    switch (true) {
+        case (regex(media) == false):
+        case (regex(desvio) == false):
+        case (regex(intervaloAtivo) == false):
+        case (regex(intervaloNormal) == false):
+            return triggerModal()
+    }
+
+    // declaração de variáveis que serão usadas depois nos cálculos
+    let varConversao, posicao, probFinal
+
+
     function processaNormal(gap = arrayIntervalo[0]) {
         // passagem de valor da formula de probabilidade Normal
-        varConversao = (gap - media) / desv
+        varConversao = (gap - media) / desvio
 
         // capturando valor absoluto de varConversao
         varConversao = Math.abs(varConversao)
@@ -31,8 +44,7 @@ document.querySelector('#btnCalcNormal').onclick = () => {
         }
     }
 
-    let varConversao, posicao, probFinal
-
+    // criando array a partir do split e convertendo estes para Number
     let arrayIntervalo = intervaloNormal.split(';').map(Number)
 
     // switch com Intervalo escolhido para gerar em probFinal o resultado
@@ -94,6 +106,7 @@ document.querySelector('#btnCalcNormal').onclick = () => {
 
 }
 
+// função de busca binária:
 function buscaBin(callback, array, vlBusca, inicio = 0, fim = array.length - 1) {
     if (fim >= inicio) {
         // truncando casas decimais da mediana
