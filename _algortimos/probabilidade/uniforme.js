@@ -1,3 +1,4 @@
+// Ao clicar no botão de Calcular na <nav> Uniforme, fazer o seguinte:
 document.querySelector('#btnCalcUniforme').onclick = () => {
 
     // Capturando elementos para usar em funções...
@@ -25,13 +26,13 @@ document.querySelector('#btnCalcUniforme').onclick = () => {
 
     // Validações + cálculos
     if ((isNaN(pontoMin)) && (isNaN(pontoMax))) {
-        alert("Insira o ponto mínimo e o ponto máximo")
+        triggerModal("Insira o ponto mínimo e o ponto máximo")
 
     } else if (isNaN(pontoMin)) {
-        alert("Insira o ponto mínimo")
+        triggerModal("Insira o ponto mínimo")
 
     } else if (isNaN(pontoMax)) {
-        alert("Insira o ponto máximo")
+        triggerModal("Insira o ponto máximo")
 
     } else if (MenorEntreMaior_Unif == 'Menor') {
         debugger
@@ -43,7 +44,7 @@ document.querySelector('#btnCalcUniforme').onclick = () => {
     } else if (MenorEntreMaior_Unif == 'Entre') {
         debugger
         if ((isNaN(Inicial)) || (isNaN(Final))) {
-            alert("Insira o(s) campo(s) que falta(m)")
+            triggerModal("Insira o(s) campo(s) que falta(m)")
 
         } else {
             debugger
@@ -56,7 +57,7 @@ document.querySelector('#btnCalcUniforme').onclick = () => {
     } else if (MenorEntreMaior_Unif == 'Maior') {
         debugger
         if (isNaN(Maior)) {
-            alert("Insira o campo que falta")
+            triggerModal("Insira o campo que falta")
 
         } else {
             debugger

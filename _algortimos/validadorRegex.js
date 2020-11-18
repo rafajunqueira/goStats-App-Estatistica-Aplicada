@@ -12,6 +12,10 @@ function regex(valor) {
 
 
 // MODAL DE ALERT PARA CARACTERES INVÁLIDOS
-function triggerModal() {
+function triggerModal(msg = "Algum dado inserido está inválido (para decimais use ponto '.')") {
+    // passagem de valor de msg ao modal
+    document.querySelector('.modal-body').innerHTML = msg
+
+    // disparando botão que anima modal
     document.querySelector('#triggerModal').click()
 }

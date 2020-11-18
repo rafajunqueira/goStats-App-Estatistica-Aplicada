@@ -1,19 +1,6 @@
-//PROBABILIDADE BINOMIAL
-function Fatorial(valor) {
-    if ((valor == 0) || (valor == 1)) {
-        return 1;
-    } else {
-        var acumula = 1;
-        for (x = valor; x > 1; x--) {
-            acumula = acumula * x;
-        }
-        return acumula;
-    }
-    /* sem uso de recursividade devido ao estouro de pilha (creio que seja algo no servidor de hospedagem) */
-}
-
-
+// Ao clicar no botão de Calcular na <nav> binomial, fazer o seguinte:
 document.querySelector('#btnCalcBinomial').onclick = () => {
+
     // capturando input de dados na DOM:
     let qtdeAmostra = document.querySelector('#Amostra').value
     let sucesso = document.querySelector('#Sucesso').value
@@ -26,17 +13,17 @@ document.querySelector('#btnCalcBinomial').onclick = () => {
     if (regex(qtdeAmostra) == false || regex(sucesso) == false || regex(fracasso) == false || regex(evento) == false) {
         triggerModal()
 
-        //Validação p/ evitar problemas com fatoriais de valores negativos
+        // Sobre os dois else if abaixo: 
+        /* Validação p/ evitar fatoriais de valores negativos,
+        (se diferente de 'undefined', ainda existem val. negativos) */
     } else if (eventoArray.find(num => num < 0) != undefined) {
-        alert('O valores do Evento devem ser maior ou igual a zero')
+        triggerModal('O valores do Evento devem ser maior ou igual a zero')
 
-        //Validação p/ evitar problemas com fatoriais de valores negativos
     } else if (qtdeAmostraArray.find(num => num < 0) != undefined) {
-        alert('O valores da Amostra devem ser maior ou igual a zero')
+        triggerModal('O valores da Amostra devem ser maior ou igual a zero')
 
-    } else {
+    } else { // Se tudo ok com a validação, prosseguir com o algorítimo:
 
-        // Se tudo ok com a validação, prosseguir com o algorítimo:
         sucesso = sucesso / 100;
         fracasso = fracasso / 100;
 
@@ -64,4 +51,19 @@ document.querySelector('#btnCalcBinomial').onclick = () => {
              <div>Desvio Padrão: ${desvio.toFixed(2)}</div>
              <div>Variância: ${variacao.toFixed(2)}%</div>`
     }
+}
+
+// declarando function Fatorial:
+
+function Fatorial(valor) {
+    if ((valor == 0) || (valor == 1)) {
+        return 1;
+    } else {
+        var acumula = 1;
+        for (x = valor; x > 1; x--) {
+            acumula = acumula * x;
+        }
+        return acumula;
+    }
+    /* sem uso de recursividade devido ao estouro de pilha (creio que seja algo no servidor de hospedagem) */
 }
