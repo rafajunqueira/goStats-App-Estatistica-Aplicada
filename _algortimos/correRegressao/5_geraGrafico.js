@@ -3,7 +3,7 @@ function geraGrafico(cor, reg, a = null, b = null) {
 
 	var valX = cor.split(';')
 	var valY = reg.split(';')
-	debugger
+	
 
 	var ctx = document.querySelector('.myChart')
 	/* ctx.style */
@@ -34,7 +34,7 @@ function geraGrafico(cor, reg, a = null, b = null) {
 		chart.destroy()
 	}
 
-	debugger
+	
 	new Chart(ctx, {
 		type: 'line',
 		data: {

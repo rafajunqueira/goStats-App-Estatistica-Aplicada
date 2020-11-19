@@ -35,35 +35,32 @@ document.querySelector('#btnCalcUniforme').onclick = () => {
         triggerModal("Insira o ponto máximo")
 
     } else if (MenorEntreMaior_Unif == 'Menor') {
-        debugger
+        
         let intervalo = (Menor - pontoMin);
         let probabilidade = ((1 / (pontoMax - pontoMin)) * intervalo);
-        console.log(Menor, intervalo);
         calcMedidas(probabilidade)
 
     } else if (MenorEntreMaior_Unif == 'Entre') {
-        debugger
+        
         if ((isNaN(Inicial)) || (isNaN(Final))) {
             triggerModal("Insira o(s) campo(s) que falta(m)")
 
         } else {
-            debugger
+            
             let intervalo = Final - Inicial;
             let probabilidade = (1 / (pontoMax - pontoMin)) * intervalo;
-            console.log(Inicial, Final, probabilidade);
             calcMedidas(probabilidade)
         }
 
     } else if (MenorEntreMaior_Unif == 'Maior') {
-        debugger
+        
         if (isNaN(Maior)) {
             triggerModal("Insira o campo que falta")
 
         } else {
-            debugger
+            
             let intervalo = pontoMax - Maior;
             let probabilidade = (1 / (pontoMax - pontoMin)) * intervalo;
-            console.log(Maior, probabilidade);
             calcMedidas(probabilidade)
         }
     }
@@ -71,7 +68,7 @@ document.querySelector('#btnCalcUniforme').onclick = () => {
 
     // Exibição de Resultado
     function calcMedidas(probabilidade) {
-        debugger
+        
         // Organizando variáveis de Resultado
         let media = (pontoMax + pontoMin) / 2;
         let desvio = Math.sqrt((Math.pow((pontoMax - pontoMin), 2)) / 12);

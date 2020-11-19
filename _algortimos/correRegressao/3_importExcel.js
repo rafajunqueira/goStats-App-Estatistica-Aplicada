@@ -139,20 +139,20 @@ function pegaValores(valoresEscolhidos) {
     for (let i = 1; tamanho / 2 >= i; i++) {
         valoresX.push(valoresEscolhidos[`A${i}`].v)
     }
-    debugger
+    
 
     let valoresY = []
 
     for (let i = 1; tamanho / 2 >= i; i++) {
         valoresY.push(valoresEscolhidos[`B${i}`].v)
     }
-    debugger
+    
 
     // removendo primeiro elem. do array (é o nome da coluna na planilha)
     valoresX.shift()
     valoresY.shift()
 
-    debugger
+    
 
     // ao final os inputs recebem o que foi processado na planilha
             document.getElementById('varXImport').value = valoresX.join(';')

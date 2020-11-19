@@ -39,7 +39,6 @@ function processaExcel() {
             let nomesPlanilhas = workbook.SheetNames
             todasPlanilhas = workbook.Sheets
 
-            console.log('todasPlanilhas :>> ', todasPlanilhas);
 
 
             if (qtdPlanilhas > 1) {
@@ -49,7 +48,6 @@ function processaExcel() {
             } else {
 
                 //quando for somente 1 PLanilha:
-                console.log('todasPlanilhas[0] :>> ', todasPlanilhas[workbook.SheetNames[0]]);
                 valoresEscolhidos = todasPlanilhas[workbook.SheetNames[0]]
 
                 pegaValores(valoresEscolhidos)

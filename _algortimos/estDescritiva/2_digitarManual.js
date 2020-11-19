@@ -12,6 +12,7 @@ btnCalcManual.onclick = () => {
     } else {
         // Se tudo ok com a validação, prosseguir com os resultados:
         inputDados = inputDados.split(';'); // criando array mediante ';'
+        
         geraResultado(nomeVariavel, inputDados)
     }
 

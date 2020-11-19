@@ -42,7 +42,7 @@ function correRegressao() {
 	//----------- DETECTANDO O GRAU --------------------------------------------------//
 	let grau
 	let valor = r
-	debugger
+	
 	if (valor < 30) {
 		grau = "Fraca"
 	} else if (valor === 30 || valor < 70) {
@@ -76,7 +76,7 @@ function correRegressao() {
 	= ${a.toFixed(2)}
 	<input type="text" id="x_future" oninput="regressaoX()" placeholder="X" style="width: 75px;border-radius: 7px;padding-left: 5px;">
 + (${b.toFixed(2)})`
-	debugger
+	
 	corrigeGrafico()
 
 	return vetval
@@ -89,7 +89,7 @@ function corrigeGrafico() {
 	const tabAtiva = document.querySelector('a.active');
 	let cor
 	let reg
-	debugger
+	
 
 	// abaixo no switch, ocorre a troca de parametros, devido ao erro na troca do eixo x com y no gráfico
 	switch (tabAtiva.id) {
@@ -105,7 +105,7 @@ function corrigeGrafico() {
 	}
 
 
-	debugger
+	
 	let vetCorrelacao = cor.toString().split(';');
 	let vetregressao = reg.toString().split(';');
 
@@ -134,7 +134,7 @@ function corrigeGrafico() {
 
 	a = parseFloat(a.toFixed(2))
 	b = parseFloat(b.toFixed(2))
-	debugger
+	
 	geraGrafico(cor, reg, a, b)
 
 	return vetval
@@ -183,7 +183,7 @@ function recalculaEq() {
 	//----------- DETECTANDO O GRAU --------------------------------------------------//
 	let grau
 	let valor = r
-	debugger
+	
 	if (valor < 30) {
 		grau = "Fraca"
 	} else if (valor === 30 || valor < 70) {

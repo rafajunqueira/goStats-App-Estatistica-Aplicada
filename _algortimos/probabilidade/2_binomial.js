@@ -38,7 +38,7 @@ document.querySelector('#btnCalcBinomial').onclick = () => {
 
             probabilidade = probabilidade + nFat / (Fatorial(n - k) * kFat) * Math.pow(sucesso, k) * Math.pow(fracasso, n - k);
             media = n * sucesso;
-            debugger
+            
 
             desvio = Math.sqrt(n * sucesso * fracasso);
             variacao = (desvio / media) * 100
