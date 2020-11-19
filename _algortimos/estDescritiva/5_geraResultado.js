@@ -2,20 +2,6 @@ let qtdLinhasTabela
 
 function geraResultado(nomeVariavel_p, inputDados_p) {
 
-    /*   // se tivermos o arquivo de descritiva > manual, então:
-      if (window.location.pathname.includes('manual') == true) {
-        // abaixo eu pego na DOM os valores no input:
-        inputDados = document.querySelector('#coleta_de_dados').value
-        inputDados = inputDados.split(';'); // Separando ';' dos dados
-  
-        nomeVariavel = document.querySelector('#nomeVariavel').value
-  
-      } else {
-        //abaixo eu pego os dados processados pelo 'importa.js'
-        inputDados = preInput
-        nomeVariavel = preNomeVar
-      } */
-
     // Exibe formResultado com os resultados
     const formResultado = document.querySelector('#formResultado');
     formResultado.style.removeProperty('display')
@@ -24,12 +10,12 @@ function geraResultado(nomeVariavel_p, inputDados_p) {
     
     let arrayOrdenado
 
-    // Retorna tipo e ordena de acordo
+   /* // Retorna tipo e ordena de acordo
     if (qualTipo(arrayOriginal) == 'string') {
         arrayOrdenado = arrayOriginal.sort() // Ordenando array string
     } else {
         arrayOrdenado = arrayOriginal.sort((a, b) => a - b) // Ordenando array com numero
-    }
+    }*/
 
     // Desestruturando o retorno da função:
     [a, b, arrayFreq] = geraFreq(arrayOrdenado) //Gerando objeto com array usado

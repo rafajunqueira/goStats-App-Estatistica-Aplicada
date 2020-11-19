@@ -74,9 +74,6 @@ function processaExcel() {
 //Código responsa de modal de Escolha entre as planilhas no arquivo subido:
 function modalEscolha([...nomesPlanilhas]) {
 
-    /* const formResultado = document.querySelector('#formResultado');
-    formResultado.style.display = 'none' */
-
     // display = 'none' em formImport, para dar espaço ao verifImport
     const formImport = document.querySelector('#formImport')
     formImport.style.display = 'none'
@@ -132,8 +129,10 @@ document.querySelector('#btnFinal').onclick = () => {
 
 }
 
-
+// pegaValores processa valores dentro da planilha:
 function pegaValores(valoresEscolhidos) {
+
+    // esse -2 são elementos dentro de Object desnecessários
     let tamanho = Object.values(valoresEscolhidos).length - 2
     let valoresX = []
 
@@ -149,26 +148,14 @@ function pegaValores(valoresEscolhidos) {
     }
     debugger
 
+    // removendo primeiro elem. do array (é o nome da coluna na planilha)
     valoresX.shift()
     valoresY.shift()
 
     debugger
 
-
-    // detectando tab ativa para passar no input certo os dados da planilha:
-    const tabAtiva = document.querySelector('a.active');
-
-
-    // ao final 
-    switch (tabAtiva.id) {
-        case 'manualTab':
-            document.getElementById('varXManual').value = valoresX.join(';')
-            document.getElementById('varYManual').value = valoresY.join(';')
-            break;
-
-        case 'importTab':
+    // ao final os inputs recebem o que foi processado na planilha
             document.getElementById('varXImport').value = valoresX.join(';')
             document.getElementById('varYImport').value = valoresY.join(';')
-            break;
-    }
+           
 }
