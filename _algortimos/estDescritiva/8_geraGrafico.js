@@ -63,7 +63,11 @@ function geraGraf(qtdLinhas) {
     chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
 
     Chart.defaults.scale.ticks.beginAtZero = true; //Configuração para grafico de barras iniciar no zero
-
+    
+    // Não exibe legendas do gráfico:
+    Chart.defaults.global.legend.display = false;
+    Chart.defaults.global.tooltips.enabled = false;
+    
     chart = new Chart(ctx, {
         type: tipodegrafico,
         data: {

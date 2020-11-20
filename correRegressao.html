@@ -30,12 +30,15 @@
             font-family: 'Segoe UI', "segoe", Tahoma, Geneva, Verdana, sans-serif !important;
         }
     </style>
+
+    <link href="css/correRegressao.css" rel="stylesheet" type="text/css">
+
 </head>
 
 <!--===================== MODAL DE ALERTA (LIGADO AO REGEX) =====================-->
 
 <!-- Button trigger modal -->
-<button id="triggerModal" style="display: none;" type="button" class="btn btn-primary" data-toggle="modal"
+<button style="display: none;" id="triggerModal" type="button" class="btn btn-primary" data-toggle="modal"
     data-target="#exampleModalCenter">Mostrar Modal de Validação</button>
 
 <!-- Modal -->
@@ -64,19 +67,18 @@
 <body class="" data-aos-delay="0" data-aos-duration="1000" data-aos-easing="ease">
     <!--===================== NAV DE OPÇÕES =====================-->
     <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
-        rel="stylesheet"><!-- Vendor CSS Files -->
+    <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
     <link href="assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
     <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
     <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet"><!-- Template Main CSS File -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet"><button class="mobile-nav-toggle d-lg-none" type="button"><i
             class="icofont-navigation-menu"></i></button>
-    <header class="fixed-top" id="header" style="padding-top: 5px; padding-bottom: 5px;">
+    <header class="fixed-top" id="header">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-xl-11 d-flex align-items-center">
@@ -117,7 +119,7 @@
                 </div>
             </div>
         </div>
-    </header><a class="back-to-top" href="#" style="display: none;"><i class="fa fa-chevron-up"></i></a>
+    </header><a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
     <!-- Uncomment below i you want to use a preloader -->
     <!-- <div id="preloader"></div>-->
     <!-- Vendor JS Files -->
@@ -175,12 +177,12 @@
             </li>
         </ul>
     </nav>
-    <div class="mobile-nav-overly" style="display: none;"></div>
+    <div class="mobile-nav-overly"></div>
     <nav class="mobile-nav d-lg-none">
         <ul>
             <li class="drop-down active">
                 <a href="">Módulos</a>
-                <ul style="display: block;">
+                <ul>
                     <li>
                         <a href="estDescritiva.html">Estatística Descritiva</a>
                     </li>
@@ -211,10 +213,9 @@
 
     <div class="limiter">
         <div class="container-login100">
-            <div class="wrap-login100" id="formImport"
-                style=" padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px;">
-                <form style="margin-left: auto; margin-right: auto;">
-                    <h4 class="card-title" style="text-align:center">Correlação e Regressão</h4>
+            <div class="wrap-login100" id="formImport">
+                <form>
+                    <h4 class="card-title">Correlação e Regressão</h4>
                     <div class="col-md-12 col-sm-12">
                         <div class="form-custom formulario">
                             <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
@@ -241,8 +242,7 @@
                                                 placeholder="Insira os valores separados por ';'" type="text">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"
-                                                    onclick="this.parentNode.previousElementSibling.value= ''"
-                                                    style="cursor:grab">Limpar</span>
+                                                    onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
                                             </div>
                                         </div>
                                     </div>
@@ -255,8 +255,7 @@
                                                 placeholder="Insira os valores separados por ';'" type="text">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"
-                                                    onclick="this.parentNode.previousElementSibling.value= ''"
-                                                    style="cursor:grab">Limpar</span>
+                                                    onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
                                             </div>
                                         </div>
                                     </div>
@@ -264,8 +263,7 @@
                                         <div class="col-12 text-center">
                                             <div class="form-row mt-0.5">
                                                 <div class="col-12 text-center">
-                                                    <a class="btn btn-outline-success" id="btnCalcManual"
-                                                        style="padding-top: 6px; border-top-width: 1px; background-color: #28a745; color: white;">Calcular<i
+                                                    <a class="btn btn-outline-success" id="btnCalcManual">Calcular<i
                                                             aria-hidden="true"
                                                             class="fa fa-long-arrow-right m-l-5"></i></a>
                                                 </div>
@@ -284,8 +282,7 @@
                                                 type="text">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"
-                                                    onclick="this.parentNode.previousElementSibling.value= ''"
-                                                    style="cursor:grab">Limpar</span>
+                                                    onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
                                             </div>
                                         </div>
                                     </div>
@@ -299,19 +296,16 @@
                                                 type="text">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"
-                                                    onclick="this.parentNode.previousElementSibling.value= ''"
-                                                    style="cursor:grab">Limpar</span>
+                                                    onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-row">
-                                        <input accept=".xls,.xlsx" class="form-control" id="input"
-                                            style=" border-bottom-width: 1px; margin-bottom: 10px;" type="file">
+                                        <input accept=".xls,.xlsx" class="form-control" id="input" type="file">
                                     </div>
                                     <div class="form-row mt-0.5">
                                         <div class="col-12 text-center">
-                                            <a class="btn btn-outline-success" id="btnCalcImport"
-                                                style="padding-top: 6px; border-top-width: 1px; background-color: #28a745; color: white;">Calcular<i
+                                            <a class="btn btn-outline-success" id="btnCalcImport">Calcular<i
                                                     aria-hidden="true" class="fa fa-long-arrow-right m-l-5"></i></a>
                                         </div>
                                     </div>
@@ -321,12 +315,11 @@
                     </div>
                 </form>
             </div>
-            <div class="wrap-login100" id="verifImport"
-                style=" padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px;display: none;">
-                <form id="testeVal" name="testeVal" style="margin-left: auto; margin-right: auto;">
+            <div class="wrap-login100" id="verifImport" style="display: none;">
+                <form id="testeVal" name="testeVal">
                     <div class="form-row">
-                        <h4 class="card-title" style="margin-left: auto; margin-right: auto;">Faça uma escolha:</h4>
-                        <div class="form-group col-12" id="divMsg" style="text-align: center;">
+                        <h4 class="card-title">Faça uma escolha:</h4>
+                        <div class="form-group col-12" id="divMsg">
                             Texto
                         </div>
                         <div class="form-group col-12">
@@ -336,23 +329,19 @@
                     </div>
                     <div class="form-row mt-0.5">
                         <div class="col-12 text-center">
-                            <a class="btn btn-outline-success" id="btnFinal"
-                                style="padding-top: 6px; border-top-width: 1px; background-color: #28a745; color: white;">Já
+                            <a class="btn btn-outline-success" id="btnFinal">Já
                                 Escolhi!<i aria-hidden="true" class="fa fa-long-arrow-right m-l-5"></i></a>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="wrap-login100" id="formResultado"
-                style="padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px; display: none;">
-                <h4 class="card-title" id="divResultados"
-                    style=" text-align:center; margin-left: auto; margin-right:auto; width:100%;">Resultados</h4>
+            <div class="wrap-login100" id="formResultado" style="display: none">
+                <h4 class="card-title" id="divResultados">Resultados</h4>
                 <canvas class="myChart"></canvas>
                 <div id="correRegResult"></div>
-                <div class="divCalculos"
-                    style="background: #23b38840; width: 80%; margin: auto; border-radius: 10px; padding: .5px 5px .5px 10px; text-align: center;">
-                    <p id="correlacao" style="margin-bottom: 5px;"></p>
-                    <p id="eqReta" style="margin-bottom: 5px;"></p>
+                <div class="divCalculos">
+                    <p id="correlacao"></p>
+                    <p id="eqReta"></p>
                 </div>
             </div>
         </div>
@@ -402,19 +391,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js">
     </script> <!-- importando algoritmos desenvolvidos pelo grupo: -->
 
-<script language="javascript" src="_algortimos/correRegressao/1_eventosDOM.js">
-</script>
-<script language="javascript" src="_algortimos/correRegressao/2_digitarManual.js">
-</script>
+    <script language="javascript" src="_algortimos/correRegressao/1_eventosDOM.js">
+    </script>
+    <script language="javascript" src="_algortimos/correRegressao/2_digitarManual.js">
+    </script>
     <script language="javascript" src="_algortimos/correRegressao/3_importExcel.js">
     </script>
 
     <script language="javascript" src="_algortimos/correRegressao/4_geraResultado.js">
     </script>
 
-<script language="javascript" src="_algortimos/correRegressao/5_geraGrafico.js">
-</script>
-    
+    <script language="javascript" src="_algortimos/correRegressao/5_geraGrafico.js">
+    </script>
+
     <script language="javascript" src="_algortimos/validadorRegex.js">
     </script>
 </body>

@@ -100,8 +100,13 @@ escolhaFinal.onclick = () => {
     //aqui pegamos o select (planilha) selecionada:
     let planEscolhida = document.querySelector('#selectsPlanilha').value
 
+    // validações de input:
     if (planEscolhida == 'Selecione uma opção') {
-        alert('Por favor, selecione uma opção dentre as planilhas.')
+        triggerModal('Por favor, selecione uma opção dentre as planilhas.')
+
+    } else if (planEscolhida == 'Correlacao' || planEscolhida == 'Correlação') {
+        triggerModal('Por favor, selecione uma planilha não tenha conteúdo de Correlação.')
+
     } else {
         verifImport.style.display = 'none'
 

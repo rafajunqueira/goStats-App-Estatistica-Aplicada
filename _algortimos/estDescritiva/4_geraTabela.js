@@ -1,7 +1,7 @@
 
 function geraCabecalho(nomeVariavel) {
     // processo de geração de cabeçalho da tabela :
-    let cabecalho = `<table class="table-responsive" border='1'>
+    let cabecalho = `<table class="table-responsive table table-striped table-hover mx-auto w-auto" border='1'>
                         <tr class='linhaCabec'>
                             <th>${nomeVariavel}</th>
                             <th>Frequência Simples</th>
@@ -182,6 +182,6 @@ function geraRestCol(qtdLinhas) {
     }
 
     let finalTotal = document.querySelector('.linhaTotal')
-    finalTotal.innerHTML += '<td>100%</td>'
+    finalTotal.innerHTML += `<td class='finalTotal'>100%</td>`
 
 }

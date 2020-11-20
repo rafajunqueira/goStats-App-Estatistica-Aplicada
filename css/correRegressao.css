@@ -1,0 +1,125 @@
+#triggerModal {
+    display: none!important
+}
+
+#header {
+    padding-top: 5px!important;
+    padding-bottom: 5px!important
+}
+
+body>div:nth-child(30) {
+    display: none!important
+}
+
+body>nav:nth-child(31)>ul>li.drop-down.active>ul {
+    display: block!important
+}
+
+#formImport {
+    padding-right: 20px!important;
+    padding-left: 20px!important;
+    padding-top: 33px!important;
+    border-top-width: 50px!important;
+    margin-top: 50px!important
+}
+
+#formImport>form {
+    margin-left: auto!important;
+    margin-right: auto!important
+}
+
+#formImport>form>h4 {
+    text-align: center!important
+}
+
+#binomial>div:nth-child(1)>div>div.input-group-append>span {
+    cursor: grab!important
+}
+
+#binomial>div:nth-child(2)>div>div.input-group-append>span {
+    cursor: grab!important
+}
+
+#btnCalcManual {
+    padding-top: 6px!important;
+    border-top-width: 1px!important;
+    background-color: #28a745!important;
+    color: #fff!important
+}
+
+#normal>div:nth-child(1)>div>div.input-group-append>span {
+    cursor: grab!important
+}
+
+#normal>div:nth-child(2)>div>div.input-group-append>span {
+    cursor: grab!important
+}
+
+#input {
+    border-bottom-width: 1px!important;
+    margin-bottom: 10px!important
+}
+
+#btnCalcImport {
+    padding-top: 6px!important;
+    border-top-width: 1px!important;
+    background-color: #28a745!important;
+    color: #fff!important
+}
+
+#verifImport {
+    padding-right: 20px!important;
+    padding-left: 20px!important;
+    padding-top: 33px!important;
+    border-top-width: 50px!important;
+    margin-top: 50px!important
+}
+
+#testeVal {
+    margin-left: auto!important;
+    margin-right: auto!important
+}
+
+#testeVal>div:nth-child(1)>h4 {
+    margin-left: auto!important;
+    margin-right: auto!important
+}
+
+#divMsg {
+    text-align: center!important
+}
+
+#btnFinal {
+    padding-top: 6px!important;
+    border-top-width: 1px!important;
+    background-color: #28a745!important;
+    color: #fff!important
+}
+
+#formResultado {
+    padding-right: 20px!important;
+    padding-left: 20px!important;
+    padding-top: 33px!important;
+    border-top-width: 50px!important;
+    margin-top: 50px!important
+}
+
+#divResultados {
+    text-align: center!important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    width: 100%!important
+}
+
+#formResultado>div.divCalculos {
+    background: #23b38840!important;
+    width: 80%!important;
+    margin: auto!important;
+    border-radius: 10px!important;
+    padding: .5px 5px .5px 10px !important;
+    text-align: center!important
+}
+
+#correlacao, #eqReta {
+    margin-bottom: 5px!important
+}

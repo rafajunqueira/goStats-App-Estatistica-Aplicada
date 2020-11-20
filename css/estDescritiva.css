@@ -1,0 +1,221 @@
+#triggerModal {
+    display: none !important;
+}
+
+#header {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+body>div:nth-child(30) {
+    display: none !important;
+}
+
+body>nav:nth-child(31)>ul>li.drop-down.active>ul {
+    display: block !important;
+}
+
+#formIntro {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    padding-top: 33px !important;
+    border-top-width: 50px !important;
+    margin-top: 50px !important;
+}
+
+#formIntro>form:nth-child(1) {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+#formIntro>form:nth-child(1)>div {
+    margin-bottom: 10px !important;
+}
+
+#formIntro>form:nth-child(1)>div>div>p {
+    margin-bottom: 20px !important;
+}
+
+#formIntro>form:nth-child(1)>div>div>a {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+#formIntro>form:nth-child(2) {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+#formIntro>form:nth-child(2)>div {
+    margin-bottom: 10px !important;
+}
+
+#formIntro>form:nth-child(2)>div>div>p {
+    margin-bottom: 20px !important;
+}
+
+#formIntro>form:nth-child(2)>div>div>a {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+#formImport {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    padding-top: 33px !important;
+    border-top-width: 50px !important;
+    margin-top: 50px !important;
+}
+
+#testeVal {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#testeVal>div:nth-child(1)>h4 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#input {
+    border-bottom-width: 1px !important;
+    margin-bottom: 10px !important;
+}
+
+#btnCalcImport {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+#verifImport {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    padding-top: 33px !important;
+    border-top-width: 50px !important;
+    margin-top: 50px !important;
+}
+
+#testeVal {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#testeVal>div:nth-child(1)>h4 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#divMsg {
+    text-align: center !important;
+}
+
+#btnFinal {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+#formManual {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    padding-top: 33px !important;
+    border-top-width: 50px !important;
+    margin-top: 50px !important;
+}
+
+#testeVal {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#testeVal>div:nth-child(1)>h4 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#testeVal>div:nth-child(1)>div>div>span {
+    cursor: grab
+}
+
+#testeVal>div.input-group.mb-3>div>span {
+    cursor: grab
+}
+
+#btnCalcManual {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+#formResultado {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    padding-top: 33px !important;
+    border-top-width: 50px !important;
+    margin-top: 25px !important;
+    text-align: center !important;
+    padding-bottom: 10px !important;
+}
+
+#divResultados {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#formularioDescritiva {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    border-radius: 0px !important;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0) !important;
+    width: 100% !important;
+    margin-top: 0px !important;
+}
+
+#formularioDescritiva>div.tabelas {
+    margin: auto !important;
+}
+
+#formularioDescritiva>div.media-moda-med {
+    background: #23b38840 !important;
+}
+
+#formularioDescritiva>select {
+    margin-top: 15px !important;
+}
+
+#slider {
+    max-width: 150px !important;
+}
+
+#btnCalc {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+    background-color: #28a745 !important;
+    color: white !important;
+    margin-top: 5px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#formularioDescritiva>canvas {
+    display: inline;
+}
+
+.myChart {
+    min-width: 341px;
+    min-height: 170px;
+}

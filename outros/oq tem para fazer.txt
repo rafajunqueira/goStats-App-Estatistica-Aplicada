@@ -1,27 +1,6 @@
-o que tem para fazer
-complexidade: 1 - baixo, 2 - médio, 3 - alto
-
-
-PROCURAR PELOS ALERT, DEBUGGER, //DEBUGGER, COLOCAR QUICKSORT EM DESCRITIVA!, também por /**/
-
-
-
-3 - limpar código, comentar, organizar:
-a - O uso OBRIGATÓRIO de um algoritmo de busca -> até 1,0 ponto
-b - O uso OBRIGATÓRIO de um algoritmo de ordenação -> até 2,0 pontos
-c - Comentários no código-fonte sobre o funcionamento do programa -> até 1,5 ponto
-d - Organização do código-fonte (estruturas de arquivos e diretórios do código-fonte e indentação correta) -> até 1,5 ponto
-
-
-*entregar dia 18 tudo ok
-
-
-2 - dar uma limpada no html, mudar fontes
-
-
-1 - mudar covers de entrada no softare, textos explicativos
-
-
 2 - limpar todo css inline para interno
+
+ver que tem alguns id na pagina errado
+
 ligar documentação
 ligar video

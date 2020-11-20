@@ -257,6 +257,18 @@ body.fundoPag2 {
     background-color: #3a3a68d0;
 }
 
+.form-dados {
+    background-color: white;
+    width: 50%;
+    margin: 25%;
+    padding: 1%;
+    border-radius: 25px;
+    margin-top: 10%;
+    position: fixed;
+    z-index: 99;
+}
+
+
 section.formulario {
     background-color: white;
     border-radius: 25px;
@@ -393,10 +405,9 @@ div.amostraOuPopulacao img{
 
 
 table {
-	font-size: 12px;
 	line-height: 24px;
 	margin: 30px auto;
-	text-align: left;
+	text-align: center;
     width: 100%;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.5);

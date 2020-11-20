@@ -21,11 +21,6 @@
     <!--===============================================================================================-->
 
     <style>
-        *:not(i):not(header) {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
-        }
-    </style>
-    <style>
         @font-face {
             font-family: "segoe";
             src: url("./fonts/segoeui.ttf");
@@ -35,11 +30,14 @@
             font-family: 'Segoe UI', "segoe", Tahoma, Geneva, Verdana, sans-serif !important;
         }
     </style>
+
+    <link href="css/estDescritiva.css" rel="stylesheet" type="text/css">
+
 </head>
 <!--===================== MODAL DE ALERTA (LIGADO AO REGEX) =====================-->
 
 <!-- Button trigger modal -->
-<button id="triggerModal" style="display: none;" type="button" class="btn btn-primary" data-toggle="modal"
+<button id="triggerModal" type="button" class="btn btn-primary" data-toggle="modal"
     data-target="#exampleModalCenter">Mostrar Modal de Validação</button>
 
 <!-- Modal -->
@@ -68,19 +66,18 @@
 <body class="" data-aos-delay="0" data-aos-duration="1000" data-aos-easing="ease">
     <!--===================== NAV DE OPÇÕES =====================-->
     <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
-        rel="stylesheet"><!-- Vendor CSS Files -->
+    <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
     <link href="assets/vendor/ionicons/css/ionicons.min.css" rel="stylesheet">
     <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
     <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
     <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet"><!-- Template Main CSS File -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <!-- Template Main CSS File -->
     <link href="assets/css/style.css" rel="stylesheet"><button class="mobile-nav-toggle d-lg-none" type="button"><i
             class="icofont-navigation-menu"></i></button>
-    <header class="fixed-top" id="header" style="padding-top: 5px; padding-bottom: 5px;">
+    <header class="fixed-top" id="header">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-xl-11 d-flex align-items-center">
@@ -121,7 +118,7 @@
                 </div>
             </div>
         </div>
-    </header><a class="back-to-top" href="#" style="display: none;"><i class="fa fa-chevron-up"></i></a>
+    </header><a class="back-to-top" href="#"><i class="fa fa-chevron-up"></i></a>
     <!-- Uncomment below i you want to use a preloader -->
     <!-- <div id="preloader"></div>-->
     <!-- Vendor JS Files -->
@@ -179,12 +176,12 @@
             </li>
         </ul>
     </nav>
-    <div class="mobile-nav-overly" style="display: none;"></div>
+    <div class="mobile-nav-overly"></div>
     <nav class="mobile-nav d-lg-none">
         <ul>
             <li class="drop-down active">
                 <a href="">Módulos</a>
-                <ul style="display: block;">
+                <ul>
                     <li>
                         <a href="estDescritiva.html">Estatística Descritiva</a>
                     </li>
@@ -213,94 +210,10 @@
     <!--===================== NAV DE OPÇÕES =====================-->
     <div class="limiter">
         <div class="container-login100">
-            <div class="wrap-login100" id="formIntro"
-                style="padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px; display: none;">
-                <form class="login100-form validate-form"
-                    style="margin-left: auto;margin-right: auto;padding-left: 10px;padding-right: 10px;">
-                    <div class="card" style=" margin-bottom: 10px;">
-                        <img alt="" class="card-img-top" src="images/card1.jpg">
-                        <div class="card-body">
-                            <h4 class="card-title">Importar</h4>
-                            <p class="card-text" style=" margin-bottom: 20px;">Prossiga com esta opção se deseja gerar a
-                                estatística descritiva a partir de um arquivo excel (.xls, .xlsx)</p><a
-                                class="btn btn-outline-success" onclick="ShowformImport()"
-                                style="padding-top: 6px; border-top-width: 1px; background-color: #28a745; color: white;">Prosseguir
-                                <i aria-hidden="true" class="fa fa-long-arrow-right m-l-5"></i></a>
-                        </div>
-                    </div>
-                </form>
-                <form class="login100-form validate-form"
-                    style="margin-left: auto;margin-right: auto;padding-left: 10px;padding-right: 10px;">
-                    <div class="card" style=" margin-bottom: 10px;">
-                        <img alt="" class="card-img-top" src="images/card1.jpg">
-                        <div class="card-body">
-                            <h4 class="card-title">Inserir Manualmente</h4>
-                            <p class="card-text" style=" margin-bottom: 20px;">Prossiga com esta opção se deseja gerar a
-                                estatística descritiva a partir de inserções manuais de dados.</p><a
-                                class="btn btn-outline-success" onclick="ShowformManual()"
-                                style="padding-top: 6px; border-top-width: 1px; background-color: #28a745; color: white;">Prosseguir<i
-                                    aria-hidden="true" class="fa fa-long-arrow-right m-l-5"></i></a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="wrap-login100" id="formImport"
-                style=" padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px; display: none;">
-                <form id="testeVal" name="testeVal" style="margin-left: auto; margin-right: auto;">
+            <div class="wrap-login100" id="formManual">
+                <form id="testeVal" name="testeVal">
                     <div class="form-row">
-                        <h4 class="card-title" style="margin-left: auto; margin-right: auto;">Estatística Descritiva
-                        </h4>
-                    </div>
-                    <div class="form-row">
-                        <input accept=".xls,.xlsx" class="form-control" id="input"
-                            style=" border-bottom-width: 1px; margin-bottom: 10px;" type="file">
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-12 text-center d-flex flex-column">
-                            <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                <label class="btn btn-secondary active">Amostra<input checked id="amostra"
-                                        name="options" type="radio"></label><label
-                                    class="btn btn-secondary">População<input id="populacao" name="options"
-                                        type="radio"></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-row mt-0.5">
-                        <div class="col-12 text-center">
-                            <a class="btn btn-outline-success" id="btnCalcImport" onfocus="modmedmed()"
-                                style="padding-top: 6px; border-top-width: 1px; background-color: #28a745; color: white;">Calcular<i
-                                    aria-hidden="true" class="fa fa-long-arrow-right m-l-5"></i></a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="wrap-login100" id="verifImport"
-                style=" padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px; display: none;">
-                <form id="testeVal" name="testeVal" style="margin-left: auto; margin-right: auto;">
-                    <div class="form-row">
-                        <h4 class="card-title" style="margin-left: auto; margin-right: auto;">Faça uma escolha:</h4>
-                        <div class="form-group col-12" id="divMsg" style="text-align: center;">
-                            Texto
-                        </div>
-                        <div class="form-group col-12">
-                            <select class="form-control" id="selectsPlanilha">
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row mt-0.5">
-                        <div class="col-12 text-center">
-                            <a class="btn btn-outline-success" id="btnFinal"
-                                style="padding-top: 6px; border-top-width: 1px; background-color: #28a745; color: white;">Já
-                                Escolhi!<i aria-hidden="true" class="fa fa-long-arrow-right m-l-5"></i></a>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="wrap-login100" id="formManual"
-                style="padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 50px;">
-                <form id="testeVal" name="testeVal" style="margin-left: auto; margin-right: auto;">
-                    <div class="form-row">
-                        <h4 class="card-title" style="margin-left: auto; text-align:center; margin-right: auto;">
+                        <h4 class="card-title">
                             Estatística Descritiva: (Seleção Brasileira - Eliminatórias da Copa do Mundo Qatar 2022™)
                         </h4>
                         <div class="input-group mb-3">
@@ -308,8 +221,7 @@
                                 placeholder="Nome da variável" required="" type="text" value="Gols por partida">
                             <div class="input-group-append">
                                 <span class="input-group-text"
-                                    onclick="this.parentNode.previousElementSibling.value= ''"
-                                    style="cursor:grab">Limpar</span>
+                                    onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
                             </div>
                         </div>
                     </div>
@@ -318,8 +230,8 @@
                             placeholder="Insira valores separados por ';' - em decimais use ponto" required=""
                             type="text" value="5;4;1;2">
                         <div class="input-group-append">
-                            <span class="input-group-text" onclick="this.parentNode.previousElementSibling.value= ''"
-                                style="cursor:grab">Limpar</span>
+                            <span class="input-group-text"
+                                onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
                         </div>
                     </div>
                     <div class="form-row">
@@ -334,31 +246,31 @@
                     </div>
                     <div class="form-row mt-0.5">
                         <div class="col-12 text-center">
-                            <a class="btn btn-outline-success" id="btnCalcManual" onfocus="modmedmed()"
-                                style="padding-top: 6px; border-top-width: 1px; background-color: #28a745; color: white;">Calcular<i
+                            <a class="btn btn-outline-success" id="btnCalcManual" onfocus="modmedmed()">Calcular<i
                                     aria-hidden="true" class="fa fa-long-arrow-right m-l-5"></i></a>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="wrap-login100" id="formResultado"
-                style=" padding-right: 20px; padding-left: 20px; padding-top: 33px; border-top-width: 50px; margin-top: 25px; display: none; text-align: center; padding-bottom: 10px;">
-                <h4 class="card-title" id="divResultados" style="margin-left: auto; margin-right: auto;">Resultados:
+            <div class="wrap-login100" id="formResultado" style="display:none;">
+                <h4 class="card-title" id="divResultados">Resultados:
                 </h4>
-                <section class="formulario" id="formularioDescritiva"
-                    style="margin-left: auto; margin-right: auto;padding-left: 0px;padding-right: 0px; border-radius: 0px; box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); width: 100%;margin-top: 0px;">
-                    <link href="css/descritiva.css" rel="stylesheet" type="text/css">
+                <section class="formulario" id="formularioDescritiva">
+
                     <link href="css/style.css" rel="stylesheet" type="text/css">
-                    <div class="tabelas" style="margin: auto;"></div>
-                    <canvas class="myChart"></canvas>
+                    <div class="tabelas"></div>
+
+                    <div class="table-responsive">
+                        <canvas class="myChart"></canvas>
+                    </div>
                     <div class="linha"></div>
-                    <div class="media-moda-med" style="background: #23b38840;">
+                    <div class="media-moda-med">
                         <p id="media"></p>
                         <p id="moda"></p>
                         <p id="mediana"></p>
                         <p id="desviop"></p>
                         <p id="coeficiente"></p>
-                    </div><select class="medidasSeparatriz" style="margin-top: 15px;">
+                    </div><select class="medidasSeparatriz">
                         <option>
                             Quartil (25 em 25%)
                         </option>
@@ -373,22 +285,20 @@
                         </option>
                     </select>
                     <div>
-                        <input class="custom-range" id="slider" max="100" min="0" step="25" style="max-width: 150px;"
-                            type="range" value="50">
+                        <input class="custom-range" id="slider" max="100" min="0" step="25" type="range" value="50">
                     </div>
                     <div class="vlSeparatriz"></div>
                     <div class="porcSeparatriz"></div>
-                    <div class="card" style="margin-bottom: 10px; margin:auto;max-width:400px;">
+                    <div class="card" style="margin-bottom: 10px;margin:auto;max-width:400px;">
                         <img alt="" class="card-img-top" src="images/reportagem.png">
                         <div class="card-body">
                             <a class="btn btn-outline-success"
-                                href="https://globoesporte.globo.com/futebol/selecao-brasileira/noticia/melhor-inicio-brasil-selecao-eliminatorias-1981-39-anos-recorde-proximos-jogos.ghtml"
-                                style=" padding-top: 6px; border-top-width: 1px;">⚽ Veja mais sobre esta notícia<i
-                                    aria-hidden="true" class="fa fa-long-arrow-right m-l-5"></i></a>
+                                href="https://globoesporte.globo.com/futebol/selecao-brasileira/noticia/melhor-inicio-brasil-selecao-eliminatorias-1981-39-anos-recorde-proximos-jogos.ghtml">⚽
+                                Veja esta notícia <i aria-hidden="true" class="fa fa-long-arrow-right m-l-5"></i></a>
                         </div>
                     </div>
-                </section><a class="btn btn-outline-success" id="btnCalc" onclick="history.go(0);" onfocus="modmedmed()"
-                    style=" padding-top: 6px; border-top-width: 1px; background-color: #28a745; color: white; margin-top: 5px; margin-left: auto; margin-right: auto;">Refrescar
+                </section><a class="btn btn-outline-success" id="btnCalc"
+                    onclick="window.location.href = this">Refrescar
                     Página<i aria-hidden="true" class="fa fa-long-arrow-right m-l-5"></i></a>
             </div>
         </div>
@@ -444,12 +354,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js">
     </script> <!-- importando algoritmos desenvolvidos pelo grupo: -->
 
-
     <script language="javascript" src="_algortimos/estDescritiva/1_eventosDOM.js">
     </script>
     <script language="javascript" src="_algortimos/estDescritiva/2_digitarManual.js">
-    </script>
-    <script language="javascript" src="_algortimos/estDescritiva/3_importExcel.js">
     </script>
     <script language="javascript" src="_algortimos/estDescritiva/4_geraTabela.js">
     </script>
@@ -463,10 +370,9 @@
     </script>
     <script language="javascript" src="_algortimos/estDescritiva/8_geraGrafico.js">
     </script>
-
-
     <script language="javascript" src="_algortimos/validadorRegex.js">
     </script>
+
 </body>
 
 </html>
