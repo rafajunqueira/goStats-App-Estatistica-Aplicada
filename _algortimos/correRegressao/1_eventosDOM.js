@@ -36,3 +36,8 @@ function regressaoY(vetval) {
 	document.getElementById('x_future').value = future_x;
 
 }
+
+// Limpar campos ao clicar em xls:
+document.querySelector('#input').onclick = () => {
+	
+}

@@ -2,6 +2,10 @@
 // *******************GRÁFICOS CHART.JS***********************/
 
 
+// variável auxiliar para excluir gráfico anteriormente usado
+let delGrafAnt
+let chart
+
 
 let geraCoresAleat = () => {
     let n = (Math.random() * 0xfffff * 1000000).toString(16);
@@ -49,42 +53,40 @@ function geraGraf(qtdLinhas) {
         titulodegrafico = 'Qualitativa Ordinal ou Nominal'
     }
 
+	// switch excluir gráfico anteriormente usado
+    switch (true) {
+        case (delGrafAnt == true):
+            chart.destroy()
 
-    // variável auxiliar para excluir gráfico anteriormente usado
-    let delGrafAnt
+        default:
 
-    if (delGrafAnt === 'sim') {
-        chart.destroy()
+            var ctx = document.querySelector('.myChart')
+
+            chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
+
+            Chart.defaults.scale.ticks.beginAtZero = true; //Configuração para grafico de barras iniciar no zero
+
+            // Não exibe legendas do gráfico:
+            Chart.defaults.global.legend.display = false;
+            //Chart.defaults.global.tooltips.enabled = false;
+
+            chart = new Chart(ctx, {
+                type: tipodegrafico,
+                data: {
+                    labels: valoresCol1,
+                    datasets: [{
+                        label: '',
+                        backgroundColor: paletaCores,
+                        borderColor: ['white'],
+                        data: valoresCol2,
+                        steppedLine: true,
+                    }]
+                },
+                options: {
+
+                }
+            })
     }
-
-    var ctx = document.querySelector('.myChart')
-
-    let chart
-    chart = ctx.getContext('2d') //Este comando diz que usaremos graficos 2d
-
-    Chart.defaults.scale.ticks.beginAtZero = true; //Configuração para grafico de barras iniciar no zero
-    
-    // Não exibe legendas do gráfico:
-    Chart.defaults.global.legend.display = false;
-    Chart.defaults.global.tooltips.enabled = false;
-    
-    chart = new Chart(ctx, {
-        type: tipodegrafico,
-        data: {
-            labels: valoresCol1,
-            datasets: [{
-                label: '',
-                backgroundColor: paletaCores,
-                borderColor: ['white'],
-                data: valoresCol2,
-                steppedLine: true,
-            }]
-        },
-        options: {
-
-        }
-    })
-
-    delGrafAnt = 'sim'
+    delGrafAnt = true
 
 }

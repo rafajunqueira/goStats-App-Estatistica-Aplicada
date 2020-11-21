@@ -212,8 +212,9 @@
     <!--===================== NAV DE OPÇÕES =====================-->
 
     <div class="limiter">
+        <link href="css/backgroundGradient.css" rel="stylesheet" type="text/css">
         <div class="container-login100">
-            <div class="wrap-login100" id="formImport">
+            <div class="wrap-login100" id="formImport" style="max-width: 475px">
                 <form>
                     <h4 class="card-title">Correlação e Regressão</h4>
                     <div class="col-md-12 col-sm-12">
@@ -239,7 +240,7 @@
                                                 <span class="input-group-text" id="basic-addon1">(X)</span>
                                             </div><input aria-describedby="basic-addon1" aria-label="Username"
                                                 autocomplete="on" class="form-control" id="varXManual" name="varX"
-                                                placeholder="Insira os valores separados por ';'" type="text">
+                                                placeholder="Insira valores entre ';'" type="text">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"
                                                     onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
@@ -252,7 +253,7 @@
                                                 <span class="input-group-text" id="basic-addon1">(Y)</span>
                                             </div><input aria-describedby="basic-addon1" aria-label="Username"
                                                 autocomplete="on" class="form-control" id="varYManual" name="varY"
-                                                placeholder="Insira os valores separados por ';'" type="text">
+                                                placeholder="Insira valores entre ';'" type="text">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"
                                                     onclick="this.parentNode.previousElementSibling.value= ''">Limpar</span>
@@ -272,7 +273,7 @@
                                     </div>
                                 </div>
                                 <div aria-labelledby="normal-tab" class="tab-pane fade" id="normal" role="tabpanel">
-                                    <div class="form-row">
+                                    <div class="form-row" style="display: none;">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">(X)</span>
@@ -286,7 +287,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-row">
+                                    <div class="form-row" style="display: none;">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1">(Y)</span>
@@ -333,10 +334,14 @@
                                 Escolhi!<i aria-hidden="true" class="fa fa-long-arrow-right m-l-5"></i></a>
                         </div>
                     </div>
+                    <div style="
+    margin-top: 15px; text-align: center;
+"><b>É preciso que seu arquivo tenha uma planilha nomeada 'Correlação' e seus dados nas seguintes colunas: (A, B)</b></div>
+                    <img src="images/exemploCorrelacao.png" style="width:100%;">
                 </form>
             </div>
             <div class="wrap-login100" id="formResultado" style="display: none">
-                <h4 class="card-title" id="divResultados">Resultados</h4>
+                <h4 class="card-title" id="divResultados">Resultados:</h4>
                 <canvas class="myChart"></canvas>
                 <div id="correRegResult"></div>
                 <div class="divCalculos">
@@ -349,10 +354,10 @@
     <footer id="footer">
         <div class="container">
             <div class="copyright">
-                © Copyright <b><a href="https://linkkle.com/gostats">goStats</a></b> Todos direitos reservados
+                © Copyright <b><a href="https://linkkle.com/gostats"><u>goStats</u></a></b> Todos direitos reservados
             </div>
             <div class="credits">
-                💡💻☕ Desenvolvido pela <b><a href="https://linkkle.com/gostats">Equipe goStats</a></b>
+                💡💻☕ Desenvolvido pela <b><a href="https://linkkle.com/gostats"><u>Equipe goStats</u></a></b>
             </div>
         </div>
     </footer>

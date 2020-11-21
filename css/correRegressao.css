@@ -72,7 +72,8 @@ body>nav:nth-child(31)>ul>li.drop-down.active>ul {
     padding-left: 20px!important;
     padding-top: 33px!important;
     border-top-width: 50px!important;
-    margin-top: 50px!important
+    margin-top: 50px!important;
+    max-width: 590px;
 }
 
 #testeVal {

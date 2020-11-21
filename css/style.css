@@ -1,22 +1,22 @@
 ﻿@import url("https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css");
-
 @font-face {
-	font-family: 'Italiana-Regular';
-	src: url(../fonts/Italiana-Regular.ttf);
+    font-family: 'Italiana-Regular';
+    src: url(../fonts/Italiana-Regular.ttf);
 }
 
 /* *******************CONFIGURAÇÃO MENU************************ */
 
-body{
+body {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
 }
-#btn-menu{
+
+#btn-menu {
     display: none;
 }
 
-header label{
+header label {
     color: #3a3a68;
     font-size: 30px;
     display: block;
@@ -25,18 +25,21 @@ header label{
     display: none;
     border-right: 1px solid #3a3a6854;
 }
-header label:hover{
+
+header label:hover {
     background-color: #3a3a68c4;
     color: white;
     transition: 1s;
 }
-.menu{
+
+.menu {
     height: 55px;
-	background-color: white;
+    background-color: white;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.3);
     padding: 3px;
 }
-.menu ul{ 
+
+.menu ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -45,7 +48,7 @@ header label:hover{
     transition: all .5s;
 }
 
-.menu li a{
+.menu li a {
     color: #3a3a68;
     text-decoration: none;
     display: block;
@@ -54,20 +57,18 @@ header label:hover{
     font-size: 15pt;
     font-weight: 600;
     margin-top: 2px;
-    
 }
 
-.menu li:hover{
-    background-color: rgba(58,58,104,.5);
+.menu li:hover {
+    background-color: rgba(58, 58, 104, .5);
     transition: 1s;
 }
 
-.menu li a:hover{
+.menu li a:hover {
     color: #f8f9f2;
 }
 
-
-#logo{
+#logo {
     display: flex;
     position: absolute;
     width: 180px;
@@ -86,7 +87,7 @@ div#botaoLogin {
     border-radius: 50px;
 }
 
-div#botaoLogin a{
+div#botaoLogin a {
     display: flex;
     justify-content: center;
     padding: 10px 0px;
@@ -97,75 +98,68 @@ div#botaoLogin a{
     font-weight: 600;
 }
 
-div#botaoLogin:hover{
+div#botaoLogin:hover {
     background-color: #5b6230;
     transition: 1s;
 }
 
 /* *******************CONFIGURAÇÃO MENU RESPONSIVO************************ */
-@media (max-width: 1250px){
-    .menu li a{
+
+@media (max-width: 1250px) {
+    .menu li a {
         padding: 15px 10px;
-        font-size: 14pt; 
- 
+        font-size: 14pt;
     }
-    .menu ul{
-        margin-left: 100px;
-    }
-}
-@media (max-width: 1035px){
-    .menu li a{
-        padding: 15px 5px;
-        font-size: 13pt; 
- 
-    }
-    .menu ul{
+    .menu ul {
         margin-left: 100px;
     }
 }
 
-@media (max-width: 930px){
-    header label{
+@media (max-width: 1035px) {
+    .menu li a {
+        padding: 15px 5px;
+        font-size: 13pt;
+    }
+    .menu ul {
+        margin-left: 100px;
+    }
+}
+
+@media (max-width: 930px) {
+    header label {
         display: flex;
     }
-
-    img#logo{
-       position: absolute;
-       top: 5px;
+    img#logo {
+        position: absolute;
+        top: 5px;
     }
-    
-    .menu ul{
+    .menu ul {
         position: absolute;
         margin-left: -70%;
         width: 60%;
         flex-direction: column;
-        background-color:#3a3a68c4;
+        background-color: #3a3a68c4;
         z-index: 50;
-        
     }
-    .menu li a{
+    .menu li a {
         color: white;
         margin-left: 10px;
     }
-
-    #btn-menu:checked ~ ul{
+    #btn-menu:checked~ul {
         margin-left: 0%;
     }
     div#botaoLogin {
         left: calc(80% - 60px);
     }
-    
-
 }
 
-@media (max-width: 405px){
-    img#logo{
+@media (max-width: 405px) {
+    img#logo {
         position: absolute;
         top: 12px;
-        width:135px;
-     }
-
-     div#botaoLogin {
+        width: 135px;
+    }
+    div#botaoLogin {
         width: 80px;
         left: calc(80% - 20px);
     }
@@ -179,6 +173,7 @@ div.container1 {
     width: 57%;
     height: calc(100vh - 80px);
 }
+
 div.container1-1 {
     position: absolute;
     width: 99%;
@@ -191,30 +186,27 @@ div.container1-2 {
     top: 21vw;
     left: 15%;
     width: 80%;
-    height:29%;
-
+    height: 29%;
 }
 
-div.container2{
+div.container2 {
     display: inline-block;
     position: relative;
     width: 42%;
     height: calc(100vh - 80px);
 }
 
-
-img#logotipo-banner{
+img#logotipo-banner {
     width: 90%;
     margin-left: 8%;
     margin-top: 18vh;
 }
 
-img#fig1{
+img#fig1 {
     position: absolute;
     left: 05%;
     top: 10%;
     width: 80%;
-    
 }
 
 #msg1 {
@@ -226,8 +218,8 @@ img#fig1{
     text-align: center;
 }
 
-@media (max-width: 405px){
-    div.container2{
+@media (max-width: 405px) {
+    div.container2 {
         display: none;
     }
     div.container1 {
@@ -248,7 +240,6 @@ img#fig1{
         letter-spacing: 0.1vw;
         text-align: center;
     }
-
 }
 
 /* *******************CONFIGURAÇÃO FORMULÁRIOS PAGINAS SECUNDÁRIAS************************ */
@@ -268,7 +259,6 @@ body.fundoPag2 {
     z-index: 99;
 }
 
-
 section.formulario {
     background-color: white;
     border-radius: 25px;
@@ -276,23 +266,24 @@ section.formulario {
     margin-top: 5vh;
     margin-left: 25%;
     box-shadow: 4px 5px 5px rgba(0, 0, 0, .4);
-    padding-left:20px;
+    padding-left: 20px;
     padding-top: 5px;
-    padding-right:20px;
+    padding-right: 20px;
 }
 
-section.formulario h1{
+section.formulario h1 {
     text-align: center;
     font-family: 'Italiana-Regular';
     border-radius: 10px;
     color: white;
-    background:linear-gradient(#3b3b5a, #64647a);
+    background: linear-gradient(#3b3b5a, #64647a);
     letter-spacing: 1.5pt;
     font-weight: 600;
-    box-shadow: 0px 4px 3px 0 rgba(0,0,0,0.2);
+    box-shadow: 0px 4px 3px 0 rgba(0, 0, 0, 0.2);
     font-size: 30px;
 }
-section.formulario dt{
+
+section.formulario dt {
     font-size: 12pt;
     font-weight: 600;
     margin-bottom: 2px;
@@ -304,43 +295,44 @@ div.linha {
     margin: 15px 0px;
 }
 
-div.amostraOuPopulacao{
+div.amostraOuPopulacao {
     margin-top: 10px;
     margin-bottom: 5px;
     width: 70%;
     margin-left: 20%;
 }
-div.amostraOuPopulacao img{
-    width: 200px; 
+
+div.amostraOuPopulacao img {
+    width: 200px;
     cursor: pointer;
 }
 
-div.amostraOuPopulacao input{
+div.amostraOuPopulacao input {
     display: none;
 }
 
-div.manualOuImportar{
+div.manualOuImportar {
     margin-top: 10px;
     margin-bottom: 5px;
     width: 70%;
     margin-left: 15%;
 }
-div.manualOuImportar img{
-    width: 200px; 
+
+div.manualOuImportar img {
+    width: 200px;
     cursor: pointer;
 }
 
-div.manualOuImportar input{
+div.manualOuImportar input {
     display: none;
 }
 
-input{
+input {
     border: 1px solid rgba(0, 0, 0, 0.192);
     border-radius: 5px;
     height: 30px;
-    padding-left: 10px;    
+    padding-left: 10px;
 }
-
 
 input#btnCalc {
     margin-bottom: 10px;
@@ -352,90 +344,91 @@ input#btnCalc {
     width: 200px;
     color: white;
     margin-left: 25px;
-    box-shadow: 0px 4px 3px 0 rgba(0,0,0,0.2);
+    box-shadow: 0px 4px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
-input#btnCalc:active{
+input#btnCalc:active {
     background-color: #576d42;
     transition: all .3s;
 }
 
-input#btnCalc:focus{
+input#btnCalc:focus {
     outline: 0px;
 }
 
-div.amostraOuPopulacao img{
-   
+div.amostraOuPopulacao img {
     border-radius: 10px;
-    box-shadow: 0px 2px 1px 0 rgba(0,0,0,0.05);
+    box-shadow: 0px 2px 1px 0 rgba(0, 0, 0, 0.05);
 }
-
 
 /******************RESPONSIVIDADE FORMULÁRIO**********************/
 
-@media (max-width: 1150px){
+@media (max-width: 1150px) {
     section.formulario {
         width: 60%;
         margin-left: 20%;
     }
 }
 
-@media (max-width: 1010px){
+@media (max-width: 1010px) {
     section.formulario {
         width: 70%;
         margin-left: 15%;
     }
 }
-@media (max-width: 850px){
+
+@media (max-width: 850px) {
     section.formulario {
         width: 80%;
         margin-left: 10%;
     }
 }
-@media (max-width: 740px){
-    img#fotoAmostra{
+
+@media (max-width: 740px) {
+    img#fotoAmostra {
         margin-left: 15%;
     }
-    img#fotoPopulacao{
+    img#fotoPopulacao {
         margin-left: 15%;
     }
 }
 
 /* ****************TABELAS**************************** */
 
-
 table {
-	line-height: 24px;
-	margin: 30px auto;
-	text-align: center;
+    line-height: 24px;
+    margin: 30px auto;
+    text-align: center;
     width: 100%;
     border-radius: 5px;
     border: 1px solid rgba(0, 0, 0, 0.5);
-}	
+}
 
 th {
-    background: linear-gradient(#538282,#009c6a, #66a8c8);
+    background: linear-gradient(#538282, #009c6a, #66a8c8);
     color: white;
     /* font-weight: bold; */
     padding: 3px !important;
     /* position: relative; */
+    vertical-align: middle !important;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.534);
 }
 
 table {
     margin-top: 0px;
+    border: 1px solid #0000001f !important;
 }
 
 td {
+    vertical-align: middle !important;
     text-align: center;
     font-weight: 600;
-	padding: 3px !important;
-	position: relative;
+    padding: 3px !important;
+    position: relative;
     transition: all 300ms;
-    border-radius: 05px;;
+    border-radius: 05px;
     color: rgb(12, 12, 12);
 }
-
 
 .table-responsive {
     /* display: block; */
@@ -458,6 +451,7 @@ td {
 }
 
 /******************MODA MEDIA MEDIANA**********************/
+
 div.media-moda-med, div.divCalculos {
     width: 60%;
     margin: auto;
@@ -466,8 +460,8 @@ div.media-moda-med, div.divCalculos {
     color: rgb(33, 0, 59);
 }
 
-
 /***************** CONFIG PLACEHOLDER ITALICO *************************/
-#y_future:placeholder-shown{
+
+#y_future:placeholder-shown {
     font-style: italic;
- }
+}

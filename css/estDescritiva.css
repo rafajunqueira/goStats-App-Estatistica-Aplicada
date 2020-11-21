@@ -167,6 +167,8 @@ body>nav:nth-child(31)>ul>li.drop-down.active>ul {
     margin-top: 25px !important;
     text-align: center !important;
     padding-bottom: 10px !important;
+    max-width: 890px !important;
+
 }
 
 #divResultados {
@@ -219,3 +221,5 @@ body>nav:nth-child(31)>ul>li.drop-down.active>ul {
     min-width: 341px;
     min-height: 170px;
 }
+
+#testeVal > div:nth-child(1) > h4 {text-align: center;}
