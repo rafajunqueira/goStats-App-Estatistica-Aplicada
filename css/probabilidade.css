@@ -1,0 +1,84 @@
+#triggerModal {
+    display: none !important;
+}
+
+#header {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+body>div:nth-child(31) {
+    display: none !important;
+}
+
+body>nav:nth-child(32)>ul>li.drop-down.active>ul {
+    display: block !important;
+}
+
+body>div.limiter>div>div {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    padding-top: 33px !important;
+    border-top-width: 50px !important;
+    margin-top: 50px !important;
+    max-width: 750px !important;
+}
+
+body>div.limiter>div>div>h4 {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+#btnCalcBinomial {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+#ocultarElem {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 10px !important;
+    text-align: center !important;
+}
+
+#btnCalcNormal {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+#ocultarElem {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 10px !important;
+    text-align: center !important;
+}
+
+#btnCalcUniforme {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+    background-color: #28a745 !important;
+    color: white !important;
+}
+
+#ocultarElem {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 10px !important;
+    text-align: center !important;
+}
+
+
+#binomial>form>div:nth-child(1)>div>div>span,
+#binomial>form>div:nth-child(4)>div>div>span,
+#normal>form>div:nth-child(1)>div>div>span,
+#normal>form>div:nth-child(2)>div>div>span,
+#limparNormal>span,
+#uniforme>form>div:nth-child(1)>div>div>span,
+#uniforme>form>div:nth-child(2)>div>div>span,
+#limparUniforme>span {
+    cursor: alias;
+}

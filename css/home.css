@@ -1,0 +1,80 @@
+#header {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+body>div:nth-child(28) {
+    display: none !important;
+}
+
+body>nav:nth-child(29)>ul>li.drop-down.active>ul {
+    display: block !important;
+}
+
+body>div.limiter>div>div {
+    padding-right: 20px !important;
+    padding-left: 20px !important;
+    padding-top: 33px !important;
+    border-top-width: 50px !important;
+    margin-top: 50px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(1) {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(1)>div {
+    margin-bottom: 10px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(1)>div>div>p {
+    margin-bottom: 20px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(1)>div>div>a {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(2) {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(2)>div {
+    margin-bottom: 10px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(2)>div>div>p {
+    margin-bottom: 20px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(2)>div>div>a {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(3) {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(3)>div {
+    margin-bottom: 10px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(3)>div>div>p {
+    margin-bottom: 20px !important;
+}
+
+body>div.limiter>div>div>form:nth-child(3)>div>div>a {
+    padding-top: 6px !important;
+    border-top-width: 1px !important;
+}
