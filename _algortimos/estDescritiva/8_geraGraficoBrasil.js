@@ -42,16 +42,6 @@ function geraGraf(qtdLinhas) {
     let quantDados = valoresCol1.length
     let tipodados = qualTipo(valoresCol1)
 
-    if ((quantDados >= 10) && (tipodados == "number")) {
-        tipodegrafico = 'line' //grafico Quantitativa Continua
-        titulodegrafico = 'Quantitativa Contínua'
-    } else if ((quantDados < 10) && (tipodados == "number")) {
-        tipodegrafico = 'bar' //grafico Quantitativa Discreta
-        titulodegrafico = 'Quantitativa Discreta'
-    } else if (tipodados == "string") {
-        tipodegrafico = 'pie' //grafico Qualitativa Ordinal ou Nominal
-        titulodegrafico = 'Qualitativa Ordinal ou Nominal'
-    }
 
     // switch excluir gráfico anteriormente usado
     switch (true) {
@@ -71,14 +61,14 @@ function geraGraf(qtdLinhas) {
             //Chart.defaults.global.tooltips.enabled = false;
 
             chart = new Chart(ctx, {
-                type: tipodegrafico,
+                type: 'bar',
                 data: {
-                    labels: valoresCol1,
+                    labels: valoresCol2,
                     datasets: [{
                         label: '',
                         backgroundColor: paletaCores,
                         borderColor: ['white'],
-                        data: valoresCol2,
+                        data: valoresCol1,
                         steppedLine: true,
                     }]
                 },
@@ -87,13 +77,13 @@ function geraGraf(qtdLinhas) {
                         yAxes: [{
                             scaleLabel: {
                                 display: true,
-                                labelString: 'Frequência Simples'
+                                labelString: document.querySelector('#formularioDescritiva > div.tabelas > table > tbody > tr.linhaCabec > th:nth-child(1)').innerHTML
                             }
                         }],
                         xAxes: [{
                             scaleLabel: {
                                 display: true,
-                                labelString: document.querySelector('#formularioDescritiva > div.tabelas > table > tbody > tr.linhaCabec > th:nth-child(1)').innerHTML
+                                labelString: 'Frequência Simples'
                             }
                         }]
                     }

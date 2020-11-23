@@ -427,7 +427,7 @@ td {
     position: relative;
     transition: all 300ms;
     border-radius: 05px;
-    color: rgb(12, 12, 12);
+    border-color: rgba(0, 0, 0, 0.17);
 }
 
 .table-responsive {

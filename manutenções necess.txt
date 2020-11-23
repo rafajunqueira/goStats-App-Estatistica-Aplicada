@@ -1,0 +1,7 @@
+DUAS COISAS:
+ARRUMAR SLIDER, ARRUMAR TIPO DE GRÁFICO - STRING NÃO ESTÁ RECONHECENDO.
+
+ver que tem alguns id na pagina errado
+
+ligar documentação
+ligar video

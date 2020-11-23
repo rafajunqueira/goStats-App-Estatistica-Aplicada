@@ -1,0 +1,18 @@
+O QUE FALTA PARA MATAR ESSE VÍDEO
+mandar texto até dia 15 sobre a sua parte do roteiro:
+
+[texto de 20 seg] 1 - intro (falando sobre a fatec o projeto...)
+SOFIA
+
+[texto de 40 seg] 2 - front: frameworks, linguagens..
+OSMAR + THIAGO
+
+[texto de 40 seg] 3 - back: frameworks, linguagens...
+...melhor algoritmo usado (bubble, quick)
+ROGER + THIAGO
+
+[texto de 40 seg] 4 - análise: testes feitos no soft, estatistica, documentação
+SOFIA + RAFAEL
+
+[texto de 40 seg] 5 - Resolução de exercícios, compreensão nos cáclulos
+ROGER

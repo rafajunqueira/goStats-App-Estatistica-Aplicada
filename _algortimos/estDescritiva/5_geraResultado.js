@@ -69,18 +69,18 @@ function geraResultado(nomeVariavel_p, inputDados_p) {
 
         let mediaModaMed = document.querySelector('.media-moda-med')
 
-        mediaModaMed.innerHTML = `
-    <br>
+        mediaModaMed.innerHTML = `<br>
+        <h5 style="margin-bottom: 0px;">Medidas de Tendência Central:</h5>
     <b>Média:</b> ${acharMedia(vetEleCalc, vetFreCalc)}
     <br>
     <b>Mediana:</b> ${acharMediana(arrayOrdenado, rogerCol1, rogerCol2)} 
     <br>
     <b>Moda:</b> ${acharModa(vetEleCalc, vetFreCalc)}
     <br>
+<hr>
     <b>Desvio Padrão:</b> ${acharDP(vetEleCalc, vetFreCalc)}
     <br>
-    <b>Coeficiente de Variação:</b> ${acharCV(vetEleCalc, vetFreCalc)}
-    <br><br>
+    <b>Coeficiente de Variação:</b> ${acharCV(vetEleCalc, vetFreCalc)}<br><br>
     `
 
     } else if ((a.length <= 10) && (qualTipo(arrayOrdenado) == 'number')) {
@@ -90,18 +90,20 @@ function geraResultado(nomeVariavel_p, inputDados_p) {
 
         let mediaModaMed = document.querySelector('.media-moda-med')
 
-        mediaModaMed.innerHTML = `
-    <br>
+        mediaModaMed.innerHTML = `<br>
+        <h5 style="margin-bottom: 0px;">Medidas de Tendência Central:</h5>
     Média: <b>${acharMedia(vetEleCalc, vetFreCalc)}</b>
     <br>
     Mediana: <b>${acharMediana(arrayOrdenado, vetEleCalc, vetEleCalc)}</b>
     <br>
     Moda: <b>${acharModa(vetEleCalc, vetFreCalc)}</b>
     <br>
+<hr>
+    <h5 style="margin-bottom: 0px;">Medidas de Dispersão:</h5>
+
     Desvio Padrão: <b>${acharDP(vetEleCalc, vetFreCalc)}</b>
     <br>
-    Coeficiente de Variação: <b>${acharCV(vetEleCalc, vetFreCalc)}</b>
-    <br><br>
+    Coeficiente de Variação: <b>${acharCV(vetEleCalc, vetFreCalc)}</b><br><br>
     `
 
     } else if (qualTipo(arrayOrdenado) == 'string') {
@@ -111,12 +113,11 @@ function geraResultado(nomeVariavel_p, inputDados_p) {
 
         let mediaModaMed = document.querySelector('.media-moda-med')
 
-        mediaModaMed.innerHTML = `
+        mediaModaMed.innerHTML = `<br>
+        <h5 style="margin-bottom: 0px;">Medidas de Tendência Central:</h5>
+        Mediana: ${acharMediana(arrayOrdenado, vetEleCalc, vetEleCalc)}
     <br>
-    A mediana é: ${acharMediana(arrayOrdenado, vetEleCalc, vetEleCalc)}
-    <br>
-    A moda é: ${acharModa(vetEleCalc, vetFreCalc)}
-    <br><br>
+    Moda: ${acharModa(vetEleCalc, vetFreCalc)}<br>
     `
 
     }
@@ -127,14 +128,21 @@ function geraResultado(nomeVariavel_p, inputDados_p) {
 
 
 let qualTipo = (arrayOrdenado) => {
+    let tipo
 
-    let verificador = arrayOrdenado[0]
+    for (let i = 0; i < arrayOrdenado.length; i++) {
+        const verificador = arrayOrdenado[i]
 
-    if (isNaN(parseFloat(verificador))) { // se for string
-        return 'string'
-    } else {
-        return 'number' // se for number
+        if (isNaN(parseFloat(verificador)) == true) { // se houver algum string no input
+            tipo = 'string'
+            return tipo
+        } else {
+            tipo = 'number' // se houver somente for number
+        }
     }
+
+    //somente vamos acessar aqui se for number
+    return tipo
 }
 
 

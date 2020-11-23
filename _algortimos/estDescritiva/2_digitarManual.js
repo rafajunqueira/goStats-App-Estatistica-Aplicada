@@ -7,7 +7,7 @@ btnCalcManual.onclick = () => {
     let inputDados = document.querySelector('#inputDados').value
 
     //Validação com Regex dos dados:
-    if (nomeVariavel.trim() == '' || regex(inputDados) == false) {
+    if (nomeVariavel.trim() == '' || inputDados.trim() == '') {
         triggerModal()
     } else {
         // Se tudo ok com a validação, prosseguir com os resultados:

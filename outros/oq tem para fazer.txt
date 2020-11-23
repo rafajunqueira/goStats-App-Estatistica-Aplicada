@@ -1,5 +1,3 @@
-2 - limpar todo css inline para interno
-
 ver que tem alguns id na pagina errado
 
 ligar documentação
