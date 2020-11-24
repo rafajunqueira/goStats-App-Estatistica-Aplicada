@@ -1,0 +1,8 @@
+DUAS COISAS:
+ARRUMAR SLIDER, ARRUMAR TIPO DE GR�FICO - STRING N�O EST� RECONHECENDO.
+
+ver se tem alguns id na pagina errado
+ligar ajuste de linhas da tabela
+
+ligar documenta��o
+ligar video
