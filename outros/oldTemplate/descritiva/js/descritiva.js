@@ -89,18 +89,18 @@ btnCalc.onclick = () => {
   // AO FINAL, TODOS ELEMENTOS style="display: none" VIRAM BLOCK
   const elementosOcultos = document.querySelectorAll('#ocultarElem')
 
-  for (let element of elementosOcultos){
+  for (let element of elementosOcultos) {
     element.style.removeProperty('display')
   }
 
 
 
 
-  if ((a.length > 10) && (qualTipo(arrayOrdenado) == 'number')) { 
-  
+  if ((a.length > 10) && (qualTipo(arrayOrdenado) == 'number')) {
+
     let vetEleCalc = vetPraCont1(rogerCol1, rogerCol2)
     let vetFreCalc = vetPraCont2(rogerCol1, rogerCol2)
-    
+
     let mediaModaMed = document.querySelector('.media-moda-med')
 
     mediaModaMed.innerHTML = `
@@ -116,13 +116,13 @@ btnCalc.onclick = () => {
     O coeficiente de variação é: ${acharCV(vetEleCalc, vetFreCalc)}
     <br><br>
     `
-  
+
   }
-  else if((a.length <= 10) && (qualTipo(arrayOrdenado) == 'number')){
-  
+  else if ((a.length <= 10) && (qualTipo(arrayOrdenado) == 'number')) {
+
     let vetEleCalc = a
     let vetFreCalc = b
-    
+
     let mediaModaMed = document.querySelector('.media-moda-med')
 
     mediaModaMed.innerHTML = `
@@ -137,14 +137,14 @@ btnCalc.onclick = () => {
     <br>
     O coeficiente de variação é: ${acharCV(vetEleCalc, vetFreCalc)}
     <br><br>
-    `  
-  
+    `
+
   }
-  else if(qualTipo(arrayOrdenado) == 'string'){
-  
+  else if (qualTipo(arrayOrdenado) == 'string') {
+
     let vetEleCalc = a
     let vetFreCalc = b
-    
+
     let mediaModaMed = document.querySelector('.media-moda-med')
 
     mediaModaMed.innerHTML = `
@@ -154,8 +154,8 @@ btnCalc.onclick = () => {
     A moda é: ${acharModa(vetEleCalc, vetFreCalc)}
     <br><br>
     `
-  
-  } 
+
+  }
 
 }
 
@@ -234,7 +234,7 @@ function geraTotalCol2(freqSimples) {
 
 //################################################################################
 
-function acharMediana(vet, vetPr, vetFr){
+function acharMediana(vet, vetPr, vetFr) {
 
   let impPar
   let mediana
@@ -247,25 +247,25 @@ function acharMediana(vet, vetPr, vetFr){
   let p1 = 0
   let ind
 
-  if(vet.length & 1){ //ve se a quantidade de elemento do vetor e impar ou par para saber quantas medianas teram
+  if (vet.length & 1) { //ve se a quantidade de elemento do vetor e impar ou par para saber quantas medianas teram
     impPar = 'Impar'
-  } 
+  }
   else {
     impPar = 'Par'
   }
 
-  if(impPar == 'Impar'){ //descobre apenas uma mediana porque e impar
+  if (impPar == 'Impar') { //descobre apenas uma mediana porque e impar
     indice = vet.length / 2
     mediana = vet[Math.floor(indice)]
   }
-  else{ //descobre duas medianas porque e par
+  else { //descobre duas medianas porque e par
     indice = vet.length / 2
     mediana = vet[indice - 1]
 
-    if(vet[indice] != mediana){
+    if (vet[indice] != mediana) {
       mediana += ' e ' + vet[indice] //separa com a conjunção e
     }
-    
+
   }
 
   if (isNaN(parseFloat(verificador))) { // se for string
@@ -276,28 +276,28 @@ function acharMediana(vet, vetPr, vetFr){
 
   //Divisão entre outros e continua que vem a seguir
 
-  if((vetPr.length > 10) && (tipo == 'number')){
+  if ((vetPr.length > 10) && (tipo == 'number')) {
 
-    for(var i = 0; i <= vetPr.length; i++){
+    for (var i = 0; i <= vetPr.length; i++) {
 
-      if(vetPr[i] <= parseFloat(mediana)){
-        
+      if (vetPr[i] <= parseFloat(mediana)) {
+
         pInd = vetPr[i]
         ind = i
 
       }
     }
 
-    for(var i = 0; i <= vetPr.length; i++){
+    for (var i = 0; i <= vetPr.length; i++) {
 
-      if(vetPr[i] > parseFloat(mediana)){
+      if (vetPr[i] > parseFloat(mediana)) {
 
         sInd = vetPr[i]
         break
       }
     }
 
-    for(var i = 0; i < ind; i++){
+    for (var i = 0; i < ind; i++) {
 
       freAnt = freAnt + vetFr[i]
 
@@ -307,7 +307,7 @@ function acharMediana(vet, vetPr, vetFr){
 
     return p1
   }
-  else{
+  else {
 
     return mediana
   }
@@ -316,32 +316,32 @@ function acharMediana(vet, vetPr, vetFr){
 
 //################################################################################
 
-function acharMedia(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
-                                     //identificar qual opção o usuario escolheu ordinal, nominal ...
-    var soma = parseFloat(vetEle[0]) * vetFre[0]
-    var somaFre = vetFre[0]
-  
-    for(var i = 1; i < vetEle.length; i++){ //multiplica e soma os elementos do vetor com suas frequencias
-        soma = soma + parseFloat(vetEle[i]) * vetFre[i]
-        somaFre = somaFre + vetFre[i]
-    }
-    
-    return (soma / somaFre).toFixed(1) //sai a media com apenas uma casa depois da virgula
-  
+function acharMedia(vetEle, vetFre) { //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
+  //identificar qual opção o usuario escolheu ordinal, nominal ...
+  var soma = parseFloat(vetEle[0]) * vetFre[0]
+  var somaFre = vetFre[0]
+
+  for (var i = 1; i < vetEle.length; i++) { //multiplica e soma os elementos do vetor com suas frequencias
+    soma = soma + parseFloat(vetEle[i]) * vetFre[i]
+    somaFre = somaFre + vetFre[i]
+  }
+
+  return (soma / somaFre).toFixed(1) //sai a media com apenas uma casa depois da virgula
+
 }
 
 //################################################################################
-  
+
 function acharModa(vetProp, vetValor) { //tem que entrar com o vetor de lista de elementos e frequencia   
-  
+
   let maior = 0
   let aModa
   let posicao
   let modas = []
 
-  for(var i = 0; i <= vetValor.length; i++){
-    
-    if(vetValor[i] >= maior){
+  for (var i = 0; i <= vetValor.length; i++) {
+
+    if (vetValor[i] >= maior) {
 
       maior = vetValor[i]
       aModa = vetProp[i]
@@ -350,52 +350,52 @@ function acharModa(vetProp, vetValor) { //tem que entrar com o vetor de lista de
     }
   }
 
-  for(var i = 0; i <= posicao; i++){
+  for (var i = 0; i <= posicao; i++) {
 
-    if(vetValor[i] == maior){
+    if (vetValor[i] == maior) {
 
       modas.push(vetProp[i])
 
     }
   }
 
-  if(modas.length == vetProp.length){
+  if (modas.length == vetProp.length) {
 
     return 'Não tem moda'
 
   }
-  else{
-    
-    if(modas.length <= 1){
+  else {
+
+    if (modas.length <= 1) {
       return aModa
     }
-    else{
+    else {
       return modas
-    }  
+    }
   }
 }
 
 //################################################################################
 
-function acharDP(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
-                                  //identificar qual opção o usuario escolheu ordinal, nominal ...
+function acharDP(vetEle, vetFre) { //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
+  //identificar qual opção o usuario escolheu ordinal, nominal ...
   var soma = parseFloat(vetEle[0]) * vetFre[0]
   var somaFre = vetFre[0]
   var media
   var etapaUm = 0
   var DP
 
-  for(var i = 1; i < vetEle.length; i++){ //multiplica e soma os elementos do vetor com suas frequencias
+  for (var i = 1; i < vetEle.length; i++) { //multiplica e soma os elementos do vetor com suas frequencias
     soma = soma + parseFloat(vetEle[i]) * vetFre[i]
     somaFre = somaFre + vetFre[i]
   }
 
   media = (soma / somaFre).toFixed(1) //sai a media com apenas uma casa depois da virgula
 
-  for(var i = 0; i < vetEle.length; i++){
+  for (var i = 0; i < vetEle.length; i++) {
     etapaUm = etapaUm + Math.pow(parseFloat(vetEle[i]) - media, 2) * vetFre[i]
   }
-                                                    //Aplicando a formula
+  //Aplicando a formula
   DP = (Math.sqrt(etapaUm / somaFre)).toFixed(1)
 
   return DP
@@ -403,8 +403,8 @@ function acharDP(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de
 
 //################################################################################
 
-function acharCV(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
-                                  //identificar qual opção o usuario escolheu ordinal, nominal ...
+function acharCV(vetEle, vetFre) { //entrar com o vetor de lista de elemento e de frequencia precisa fazer um if para
+  //identificar qual opção o usuario escolheu ordinal, nominal ...
   var soma = parseFloat(vetEle[0]) * vetFre[0]
   var somaFre = vetFre[0]
   var media
@@ -412,17 +412,17 @@ function acharCV(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de
   var DP
   var CV
 
-  for(var i = 1; i < vetEle.length; i++){ //multiplica e soma os elementos do vetor com suas frequencias
+  for (var i = 1; i < vetEle.length; i++) { //multiplica e soma os elementos do vetor com suas frequencias
     soma = soma + parseFloat(vetEle[i]) * vetFre[i]
     somaFre = somaFre + vetFre[i]
   }
 
   media = (soma / somaFre).toFixed(1) //sai a media com apenas uma casa depois da virgula
 
-  for(var i = 0; i < vetEle.length; i++){
+  for (var i = 0; i < vetEle.length; i++) {
     etapaUm = etapaUm + Math.pow(parseFloat(vetEle[i]) - media, 2) * vetFre[i]
   }
-                                            //Aplicando a formula
+  //Aplicando a formula
   DP = (Math.sqrt(etapaUm / somaFre)).toFixed(1)
 
   CV = `${((DP / media) * 100).toFixed(0)}%`
@@ -432,15 +432,15 @@ function acharCV(vetEle, vetFre){ //entrar com o vetor de lista de elemento e de
 
 //################################################################################
 
-function vetPraCont1(var1, var2) { 
+function vetPraCont1(var1, var2) {
 
   let soma
   let media
   let vetMedia = []
   let vetFreque = []
 
-  for(var i = 0; i <= var1.length - 1; i+=2){
-    
+  for (var i = 0; i <= var1.length - 1; i += 2) {
+
     soma = var1[i] + var1[i + 1]
     media = soma / 2
     vetMedia.push(media)
@@ -448,20 +448,20 @@ function vetPraCont1(var1, var2) {
 
   }
 
-return vetMedia
+  return vetMedia
 }
 
 //################################################################################
 
-function vetPraCont2(var1, var2) { 
+function vetPraCont2(var1, var2) {
 
   let soma
   let media
   let vetMedia = []
   let vetFreque = []
 
-  for(var i = 0; i <= var1.length - 1; i+=2){
-    
+  for (var i = 0; i <= var1.length - 1; i += 2) {
+
     soma = var1[i] + var1[i + 1]
     media = soma / 2
     vetMedia.push(media)
@@ -469,7 +469,7 @@ function vetPraCont2(var1, var2) {
 
   }
 
-return vetFreque
+  return vetFreque
 }
 
 //################################################################################
@@ -610,26 +610,35 @@ const slctMedSeparatriz = document.querySelector('.medidasSeparatriz')
 slctMedSeparatriz.onchange = () => {
   const novoSlider = document.querySelector('.slider')
   const medidasSeparatriz = document.querySelector('option:checked').innerHTML
+  debugger
 
   switch (medidasSeparatriz) {
     case 'Quartil (25 em 25%)':
       novoSlider.step = 25
       novoSlider.min = 25
+      debugger
+
       break;
 
     case 'Quintil (20 em 20%)':
       novoSlider.step = 20
       novoSlider.min = 20
+      debugger
+
       break;
 
     case 'Decil (10 em 10%)':
       novoSlider.step = 10
       novoSlider.min = 10
+      debugger
+
       break;
 
     case 'Percentil (1 em 1%)':
       novoSlider.step = 1
       novoSlider.min = 1
+      debugger
+
       break;
   }
 
